@@ -17,16 +17,14 @@ describe TicTacToe do
     end
 
     it 'initially has 9 empty positions' do
-      (1..3).each do |x|
-        (1..3).each do |y|
-          expect(@game.pos [x,y]).to eq(" ")
-        end
+      (0..8).each do |i|
+          expect(@game.pos i).to eq(" ")
       end
 
     end
 
     it 'can make moves' do
-      @game.move [1,1], "X"
+      @game.move 0, "X"
     end
   end
 end
