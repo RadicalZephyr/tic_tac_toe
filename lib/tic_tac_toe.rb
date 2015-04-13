@@ -3,11 +3,11 @@ require "tic_tac_toe/version"
 module TicTacToe
   # Your code goes here...
   class Board
-    def pos coords
+    def pos index
       " "
     end
 
-    def move coords, mark
+    def move index, mark
 
     end
   end
