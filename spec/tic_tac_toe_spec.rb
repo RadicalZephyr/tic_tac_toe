@@ -25,6 +25,7 @@ describe TicTacToe do
 
     it 'can make moves' do
       @game.move 0, "X"
+      expect(@game.pos 0).to eq("X")
     end
   end
 end
