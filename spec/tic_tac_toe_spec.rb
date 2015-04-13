@@ -31,6 +31,8 @@ describe TicTacToe do
       end
     end
 
+    it 'only has indices 0..8' do
+      expect(@game.pos 10).to eq(nil)
+    end
   end
-
 end
