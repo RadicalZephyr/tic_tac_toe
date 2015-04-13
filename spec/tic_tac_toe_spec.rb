@@ -26,6 +26,9 @@ describe TicTacToe do
     it 'can make moves' do
       @game.move 0, "X"
       expect(@game.pos 0).to eq("X")
+      (1..8).each do |i|
+        expect(@game.pos i).to eq(" ")
+      end
     end
   end
 end
