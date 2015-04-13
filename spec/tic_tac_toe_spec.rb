@@ -30,5 +30,7 @@ describe TicTacToe do
         expect(@game.pos i).to eq(" ")
       end
     end
+
   end
+
 end
