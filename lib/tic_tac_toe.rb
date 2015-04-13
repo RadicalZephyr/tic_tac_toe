@@ -6,5 +6,9 @@ module TicTacToe
     def pos coords
       " "
     end
+
+    def move coords, mark
+
+    end
   end
 end
