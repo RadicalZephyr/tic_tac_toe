@@ -24,5 +24,9 @@ describe TicTacToe do
       end
 
     end
+
+    it 'can make moves' do
+      @game.move [1,1], "X"
+    end
   end
 end
