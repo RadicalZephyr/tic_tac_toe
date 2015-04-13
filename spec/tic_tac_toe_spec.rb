@@ -7,5 +7,6 @@ describe TicTacToe do
 
   it 'has a game' do
     game = TicTacToe::Game.new
+    expect(game).to be_an_instance_of TicTacToe::Game
   end
 end
