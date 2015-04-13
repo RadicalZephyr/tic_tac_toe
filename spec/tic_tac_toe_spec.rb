@@ -5,8 +5,9 @@ describe TicTacToe do
     expect(TicTacToe::VERSION).not_to be nil
   end
 
-  it 'has a game' do
-    game = TicTacToe::Game.new
-    expect(game).to be_an_instance_of TicTacToe::Game
+  it 'has a board' do
+    game = TicTacToe::Board.new
+    expect(game).to be_an_instance_of TicTacToe::Board
   end
+
 end
