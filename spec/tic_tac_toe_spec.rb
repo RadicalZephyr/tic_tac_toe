@@ -10,4 +10,14 @@ describe TicTacToe do
     expect(game).to be_an_instance_of TicTacToe::Board
   end
 
+  describe TicTacToe::Board do
+
+    before :each do
+      @game = TicTacToe::Board.new
+    end
+
+    it 'has positions' do
+      @game.pos [1,1]
+    end
+  end
 end
