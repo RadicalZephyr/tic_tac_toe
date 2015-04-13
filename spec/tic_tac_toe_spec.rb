@@ -16,8 +16,8 @@ describe TicTacToe do
       @game = TicTacToe::Board.new
     end
 
-    it 'has positions' do
-      @game.pos [1,1]
+    it 'initially has empty positions' do
+      expect(@game.pos [1,1]).to eq(" ")
     end
   end
 end
