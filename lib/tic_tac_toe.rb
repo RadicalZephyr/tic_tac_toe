@@ -27,7 +27,7 @@ module TicTacToe
     end
 
     def won
-      "X"
+      @_marks[0]
     end
 
   end
