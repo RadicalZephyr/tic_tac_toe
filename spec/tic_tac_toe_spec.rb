@@ -55,8 +55,10 @@ describe TicTacToe do
 
     it 'knows when someone has won' do
       ["X", "O"].each do |mark|
-        board = TicTacToe::Board.new
-        do_winning_test board, mark, [0, 1, 2]
+        [[0, 1, 2]].each do |places|
+          board = TicTacToe::Board.new
+          do_winning_test board, mark, places
+        end
       end
 
     end
