@@ -56,7 +56,7 @@ describe TicTacToe do
         board.move n, mark
       end
 
-      expect(board.won).to eq mark
+      expect(board.who_won?).to eq mark
     end
 
     it 'knows when someone has won' do
@@ -69,24 +69,24 @@ describe TicTacToe do
     end
 
     it 'returns nil for non-won boards' do
-      expect(@board.won).to eq nil
+      expect(@board.who_won?).to eq nil
 
       @board.move 0, "X"
       @board.move 1, "X"
-      expect(@board.won).to eq nil
+      expect(@board.who_won?).to eq nil
 
       @board.move 5, "X"
       @board.move 8, "X"
-      expect(@board.won).to eq nil
+      expect(@board.who_won?).to eq nil
 
       @board.move 6, "X"
-      expect(@board.won).to eq nil
+      expect(@board.who_won?).to eq nil
 
       @board.move 2, "O"
       @board.move 3, "O"
       @board.move 4, "O"
       @board.move 7, "O"
-      expect(@board.won).to eq nil
+      expect(@board.who_won?).to eq nil
     end
 
     it 'knows when its a draw' do

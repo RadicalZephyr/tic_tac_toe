@@ -38,7 +38,7 @@ module TicTacToe
       @_marks[index] = mark
     end
 
-    def won
+    def who_won?
       @@win_places.map do |places|
         marks = places.map { |n| @_marks.at n }
         marks[0] if marks.all? { |m| m == marks[0] } and marks[0] != " "
@@ -46,7 +46,7 @@ module TicTacToe
     end
 
     def draw?
-      not won and @_marks.none? { |m| m == " " } ? true : false
+      (who_won? == nil) and @_marks.none? { |m| m == " " } ? true : false
     end
 
   end
