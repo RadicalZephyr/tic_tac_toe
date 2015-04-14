@@ -23,44 +23,44 @@ describe TicTacToe do
   describe TicTacToe::Board do
 
     before :each do
-      @game = TicTacToe::Board.new
+      @board = TicTacToe::Board.new
     end
 
     it 'initially has 9 empty positions' do
       (0..8).each do |i|
-          expect(@game.pos i).to eq(" ")
+          expect(@board.pos i).to eq(" ")
       end
 
     end
 
     it 'can make moves' do
-      @game.move 0, "X"
-      expect(@game.pos 0).to eq("X")
+      @board.move 0, "X"
+      expect(@board.pos 0).to eq("X")
       (1..8).each do |i|
-        expect(@game.pos i).to eq(" ")
+        expect(@board.pos i).to eq(" ")
       end
     end
 
     it 'only has indices 0..8' do
-      expect(@game.pos 10).to eq(nil)
+      expect(@board.pos 10).to eq(nil)
     end
 
     it 'knows when someone has won' do
       mark = "X"
-      @game.move 0, mark
-      @game.move 1, mark
-      @game.move 2, mark
+      @board.move 0, mark
+      @board.move 1, mark
+      @board.move 2, mark
 
-      expect(@game.won).to eq mark
+      expect(@board.won).to eq mark
     end
 
     it 'knows when someone has won' do
       mark = "O"
-      @game.move 0, mark
-      @game.move 1, mark
-      @game.move 2, mark
+      @board.move 0, mark
+      @board.move 1, mark
+      @board.move 2, mark
 
-      expect(@game.won).to eq mark
+      expect(@board.won).to eq mark
     end
 
   end
