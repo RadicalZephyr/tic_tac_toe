@@ -54,11 +54,11 @@ describe TicTacToe do
     end
 
     it 'knows when someone has won' do
-      do_winning_test @board, "X"
-    end
+      board = TicTacToe::Board.new
+      do_winning_test board, "X"
 
-    it 'knows when someone has won' do
-      do_winning_test @board, "O"
+      board = TicTacToe::Board.new
+      do_winning_test board, "O"
     end
 
   end
