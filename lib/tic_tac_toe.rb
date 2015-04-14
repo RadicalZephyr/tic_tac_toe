@@ -1,11 +1,17 @@
 require "tic_tac_toe/version"
 
 module TicTacToe
+
   class Game
+
+    def initialize display
+    end
+
     def start
     end
+
   end
-  # Your code goes here...
+
   class Board
 
     def initialize

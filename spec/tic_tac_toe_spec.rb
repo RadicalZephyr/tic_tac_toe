@@ -1,6 +1,10 @@
 require 'spec_helper'
 
+class MockDisplay
+end
+
 describe TicTacToe do
+
   it 'has a version number' do
     expect(TicTacToe::VERSION).not_to be nil
   end
@@ -8,7 +12,8 @@ describe TicTacToe do
   describe TicTacToe::Game do
 
     it 'can start a game' do
-      game = TicTacToe::Game.new
+      display = MockDisplay.new
+      game = TicTacToe::Game.new display
       game.start
 
     end
