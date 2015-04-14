@@ -45,10 +45,10 @@ describe TicTacToe do
       expect(@board.pos 10).to eq(nil)
     end
 
-    def do_winning_test board, mark
-      board.move 0, mark
-      board.move 1, mark
-      board.move 2, mark
+    def do_winning_test board, mark, places
+      places.each do |n|
+        board.move n, mark
+      end
 
       expect(board.won).to eq mark
     end
@@ -56,7 +56,7 @@ describe TicTacToe do
     it 'knows when someone has won' do
       ["X", "O"].each do |mark|
         board = TicTacToe::Board.new
-        do_winning_test board, mark
+        do_winning_test board, mark, [0, 1, 2]
       end
 
     end
