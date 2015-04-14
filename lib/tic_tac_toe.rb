@@ -1,6 +1,10 @@
 require "tic_tac_toe/version"
 
 module TicTacToe
+  class Game
+    def start
+    end
+  end
   # Your code goes here...
   class Board
 

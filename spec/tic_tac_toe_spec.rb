@@ -5,6 +5,16 @@ describe TicTacToe do
     expect(TicTacToe::VERSION).not_to be nil
   end
 
+  describe TicTacToe::Game do
+
+    it 'can start a game' do
+      game = TicTacToe::Game.new
+      game.start
+
+    end
+
+  end
+
   describe TicTacToe::Board do
 
     before :each do
