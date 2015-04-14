@@ -46,11 +46,13 @@ describe TicTacToe do
     end
 
     it 'knows when someone has won' do
-      @game.move 0, "X"
-      @game.move 1, "X"
-      @game.move 2, "X"
+      mark = "X"
+      @game.move 0, mark
+      @game.move 1, mark
+      @game.move 2, mark
 
-      expect(@game.won).to eq "X"
+      expect(@game.won).to eq mark
     end
+
   end
 end
