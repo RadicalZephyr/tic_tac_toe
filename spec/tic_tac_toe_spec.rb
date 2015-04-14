@@ -26,6 +26,12 @@ describe TicTacToe do
       @board = TicTacToe::Board.new
     end
 
+    def set_board board, marks
+      marks.each_with_index do |m, i|
+        board.move i, m
+      end
+    end
+
     it 'initially has 9 empty positions' do
       (0..8).each do |i|
           expect(@board.pos i).to eq(" ")
@@ -84,13 +90,13 @@ describe TicTacToe do
     end
 
     it 'knows when its a draw' do
-      ["X", "X", "O",
-       "O", "O", "X",
-       "X", "X", "O"].each_with_index do |e, i|
-        @board.move i, e
-      end
+
+      set_board @board, ["X", "X", "O",
+                         "O", "O", "X",
+                         "X", "X", "O"]
       expect(@board.draw?).to eq true
     end
+
 
   end
 end
