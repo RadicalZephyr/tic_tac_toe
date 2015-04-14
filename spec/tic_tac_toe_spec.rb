@@ -54,11 +54,11 @@ describe TicTacToe do
     end
 
     it 'knows when someone has won' do
-      board = TicTacToe::Board.new
-      do_winning_test board, "X"
+      ["X", "O"].each do |mark|
+        board = TicTacToe::Board.new
+        do_winning_test board, mark
+      end
 
-      board = TicTacToe::Board.new
-      do_winning_test board, "O"
     end
 
   end
