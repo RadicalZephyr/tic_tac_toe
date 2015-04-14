@@ -54,5 +54,14 @@ describe TicTacToe do
       expect(@game.won).to eq mark
     end
 
+    it 'knows when someone has won' do
+      mark = "O"
+      @game.move 0, mark
+      @game.move 1, mark
+      @game.move 2, mark
+
+      expect(@game.won).to eq mark
+    end
+
   end
 end
