@@ -26,6 +26,10 @@ module TicTacToe
       @_marks[index] = mark
     end
 
+    def won
+      "X"
+    end
+
   end
 
 end

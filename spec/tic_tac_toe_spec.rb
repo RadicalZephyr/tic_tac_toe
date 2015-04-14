@@ -44,5 +44,13 @@ describe TicTacToe do
     it 'only has indices 0..8' do
       expect(@game.pos 10).to eq(nil)
     end
+
+    it 'knows when someone has won' do
+      @game.move 0, "X"
+      @game.move 1, "X"
+      @game.move 2, "X"
+
+      expect(@game.won).to eq "X"
+    end
   end
 end
