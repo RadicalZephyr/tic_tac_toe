@@ -47,6 +47,10 @@ module TicTacToe
       nil
     end
 
+    def draw?
+      true
+    end
+
   end
 
 end

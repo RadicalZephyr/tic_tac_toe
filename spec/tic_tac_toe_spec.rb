@@ -75,6 +75,22 @@ describe TicTacToe do
 
       @board.move 6, "X"
       expect(@board.won).to eq nil
+
+      @board.move 2, "O"
+      @board.move 3, "O"
+      @board.move 4, "O"
+      @board.move 7, "O"
+      expect(@board.won).to eq nil
     end
+
+    it 'knows when its a draw' do
+      ["X", "X", "O",
+       "O", "O", "X",
+       "X", "X", "O"].each_with_index do |e, i|
+        @board.move i, e
+      end
+      expect(@board.draw?).to eq true
+    end
+
   end
 end
