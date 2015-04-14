@@ -35,7 +35,10 @@ module TicTacToe
     end
 
     def won
-      @_marks[0]
+      @@win_places.each do |places|
+        marks = places.map { |n| @_marks.at n }
+        return marks[0] if marks.all? { |m| m == marks[0] } and marks[0] != " "
+      end
     end
 
   end
