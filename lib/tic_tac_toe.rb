@@ -39,12 +39,10 @@ module TicTacToe
     end
 
     def won
-      @@win_places.each do |places|
+      @@win_places.map do |places|
         marks = places.map { |n| @_marks.at n }
-        return marks[0] if marks.all? { |m| m == marks[0] } and marks[0] != " "
-      end
-
-      nil
+        marks[0] if marks.all? { |m| m == marks[0] } and marks[0] != " "
+      end.find(&:itself)
     end
 
     def draw?
