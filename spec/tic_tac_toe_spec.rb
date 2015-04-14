@@ -110,5 +110,9 @@ describe TicTacToe do
       expect(@board.draw?).to eq true
     end
 
+    it 'doesn\'t report false positive draws' do
+      expect(@board.draw?).to eq false
+    end
+
   end
 end
