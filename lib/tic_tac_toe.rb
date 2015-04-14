@@ -48,7 +48,7 @@ module TicTacToe
     end
 
     def draw?
-      true
+      not won and @_marks.none? { |m| m == " " } ? true : false
     end
 
   end
