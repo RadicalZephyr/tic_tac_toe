@@ -62,5 +62,19 @@ describe TicTacToe do
       end
     end
 
+    it 'returns nil for non-won boards' do
+      expect(@board.won).to eq nil
+
+      @board.move 0, "X"
+      @board.move 1, "X"
+      expect(@board.won).to eq nil
+
+      @board.move 5, "X"
+      @board.move 8, "X"
+      expect(@board.won).to eq nil
+
+      @board.move 6, "X"
+      expect(@board.won).to eq nil
+    end
   end
 end
