@@ -45,22 +45,20 @@ describe TicTacToe do
       expect(@board.pos 10).to eq(nil)
     end
 
-    it 'knows when someone has won' do
-      mark = "X"
-      @board.move 0, mark
-      @board.move 1, mark
-      @board.move 2, mark
+    def do_winning_test board, mark
+      board.move 0, mark
+      board.move 1, mark
+      board.move 2, mark
 
-      expect(@board.won).to eq mark
+      expect(board.won).to eq mark
     end
 
     it 'knows when someone has won' do
-      mark = "O"
-      @board.move 0, mark
-      @board.move 1, mark
-      @board.move 2, mark
+      do_winning_test @board, "X"
+    end
 
-      expect(@board.won).to eq mark
+    it 'knows when someone has won' do
+      do_winning_test @board, "O"
     end
 
   end
