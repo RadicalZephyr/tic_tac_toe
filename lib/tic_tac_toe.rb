@@ -22,6 +22,10 @@ module TicTacToe
                     [0, 4, 8],
                     [2, 4, 6]]
 
+    def self.win_places
+      @@win_places
+    end
+
     def initialize
       @_marks = Array.new(9, " ")
     end
