@@ -91,12 +91,24 @@ describe TicTacToe do
 
     it 'knows when its a draw' do
 
+      # These are the only three basic draw positions in tic-tac-toe.
+      # All others are simply rotations or inversions of these three
+      # forms
       set_board @board, ["X", "X", "O",
                          "O", "O", "X",
                          "X", "X", "O"]
       expect(@board.draw?).to eq true
-    end
 
+      set_board @board, ["X", "X", "O",
+                         "O", "X", "X",
+                         "X", "O", "O"]
+      expect(@board.draw?).to eq true
+
+      set_board @board, ["X", "X", "O",
+                         "O", "O", "X",
+                         "X", "O", "x"]
+      expect(@board.draw?).to eq true
+    end
 
   end
 end
