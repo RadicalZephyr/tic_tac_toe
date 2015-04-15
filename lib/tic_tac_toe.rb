@@ -1,16 +1,7 @@
 require "tic_tac_toe/version"
+require "tic_tac_toe/game"
 
 module TicTacToe
-
-  class Game
-
-    def initialize display
-    end
-
-    def start
-    end
-
-  end
 
   class Board
     WIN_PLACES = [[0, 1, 2],
