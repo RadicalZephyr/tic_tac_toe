@@ -34,9 +34,13 @@ module TicTacToe
       WIN_PLACES.map { |places| places.map { |n| @_marks.at n }}
     end
 
+    def winning_marks? marks
+      marks[0] if all_marks_same? marks and marks[0] != " "
+    end
+
     def who_won?
       board_marks = get_board_marks
-      board_marks.map { |marks| marks[0] if all_marks_same? marks and marks[0] != " " }.find(&:itself)
+      board_marks.map { |marks| winning_marks? marks }.find(&:itself)
     end
 
     def draw?
