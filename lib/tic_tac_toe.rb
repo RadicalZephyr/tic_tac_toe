@@ -13,17 +13,17 @@ module TicTacToe
   end
 
   class Board
-    @@win_places = [[0, 1, 2],
-                    [3, 4, 5],
-                    [6, 7, 8],
-                    [0, 3, 6],
-                    [1, 4, 7],
-                    [2, 5, 8],
-                    [0, 4, 8],
-                    [2, 4, 6]]
+    WIN_PLACES = [[0, 1, 2],
+                  [3, 4, 5],
+                  [6, 7, 8],
+                  [0, 3, 6],
+                  [1, 4, 7],
+                  [2, 5, 8],
+                  [0, 4, 8],
+                  [2, 4, 6]]
 
     def self.win_places
-      @@win_places
+      WIN_PLACES
     end
 
     def initialize
@@ -39,7 +39,7 @@ module TicTacToe
     end
 
     def who_won?
-      @@win_places.map do |places|
+      WIN_PLACES.map do |places|
         marks = places.map { |n| @_marks.at n }
         marks[0] if marks.all? { |m| m == marks[0] } and marks[0] != " "
       end.find(&:itself)
