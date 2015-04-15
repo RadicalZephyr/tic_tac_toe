@@ -26,10 +26,14 @@ module TicTacToe
       @_marks[index] = mark
     end
 
+    def all_marks_same? marks
+      marks.all? { |m| m == marks[0] }
+    end
+
     def who_won?
       WIN_PLACES.map { |places|
         marks = places.map { |n| @_marks.at n }
-        marks[0] if marks.all? { |m| m == marks[0] } and marks[0] != " "
+        marks[0] if all_marks_same? marks and marks[0] != " "
       }.find(&:itself)
     end
 
