@@ -30,7 +30,7 @@ describe TicTacToe do
     end
 
     it 'initially has 9 empty positions' do
-      (0..8).each do |i|
+      (0...9).each do |i|
           expect(board.pos i).to eq(" ")
       end
 
@@ -39,7 +39,7 @@ describe TicTacToe do
     it 'can make moves' do
       board.move(0, "X")
       expect(board.pos 0).to eq("X")
-      (1..8).each do |i|
+      (1...9).each do |i|
         expect(board.pos i).to eq(" ")
       end
     end
