@@ -27,10 +27,10 @@ module TicTacToe
     end
 
     def who_won?
-      WIN_PLACES.map do |places|
+      WIN_PLACES.map { |places|
         marks = places.map { |n| @_marks.at n }
         marks[0] if marks.all? { |m| m == marks[0] } and marks[0] != " "
-      end.find(&:itself)
+      }.find(&:itself)
     end
 
     def draw?
