@@ -22,7 +22,7 @@ module TicTacToe
       @_marks[index]
     end
 
-    def move(index, mark)
+    def move index, mark
       @_marks[index] = mark
     end
 
@@ -44,7 +44,7 @@ module TicTacToe
     end
 
     def draw?
-      (who_won? == nil) and @_marks.none? { |m| m == " " } ? true : false
+      who_won? == nil and @_marks.none? { |m| m == " " } ? true : false
     end
 
   end

@@ -5,7 +5,7 @@ describe TicTacToe::Board do
 
   def set_board board, marks
     marks.each_with_index do |m, i|
-      board.move(i, m)
+      board.move i, m
     end
   end
 
@@ -17,7 +17,7 @@ describe TicTacToe::Board do
   end
 
   it 'can make moves' do
-    board.move(0, "X")
+    board.move 0, "X"
     expect(board.pos 0).to eq("X")
     (1...9).each do |i|
       expect(board.pos i).to eq(" ")
@@ -30,7 +30,7 @@ describe TicTacToe::Board do
 
   def do_winning_test board, mark, places
     places.each do |n|
-      board.move(n, mark)
+      board.move n, mark
     end
 
     expect(board.who_won?).to eq mark
@@ -48,21 +48,21 @@ describe TicTacToe::Board do
   it 'returns nil for non-won boards' do
     expect(board.who_won?).to eq nil
 
-    board.move(0, "X")
-    board.move(1, "X")
+    board.move 0, "X"
+    board.move 1, "X"
     expect(board.who_won?).to eq nil
 
-    board.move(5, "X")
-    board.move(8, "X")
+    board.move 5, "X"
+    board.move 8, "X"
     expect(board.who_won?).to eq nil
 
-    board.move(6, "X")
+    board.move 6, "X"
     expect(board.who_won?).to eq nil
 
-    board.move(2, "O")
-    board.move(3, "O")
-    board.move(4, "O")
-    board.move(7, "O")
+    board.move 2, "O"
+    board.move 3, "O"
+    board.move 4, "O"
+    board.move 7, "O"
     expect(board.who_won?).to eq nil
   end
 
