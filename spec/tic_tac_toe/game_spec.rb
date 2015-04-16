@@ -14,7 +14,7 @@ describe TicTacToe::Game do
   def mock_board
     double(:board).tap do |board|
       allow(board).to receive(:move)
-      allow(board).to receive(:legal?)
+      allow(board).to receive(:legal?).and_return(true)
     end
   end
 
@@ -25,13 +25,11 @@ describe TicTacToe::Game do
 
   describe 'when playing' do
     it 'changes the active player after every move' do
-      allow(board).to receive(:legal?).and_return(true)
       expect { game.do_turn }.to change { game.to_play }
       expect { game.do_turn }.to change { game.to_play }
     end
 
     it 'changes the board marks based on user input' do
-      allow(board).to receive(:legal?).and_return(true)
       expect(board).to receive(:move).with(anything, 1)
       game.do_turn
     end
