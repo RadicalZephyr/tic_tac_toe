@@ -22,11 +22,6 @@ describe TicTacToe::Game do
     end
   end
 
-  it 'can start a game' do
-    allow(console).to receive(:printf)
-    game.start
-  end
-
   describe 'when playing' do
     it 'changes the active player after every move' do
       expect { game.do_turn }.to change { game.to_play }
