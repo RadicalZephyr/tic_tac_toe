@@ -49,12 +49,13 @@ describe TicTacToe::Game do
       game.do_turn
     end
 
-    it "Doesn't accept non-numbers as input" do
-      allow(console).to receive(:gets).and_return("abcd", "1")
-      expect(board).to receive(:move).with(anything, 1)
-      game.do_turn
-    end
   end
 
+  describe 'when validating input' do
+    it 'keeps reading until it gets a number' do
+      allow(console).to receive(:gets).and_return("abcd", "1")
+      expect(game.get_move)
+    end
+  end
 
 end
