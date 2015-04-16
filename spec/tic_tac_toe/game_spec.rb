@@ -5,7 +5,14 @@ end
 
 describe TicTacToe::Game do
   let(:display) { double(:display) }
-  let(:game) { TicTacToe::Game.new display }
+  let(:board) { mock_board }
+  let(:game) { TicTacToe::Game.new(display, board) }
+
+  def mock_board
+    double(:board).tap do |board|
+      allow(board).to receive(:move)
+    end
+  end
 
   it 'can start a game' do
     allow(display).to receive(:printf)
@@ -15,6 +22,11 @@ describe TicTacToe::Game do
   describe 'when playing' do
     it 'changes the active player' do
       expect { game.do_turn }.to change { game.to_play }
+    end
+
+    it 'changes the board marks' do
+      expect(board).to receive(:move)
+      game.do_turn
     end
   end
 
