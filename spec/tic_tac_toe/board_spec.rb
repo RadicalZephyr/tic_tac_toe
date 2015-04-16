@@ -29,7 +29,7 @@ describe TicTacToe::Board do
   end
 
   describe 'when checking if a move is legal' do
-    it 'must be passed a valid index' do
+    it 'will not be true for a marked space' do
       board.move(0, "X")
       expect(board.legal?(0)).to eq false
     end
