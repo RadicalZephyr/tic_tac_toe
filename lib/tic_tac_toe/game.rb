@@ -2,6 +2,9 @@ module TicTacToe
   class Game
     attr_reader :to_play
 
+    NEXT_PLAYER = {"X" => "O",
+                   "O" => "X"}
+
     def initialize(console, board)
       @console, @board = console, board
       @to_play = "X"
@@ -14,7 +17,7 @@ module TicTacToe
     def do_turn
       str = @console.gets
       @board.move(@to_play, Integer(str))
-      @to_play = "O"
+      @to_play = NEXT_PLAYER[@to_play]
     end
   end
 
