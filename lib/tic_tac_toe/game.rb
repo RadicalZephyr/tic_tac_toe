@@ -16,7 +16,12 @@ module TicTacToe
 
     def do_turn
       str = @console.gets
-      @board.move(@to_play, Integer(str))
+      move = Integer(str)
+
+      if @board.legal?(move)
+        @board.move(@to_play, move)
+      end
+
       @to_play = NEXT_PLAYER[@to_play]
     end
   end
