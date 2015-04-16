@@ -36,7 +36,7 @@ describe TicTacToe::Game do
     end
 
     it "Doesn't allow the same move twice." do
-      allow(console).to receive(:gets).and_return("1", "1")
+      allow(console).to receive(:gets).and_return("1")
       allow(board).to receive(:legal?).and_return(true, false)
       expect(board).to receive(:move).with(anything, 1)
       game.do_turn
