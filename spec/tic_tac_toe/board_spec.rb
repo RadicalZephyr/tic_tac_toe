@@ -28,6 +28,13 @@ describe TicTacToe::Board do
     expect(board.pos 10).to eq(nil)
   end
 
+  describe 'when checking if a move is legal' do
+    it 'must be passed a valid index' do
+      board.move(0, "X")
+      expect(board.legal?(0)).to eq false
+    end
+  end
+
   describe 'when checking if there is a winner' do
     def do_winning_test board, mark, places
       places.each do |n|
