@@ -15,7 +15,7 @@ module TicTacToe
       while not got_input
         @console.print "Enter your move [0-8]: "
         @console.flush
-        str = @console.gets
+        str = @console.gets.chop
         begin
           move = Integer(str)
           got_input = true if move.between?(0,8)
