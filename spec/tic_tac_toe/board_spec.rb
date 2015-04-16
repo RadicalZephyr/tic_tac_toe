@@ -91,4 +91,12 @@ describe TicTacToe::Board do
     expect(board.draw?).to eq false
   end
 
+  describe 'when checking if the board is done' do
+    it 'may be not full if someone one' do
+      set_board board, ["X", "X", "X",
+                        "O", "O", " ",
+                        "X", "O", " "]
+      expect(board.finished?).to eq true
+    end
+  end
 end
