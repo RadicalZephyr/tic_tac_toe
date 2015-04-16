@@ -11,7 +11,9 @@ describe TicTacToe::Game do
 
     game = TicTacToe::Game.new display
     game.start
-    expect(display).to receive(:printf)
   end
 
+  it 'can play one turn iteration' do
+
+  end
 end
