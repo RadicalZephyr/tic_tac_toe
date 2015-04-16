@@ -2,8 +2,8 @@ module TicTacToe
   class Game
     attr_reader :to_play
 
-    def initialize display
-      @display = display
+    def initialize(display, board)
+      @display, @board = display, board
       @to_play = "X"
     end
 
@@ -12,6 +12,7 @@ module TicTacToe
     end
 
     def do_turn
+      @board.move(@to_play, 0)
       @to_play = "O"
     end
   end
