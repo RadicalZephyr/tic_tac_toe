@@ -10,7 +10,7 @@ describe TicTacToe::Game do
     instance_double('IO').tap do |console|
       allow(console).to receive(:puts)
       allow(console).to receive(:print)
-      allow(console).to receive(:oflush)
+      allow(console).to receive(:flush)
       allow(console).to receive(:gets).and_return("1")
     end
   end
