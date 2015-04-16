@@ -61,6 +61,27 @@ describe TicTacToe::Game do
       allow(console).to receive(:gets).and_return("10", "1")
       expect(game.get_move).to eq 1
     end
+
+    it 'should only return a number between 0 and 8' do
+      allow(console).to receive(:gets).and_return("9", "1")
+      expect(game.get_move).to eq 1
+    end
+
+    it 'should only return a number between 0 and 8' do
+      allow(console).to receive(:gets).and_return("-1", "1")
+      expect(game.get_move).to eq 1
+    end
+
+    it 'should only return a number between 0 and 8' do
+      allow(console).to receive(:gets).and_return("8")
+      expect(game.get_move).to eq 8
+    end
+
+    it 'should only return a number between 0 and 8' do
+      allow(console).to receive(:gets).and_return("0")
+      expect(game.get_move).to eq 0
+    end
+
   end
 
 end
