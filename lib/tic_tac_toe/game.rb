@@ -29,6 +29,9 @@ module TicTacToe
     end
 
     def do_turn
+      @console.puts "\nIt is the #{@to_play}'s move.'"
+      @console.puts @board.board_to_string
+      @console.puts
       moved = false
       while not moved
         move = get_move
