@@ -26,6 +26,10 @@ module TicTacToe
       @_marks[index] = mark
     end
 
+    def legal? index
+      false
+    end
+
     def all_marks_same? marks
       marks.all? { |m| m == marks[0] }
     end
