@@ -4,9 +4,15 @@ class MockDisplay
 end
 
 describe TicTacToe::Game do
-  let(:display) { double(:display) }
+  let(:display) { mock_display }
   let(:board) { mock_board }
   let(:game) { TicTacToe::Game.new(display, board) }
+
+  def mock_display
+    double(:display).tap do |display|
+      allow(display).to receive(:gets)
+    end
+  end
 
   def mock_board
     double(:board).tap do |board|
