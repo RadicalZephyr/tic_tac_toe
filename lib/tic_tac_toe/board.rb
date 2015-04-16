@@ -27,7 +27,7 @@ module TicTacToe
     end
 
     def legal? index
-      false
+      @_marks[index] == " "
     end
 
     def all_marks_same? marks
