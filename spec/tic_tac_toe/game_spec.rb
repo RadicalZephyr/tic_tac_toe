@@ -11,7 +11,7 @@ describe TicTacToe::Game do
       allow(console).to receive(:puts)
       allow(console).to receive(:print)
       allow(console).to receive(:flush)
-      allow(console).to receive(:gets).and_return("1")
+      allow(console).to receive(:gets).and_return("1\n")
     end
   end
 
@@ -35,7 +35,7 @@ describe TicTacToe::Game do
     end
 
     it "Doesn't allow the same move twice." do
-      allow(console).to receive(:gets).and_return("1")
+      allow(console).to receive(:gets).and_return("1\n")
       allow(board).to receive(:legal?).and_return(true, false, true)
       expect(board).to receive(:move).with(anything, 1)
       game.do_turn
@@ -43,7 +43,7 @@ describe TicTacToe::Game do
     end
 
     it 'Keeps reading until it gets a legal move' do
-      allow(console).to receive(:gets).and_return("1")
+      allow(console).to receive(:gets).and_return("1\n")
       allow(board).to receive(:legal?).and_return(false, false, true)
       expect(board).to receive(:move).with(anything, 1)
       game.do_turn
@@ -54,17 +54,17 @@ describe TicTacToe::Game do
   describe 'when validating input' do
 
     def with(input:, expect:)
-      allow(console).to receive(:gets).and_return(input)
+      allow(console).to receive(:gets).and_return("#{input}\n")
       expect(game.get_move).to eq expect
     end
 
     def ignores(input:)
-      allow(console).to receive(:gets).and_return(input, "1")
+      allow(console).to receive(:gets).and_return("#{input}\n", "1\n")
       expect(game.get_move).to eq 1
     end
 
     it 'keeps reading until it gets a number' do
-      allow(console).to receive(:gets).and_return("abcd", "def", "{1a", "1")
+      allow(console).to receive(:gets).and_return("abcd\n", "def\n", "{1a\n", "1\n")
       expect(game.get_move).to eq 1
     end
 
