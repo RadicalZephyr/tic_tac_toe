@@ -1,8 +1,5 @@
 require 'spec_helper'
 
-class MockDisplay
-end
-
 describe TicTacToe::Game do
   let(:display) { mock_display }
   let(:board) { mock_board }
