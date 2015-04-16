@@ -24,7 +24,8 @@ describe TicTacToe::Game do
       expect { game.do_turn }.to change { game.to_play }
     end
 
-    it 'changes the board marks' do
+    it 'changes the board marks based on user input' do
+      expect(display).to receive(:gets) { "0" }
       expect(board).to receive(:move)
       game.do_turn
     end
