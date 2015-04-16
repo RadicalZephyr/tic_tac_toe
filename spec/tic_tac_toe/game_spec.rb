@@ -23,7 +23,8 @@ describe TicTacToe::Game do
   end
 
   describe 'when playing' do
-    it 'changes the active player' do
+    it 'changes the active player after every move' do
+      expect { game.do_turn }.to change { game.to_play }
       expect { game.do_turn }.to change { game.to_play }
     end
 
@@ -31,6 +32,7 @@ describe TicTacToe::Game do
       expect(board).to receive(:move).with("X", 1)
       game.do_turn
     end
+
   end
 
 
