@@ -44,6 +44,12 @@ module TicTacToe
 
       @to_play = NEXT_PLAYER[@to_play]
     end
+
+    def game_loop
+      while not @board.finished?
+        do_turn
+      end
+    end
   end
 
 end
