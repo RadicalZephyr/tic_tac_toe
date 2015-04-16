@@ -52,14 +52,19 @@ describe TicTacToe::Game do
   end
 
   describe 'when validating input' do
+
+    def ignores_input input
+      allow(console).to receive(:gets).and_return(input, "1")
+      expect(game.get_move).to eq 1
+    end
+
     it 'keeps reading until it gets a number' do
       allow(console).to receive(:gets).and_return("abcd", "def", "{1a", "1")
       expect(game.get_move).to eq 1
     end
 
     it 'should only return a number between 0 and 8' do
-      allow(console).to receive(:gets).and_return("10", "1")
-      expect(game.get_move).to eq 1
+      ignores_input "10"
     end
 
     it 'should only return a number between 0 and 8' do
