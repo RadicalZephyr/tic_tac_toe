@@ -17,9 +17,15 @@ module TicTacToe
     def do_turn
       moved = false
       while not moved
-        str = @console.gets
-        move = Integer(str)
-
+        got_input = false
+        while not got_input
+          begin
+            str = @console.gets
+            move = Integer(str)
+            got_input = true
+          rescue ArgumentError
+          end
+        end
         if @board.legal?(move)
           @board.move(@to_play, move)
           moved = true
