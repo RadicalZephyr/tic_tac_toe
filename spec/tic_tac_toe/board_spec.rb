@@ -29,13 +29,13 @@ describe TicTacToe::Board do
   end
 
   describe 'when checking if a move is legal' do
-    it 'is true for unmarked spaces' do
+    it 'will say unmarked spaces are legal' do
       (0...9).each do |index|
         expect(board.legal?(index)).to eq true
       end
     end
 
-    it 'will not be true for a marked space' do
+    it 'will say marked spaces are not legal' do
       board.move(0, "X")
       expect(board.legal?(0)).to eq false
       (1...9).each do |index|
