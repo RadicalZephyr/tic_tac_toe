@@ -17,6 +17,8 @@ module TicTacToe
     def get_move
       got_input = false
       while not got_input
+        @console.print "Enter your move [0-8]: "
+        @console.oflush
         str = @console.gets
         begin
           move = Integer(str)
