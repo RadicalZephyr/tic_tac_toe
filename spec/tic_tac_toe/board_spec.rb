@@ -29,6 +29,10 @@ describe TicTacToe::Board do
   end
 
   describe 'when checking if a move is legal' do
+    it 'is true for unmarked spaces' do
+      expect(board.legal?(0)).to eq true
+    end
+
     it 'will not be true for a marked space' do
       board.move(0, "X")
       expect(board.legal?(0)).to eq false
