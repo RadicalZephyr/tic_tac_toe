@@ -25,6 +25,7 @@ describe TicTacToe::Game do
 
   describe 'when playing' do
     it 'changes the active player after every move' do
+      allow(board).to receive(:legal?).and_return(true)
       expect { game.do_turn }.to change { game.to_play }
       expect { game.do_turn }.to change { game.to_play }
     end
@@ -37,7 +38,7 @@ describe TicTacToe::Game do
 
     it "Doesn't allow the same move twice." do
       allow(console).to receive(:gets).and_return("1")
-      allow(board).to receive(:legal?).and_return(true, false)
+      allow(board).to receive(:legal?).and_return(true, false, true)
       expect(board).to receive(:move).with(anything, 1)
       game.do_turn
       game.do_turn
