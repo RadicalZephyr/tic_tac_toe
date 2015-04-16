@@ -28,67 +28,71 @@ describe TicTacToe::Board do
     expect(board.pos 10).to eq(nil)
   end
 
-  def do_winning_test board, mark, places
-    places.each do |n|
-      board.move n, mark
+  describe 'when checking if there is a winner' do
+    def do_winning_test board, mark, places
+      places.each do |n|
+        board.move n, mark
+      end
+
+      expect(board.who_won?).to eq mark
     end
 
-    expect(board.who_won?).to eq mark
-  end
-
-  it 'knows when someone has won' do
-    ["X", "O"].each do |mark|
-      TicTacToe::Board.win_places.each do |places|
-        board = TicTacToe::Board.new
-        do_winning_test board, mark, places
+    it 'knows when someone has won' do
+      ["X", "O"].each do |mark|
+        TicTacToe::Board.win_places.each do |places|
+          board = TicTacToe::Board.new
+          do_winning_test board, mark, places
+        end
       end
     end
+
+    it 'returns nil for non-won boards' do
+      expect(board.who_won?).to eq nil
+
+      board.move 0, "X"
+      board.move 1, "X"
+      expect(board.who_won?).to eq nil
+
+      board.move 5, "X"
+      board.move 8, "X"
+      expect(board.who_won?).to eq nil
+
+      board.move 6, "X"
+      expect(board.who_won?).to eq nil
+
+      board.move 2, "O"
+      board.move 3, "O"
+      board.move 4, "O"
+      board.move 7, "O"
+      expect(board.who_won?).to eq nil
+    end
   end
 
-  it 'returns nil for non-won boards' do
-    expect(board.who_won?).to eq nil
+  describe 'when checking for draws' do
+    it 'knows when its a draw' do
 
-    board.move 0, "X"
-    board.move 1, "X"
-    expect(board.who_won?).to eq nil
+      # These are the only three basic draw positions in tic-tac-toe.
+      # All others are simply rotations or inversions of these three
+      # forms
+      set_board board, ["X", "X", "O",
+                        "O", "O", "X",
+                        "X", "X", "O"]
+      expect(board.draw?).to eq true
 
-    board.move 5, "X"
-    board.move 8, "X"
-    expect(board.who_won?).to eq nil
+      set_board board, ["X", "X", "O",
+                        "O", "X", "X",
+                        "X", "O", "O"]
+      expect(board.draw?).to eq true
 
-    board.move 6, "X"
-    expect(board.who_won?).to eq nil
+      set_board board, ["X", "X", "O",
+                        "O", "O", "X",
+                        "X", "O", "x"]
+      expect(board.draw?).to eq true
+    end
 
-    board.move 2, "O"
-    board.move 3, "O"
-    board.move 4, "O"
-    board.move 7, "O"
-    expect(board.who_won?).to eq nil
-  end
-
-  it 'knows when its a draw' do
-
-    # These are the only three basic draw positions in tic-tac-toe.
-    # All others are simply rotations or inversions of these three
-    # forms
-    set_board board, ["X", "X", "O",
-                      "O", "O", "X",
-                      "X", "X", "O"]
-    expect(board.draw?).to eq true
-
-    set_board board, ["X", "X", "O",
-                      "O", "X", "X",
-                      "X", "O", "O"]
-    expect(board.draw?).to eq true
-
-    set_board board, ["X", "X", "O",
-                      "O", "O", "X",
-                      "X", "O", "x"]
-    expect(board.draw?).to eq true
-  end
-
-  it 'doesn\'t report false positive draws' do
-    expect(board.draw?).to eq false
+    it 'doesn\'t report false positive draws' do
+      expect(board.draw?).to eq false
+    end
   end
 
   describe 'when checking if the board is done' do
