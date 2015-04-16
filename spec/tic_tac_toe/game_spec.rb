@@ -69,16 +69,14 @@ describe TicTacToe::Game do
     end
 
     it 'should only return a number between 0 and 8' do
+      ignores_input "-10"
       ignores_input "-1"
       ignores_input "9"
-
-    end
-
-    it 'should only return a number between 0 and 8' do
+      ignores_input "15"
       with(input: "0", expect: 0)
+      with(input: "4", expect: 4)
       with(input: "8", expect: 8)
     end
-
   end
 
 end
