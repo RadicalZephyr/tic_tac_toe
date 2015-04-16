@@ -12,6 +12,7 @@ module TicTacToe
     end
 
     def do_turn
+      str = @display.gets
       @board.move(@to_play, 0)
       @to_play = "O"
     end
