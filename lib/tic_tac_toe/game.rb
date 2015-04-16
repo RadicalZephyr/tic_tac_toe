@@ -14,18 +14,24 @@ module TicTacToe
       @console.printf "Welcome to Tic Tac Toe"
     end
 
+    def get_move
+      got_input = false
+      while not got_input
+        begin
+          str = @console.gets
+          move = Integer(str)
+          got_input = true
+        rescue ArgumentError
+        end
+      end
+
+      move
+    end
+
     def do_turn
       moved = false
       while not moved
-        got_input = false
-        while not got_input
-          begin
-            str = @console.gets
-            move = Integer(str)
-            got_input = true
-          rescue ArgumentError
-          end
-        end
+        move = get_move
         if @board.legal?(move)
           @board.move(@to_play, move)
           moved = true
