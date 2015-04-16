@@ -24,6 +24,8 @@ module TicTacToe
           move = Integer(str)
           got_input = true if move.between?(0,8)
         rescue ArgumentError
+          @console.puts "Sorry, I didn't understand your move."
+          @console.puts "Please try again."
         end
       end
 
