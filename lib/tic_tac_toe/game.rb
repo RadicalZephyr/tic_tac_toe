@@ -10,10 +10,6 @@ module TicTacToe
       @to_play = "X"
     end
 
-    def start
-      @console.printf "Welcome to Tic Tac Toe"
-    end
-
     def get_move
       got_input = false
       while not got_input
@@ -46,6 +42,7 @@ module TicTacToe
     end
 
     def game_loop
+      @console.puts "Welcome to Tic Tac Toe!"
       while not @board.finished?
         do_turn
       end
