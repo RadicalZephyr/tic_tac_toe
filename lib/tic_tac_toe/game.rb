@@ -20,7 +20,7 @@ module TicTacToe
         begin
           str = @console.gets
           move = Integer(str)
-          got_input = true
+          got_input = true if move.between?(0,8)
         rescue ArgumentError
         end
       end
