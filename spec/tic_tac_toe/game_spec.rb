@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 describe TicTacToe::Game do
-  let(:display) { mock_display }
+  let(:console) { mock_console }
   let(:board) { mock_board }
-  let(:game) { TicTacToe::Game.new(display, board) }
+  let(:game) { TicTacToe::Game.new(console, board) }
 
-  def mock_display
-    double(:display).tap do |display|
-      allow(display).to receive(:gets)
+  def mock_console
+    double(:console).tap do |console|
+      allow(console).to receive(:gets)
     end
   end
 
@@ -18,7 +18,7 @@ describe TicTacToe::Game do
   end
 
   it 'can start a game' do
-    allow(display).to receive(:printf)
+    allow(console).to receive(:printf)
     game.start
   end
 
@@ -28,7 +28,7 @@ describe TicTacToe::Game do
     end
 
     it 'changes the board marks based on user input' do
-      expect(display).to receive(:gets) { "0" }
+      expect(console).to receive(:gets) { "0" }
       expect(board).to receive(:move)
       game.do_turn
     end

@@ -2,17 +2,17 @@ module TicTacToe
   class Game
     attr_reader :to_play
 
-    def initialize(display, board)
-      @display, @board = display, board
+    def initialize(console, board)
+      @console, @board = console, board
       @to_play = "X"
     end
 
     def start
-      @display.printf "Welcome to Tic Tac Toe"
+      @console.printf "Welcome to Tic Tac Toe"
     end
 
     def do_turn
-      str = @display.gets
+      str = @console.gets
       @board.move(@to_play, 0)
       @to_play = "O"
     end
