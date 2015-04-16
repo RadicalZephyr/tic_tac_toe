@@ -17,8 +17,8 @@ module TicTacToe
     def get_move
       got_input = false
       while not got_input
+        str = @console.gets
         begin
-          str = @console.gets
           move = Integer(str)
           got_input = true if move.between?(0,8)
         rescue ArgumentError
