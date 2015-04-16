@@ -20,8 +20,8 @@ module TicTacToe
 
     def board_to_string
       rows = @_marks.each_slice(3)
-      row_strings = rows.map { |row| Array(row).join("|") }
-      row_strings.join("\n---------\n")
+      row_strings = rows.map { |row| Array(row).join(" | ") }
+      row_strings.join("\n--+---+--\n")
     end
 
     def pos index
