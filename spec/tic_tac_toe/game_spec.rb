@@ -7,7 +7,7 @@ describe TicTacToe::Game do
 
   def mock_console
     double(:console).tap do |console|
-      allow(console).to receive(:gets)
+      allow(console).to receive(:gets).and_return("1")
     end
   end
 
@@ -28,8 +28,8 @@ describe TicTacToe::Game do
     end
 
     it 'changes the board marks based on user input' do
-      expect(console).to receive(:gets) { "0" }
-      expect(board).to receive(:move)
+      expect(console).to receive(:gets)
+      expect(board).to receive(:move).with("X", 1)
       game.do_turn
     end
   end
