@@ -53,6 +53,11 @@ describe TicTacToe::Game do
 
   describe 'when validating input' do
 
+    def with(input:, expect:)
+      allow(console).to receive(:gets).and_return(input)
+      expect(game.get_move).to eq expect
+    end
+
     def ignores_input input
       allow(console).to receive(:gets).and_return(input, "1")
       expect(game.get_move).to eq 1
