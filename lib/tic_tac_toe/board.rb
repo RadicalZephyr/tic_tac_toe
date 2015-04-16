@@ -47,6 +47,9 @@ module TicTacToe
       who_won? == nil and @_marks.none? { |m| m == " " } ? true : false
     end
 
+    def finished?
+      (who_won? or draw?) ? true : false
+    end
   end
 
 end
