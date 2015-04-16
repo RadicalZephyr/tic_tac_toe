@@ -30,14 +30,14 @@ describe TicTacToe::Game do
     end
 
     it 'changes the board marks based on user input' do
-      expect(board).to receive(:move).with(anything, 1)
+      expect(board).to receive(:move).with(1, anything)
       game.do_turn
     end
 
     it "Doesn't allow the same move twice." do
       allow(console).to receive(:gets).and_return("1\n")
       allow(board).to receive(:legal?).and_return(true, false, true)
-      expect(board).to receive(:move).with(anything, 1)
+      expect(board).to receive(:move).with(1, anything)
       game.do_turn
       game.do_turn
     end
@@ -45,7 +45,7 @@ describe TicTacToe::Game do
     it 'Keeps reading until it gets a legal move' do
       allow(console).to receive(:gets).and_return("1\n")
       allow(board).to receive(:legal?).and_return(false, false, true)
-      expect(board).to receive(:move).with(anything, 1)
+      expect(board).to receive(:move).with(1, anything)
       game.do_turn
     end
 
