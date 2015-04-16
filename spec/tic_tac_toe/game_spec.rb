@@ -7,7 +7,7 @@ describe TicTacToe::Game do
   let(:game) { TicTacToe::Game.new(console, board) }
 
   def mock_console
-    instance_double("IO").tap do |console|
+    instance_double('IO').tap do |console|
       allow(console).to receive(:puts)
       allow(console).to receive(:print)
       allow(console).to receive(:oflush)
@@ -16,7 +16,7 @@ describe TicTacToe::Game do
   end
 
   def mock_board
-    double(:board).tap do |board|
+    instance_double('TicTacToe::Board').tap do |board|
       allow(board).to receive(:move)
       allow(board).to receive(:legal?).and_return(true)
     end
