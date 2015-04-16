@@ -56,6 +56,11 @@ describe TicTacToe::Game do
       allow(console).to receive(:gets).and_return("abcd", "def", "{1a", "1")
       expect(game.get_move).to eq 1
     end
+
+    it 'should only return a number between 0 and 8' do
+      allow(console).to receive(:gets).and_return("10", "1")
+      expect(game.get_move).to eq 1
+    end
   end
 
 end
