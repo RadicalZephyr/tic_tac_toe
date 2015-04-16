@@ -13,7 +13,14 @@ describe TicTacToe::Game do
     game.start
   end
 
-  it 'can play one turn iteration' do
+  describe 'when playing' do
+    it 'changes the active player' do
+      display = double(:display)
+      game = TicTacToe::Game.new display
 
+      expect { game.do_turn }.to change { game.to_play }
+    end
   end
+
+
 end
