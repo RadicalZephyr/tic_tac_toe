@@ -58,7 +58,7 @@ describe TicTacToe::Game do
       expect(game.get_move).to eq expect
     end
 
-    def ignores_input input
+    def ignores(input:)
       allow(console).to receive(:gets).and_return(input, "1")
       expect(game.get_move).to eq 1
     end
@@ -69,10 +69,10 @@ describe TicTacToe::Game do
     end
 
     it 'should only return a number between 0 and 8' do
-      ignores_input "-10"
-      ignores_input "-1"
-      ignores_input "9"
-      ignores_input "15"
+      ignores(input: "-10")
+      ignores(input: "-1")
+      ignores(input: "9")
+      ignores(input: "15")
       with(input: "0", expect: 0)
       with(input: "4", expect: 4)
       with(input: "8", expect: 8)
