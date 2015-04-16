@@ -14,6 +14,7 @@ describe TicTacToe::Game do
   def mock_board
     double(:board).tap do |board|
       allow(board).to receive(:move)
+      allow(board).to receive(:legal?)
     end
   end
 
@@ -29,10 +30,18 @@ describe TicTacToe::Game do
     end
 
     it 'changes the board marks based on user input' do
+      allow(board).to receive(:legal?).and_return(true)
       expect(board).to receive(:move).with(anything, 1)
       game.do_turn
     end
 
+    it "Doesn't allow the same move twice." do
+      allow(console).to receive(:gets).and_return("1", "1")
+      allow(board).to receive(:legal?).and_return(true, false)
+      expect(board).to receive(:move).with(anything, 1)
+      game.do_turn
+      game.do_turn
+    end
   end
 
 
