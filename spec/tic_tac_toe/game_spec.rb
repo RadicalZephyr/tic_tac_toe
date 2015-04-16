@@ -53,8 +53,8 @@ describe TicTacToe::Game do
 
   describe 'when validating input' do
     it 'keeps reading until it gets a number' do
-      allow(console).to receive(:gets).and_return("abcd", "1")
-      expect(game.get_move)
+      allow(console).to receive(:gets).and_return("abcd", "def", "{1a", "1")
+      expect(game.get_move).to eq 1
     end
   end
 
