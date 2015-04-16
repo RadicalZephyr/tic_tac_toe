@@ -29,7 +29,7 @@ describe TicTacToe::Game do
     end
 
     it 'changes the board marks based on user input' do
-      expect(board).to receive(:move).with("X", 1)
+      expect(board).to receive(:move).with(anything, 1)
       game.do_turn
     end
 
