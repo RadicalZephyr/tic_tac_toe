@@ -98,5 +98,12 @@ describe TicTacToe::Board do
                         "X", "O", " "]
       expect(board.finished?).to eq true
     end
+
+    it 'is complete if there is a draw' do
+      set_board board, ["X", "X", "O",
+                        "O", "X", "X",
+                        "X", "O", "O"]
+      expect(board.finished?).to eq true
+    end
   end
 end
