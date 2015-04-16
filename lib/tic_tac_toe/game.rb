@@ -13,7 +13,7 @@ module TicTacToe
 
     def do_turn
       str = @console.gets
-      @board.move(@to_play, 0)
+      @board.move(@to_play, Integer(str))
       @to_play = "O"
     end
   end
