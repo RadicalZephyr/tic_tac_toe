@@ -34,9 +34,9 @@ module TicTacToe
       @console.puts
       moved = false
       while not moved
-        move = get_move
-        if @board.legal?(move)
-          @board.move(@current_mark, move)
+        move_index = get_move
+        if @board.legal?(move_index)
+          @board.move(@current_mark, move_index)
           moved = true
         end
       end
