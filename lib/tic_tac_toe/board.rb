@@ -28,7 +28,7 @@ module TicTacToe
       @_marks[index]
     end
 
-    def move index, mark
+    def move(mark, index)
       @_marks[index] = mark
     end
 

@@ -11,7 +11,7 @@ describe TicTacToe::Board do
   end
 
   it 'can make moves' do
-    board.move 0, "X"
+    board.move("X", 0)
     expect(board.pos 0).to eq("X")
     (1...9).each do |i|
       expect(board.pos i).to eq(" ")
@@ -30,7 +30,7 @@ describe TicTacToe::Board do
     end
 
     it 'will say marked spaces are not legal' do
-      board.move(0, "X")
+      board.move("X", 0)
       expect(board.legal?(0)).to eq false
       (1...9).each do |index|
         expect(board.legal?(index)).to eq true
@@ -41,7 +41,7 @@ describe TicTacToe::Board do
   describe 'when checking if there is a winner' do
     def do_winning_test board, mark, places
       places.each do |n|
-        board.move n, mark
+        board.move(mark, n)
       end
 
       expect(board.who_won?).to eq mark
@@ -59,28 +59,28 @@ describe TicTacToe::Board do
     it 'returns nil for non-won boards' do
       expect(board.who_won?).to eq nil
 
-      board.move 0, "X"
-      board.move 1, "X"
+      board.move("X", 0)
+      board.move("X", 1)
       expect(board.who_won?).to eq nil
 
-      board.move 5, "X"
-      board.move 8, "X"
+      board.move("X", 5)
+      board.move("X", 8)
       expect(board.who_won?).to eq nil
 
-      board.move 6, "X"
+      board.move("X", 6)
       expect(board.who_won?).to eq nil
 
-      board.move 2, "O"
-      board.move 3, "O"
-      board.move 4, "O"
-      board.move 7, "O"
+      board.move("O", 2)
+      board.move("O", 3)
+      board.move("O", 4)
+      board.move("O", 7)
       expect(board.who_won?).to eq nil
     end
   end
 
   def set_board board, marks
     marks.each_with_index do |m, i|
-      board.move i, m
+      board.move(m, i)
     end
   end
 
