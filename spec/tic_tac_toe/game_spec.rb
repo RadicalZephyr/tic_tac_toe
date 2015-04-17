@@ -25,8 +25,8 @@ describe TicTacToe::Game do
 
   describe 'when playing' do
     it 'changes the active player after every move' do
-      expect { game.do_turn }.to change { game.mark }
-      expect { game.do_turn }.to change { game.mark }
+      expect { game.do_turn }.to change { game.current_mark }
+      expect { game.do_turn }.to change { game.current_mark }
     end
 
     it 'changes the board marks based on user input' do
