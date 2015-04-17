@@ -52,9 +52,9 @@ describe TicTacToe::Game do
 
   describe 'when validating input' do
 
-    def with(input:, expect:)
+    def with(input:, expecting:)
       allow(console).to receive(:gets).and_return("#{input}\n")
-      expect(game.get_move).to eq expect
+      expect(game.get_move).to eq expecting
     end
 
     def ignores(input:)
@@ -72,9 +72,9 @@ describe TicTacToe::Game do
       ignores(input: "-1")
       ignores(input: "9")
       ignores(input: "15")
-      with(input: "0", expect: 0)
-      with(input: "4", expect: 4)
-      with(input: "8", expect: 8)
+      with(input: "0", expecting: 0)
+      with(input: "4", expecting: 4)
+      with(input: "8", expecting: 8)
     end
   end
 
