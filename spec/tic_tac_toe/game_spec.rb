@@ -43,7 +43,6 @@ describe TicTacToe::Game do
     end
 
     it 'Keeps reading until it gets a legal move' do
-      allow(console).to receive(:gets).and_return("1\n")
       allow(board).to receive(:legal?).and_return(false, false, true)
       expect(board).to receive(:move).with(1, anything)
       game.do_turn
