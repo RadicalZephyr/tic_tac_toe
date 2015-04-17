@@ -3,12 +3,6 @@ require 'spec_helper'
 describe TicTacToe::Board do
   let(:board) { TicTacToe::Board.new }
 
-  def set_board board, marks
-    marks.each_with_index do |m, i|
-      board.move i, m
-    end
-  end
-
   it 'initially has 9 empty positions' do
     (0...9).each do |i|
       expect(board.pos i).to eq(" ")
@@ -81,6 +75,12 @@ describe TicTacToe::Board do
       board.move 4, "O"
       board.move 7, "O"
       expect(board.who_won?).to eq nil
+    end
+  end
+
+  def set_board board, marks
+    marks.each_with_index do |m, i|
+      board.move i, m
     end
   end
 
