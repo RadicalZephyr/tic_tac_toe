@@ -49,6 +49,12 @@ module TicTacToe
       while not @board.finished?
         do_turn
       end
+      winner_mark = @board.who_won?
+      if winner_mark
+        @console.puts "The #{winner_mark}'s win!"
+      else
+        @console.puts "It was a draw."
+      end
     end
   end
 
