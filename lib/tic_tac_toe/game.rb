@@ -36,7 +36,7 @@ module TicTacToe
       while not moved
         move = get_move
         if @board.legal?(move)
-          @board.move(move, @current_mark)
+          @board.move(@current_mark, move)
           moved = true
         end
       end
