@@ -81,6 +81,7 @@ describe TicTacToe::Game do
 
   describe 'when running the game loop' do
     it 'keeps running while the board is not complete' do
+      allow(board).to receive(:who_won?)
       allow(board).to receive(:finished?).and_return(false, false, true)
       expect(board).to receive(:finished?).exactly(3).times
       game.game_loop
