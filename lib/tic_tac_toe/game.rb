@@ -1,13 +1,13 @@
 module TicTacToe
   class Game
-    attr_reader :mark
+    attr_reader :current_mark
 
     NEXT_PLAYER = {"X" => "O",
                    "O" => "X"}
 
     def initialize(console, board)
       @console, @board = console, board
-      @mark = "X"
+      @current_mark = "X"
     end
 
     def get_move
@@ -29,19 +29,19 @@ module TicTacToe
     end
 
     def do_turn
-      @console.puts "\nIt is the #{@mark}'s move.'"
+      @console.puts "\nIt is the #{@current_mark}'s move.'"
       @console.puts @board.board_to_string
       @console.puts
       moved = false
       while not moved
         move = get_move
         if @board.legal?(move)
-          @board.move(move, @mark)
+          @board.move(move, @current_mark)
           moved = true
         end
       end
 
-      @mark = NEXT_PLAYER[@mark]
+      @current_mark = NEXT_PLAYER[@current_mark]
     end
 
     def game_loop
