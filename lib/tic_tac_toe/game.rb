@@ -29,7 +29,7 @@ module TicTacToe
     end
 
     def do_turn
-      @console.puts "\nIt is the #{@current_mark}'s move.'"
+      @console.puts "\nIt is the #{@current_mark}'s move."
       @console.puts @board.board_to_string
       @console.puts
       moved = false
