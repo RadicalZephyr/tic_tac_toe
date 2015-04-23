@@ -44,24 +44,24 @@ module TicTacToe
       WIN_PLACES.map { |places| places.map { |n| @marks.at n }}
     end
 
-    def all_marks_same? marks
+    def self.all_marks_same?(marks)
       marks.all? { |m| m == marks[0] }
     end
 
-    def winning_marks? marks
-      marks[0] if all_marks_same? marks and marks[0] != " "
+    def self.winning_marks?(marks)
+      marks[0] if all_marks_same?(marks) and marks[0] != " "
     end
 
-    def who_won?
-      attack_sets.map { |marks| winning_marks? marks }.find(&:itself)
+    def self.who_won?(board)
+      board.attack_sets.map { |marks| winning_marks?(marks) }.find(&:itself)
     end
 
-    def draw?
-      who_won? == nil and full? ? true : false
+    def self.draw?(board)
+      who_won?(board) == nil and board.full? ? true : false
     end
 
-    def finished?
-      (who_won? or draw?) ? true : false
+    def self.finished?(board)
+      (who_won?(board) or draw?(board)) ? true : false
     end
   end
 
