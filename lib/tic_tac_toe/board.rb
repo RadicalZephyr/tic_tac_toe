@@ -40,6 +40,10 @@ module TicTacToe
       marks.all? { |m| m == marks[0] }
     end
 
+    def full?
+      @marks.none? { |m| m == " " }
+    end
+
     def get_board_marks
       WIN_PLACES.map { |places| places.map { |n| @marks.at n }}
     end
@@ -54,7 +58,7 @@ module TicTacToe
     end
 
     def draw?
-      who_won? == nil and @marks.none? { |m| m == " " } ? true : false
+      who_won? == nil and full? ? true : false
     end
 
     def finished?
