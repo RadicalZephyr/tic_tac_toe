@@ -3,7 +3,7 @@ require 'io/console'
 
 describe TicTacToe::Console do
   let(:console) { mock_console }
-  let(:board) { mock_board }
+  let(:board) { TicTacToe::Board.new }
   let(:game) { mock_game(board) }
   let(:console_shell) { TicTacToe::Console.new(console, game) }
 
@@ -22,15 +22,6 @@ describe TicTacToe::Console do
       allow(game).to receive(:board=)
       allow(game).to receive(:current_mark).and_call_original
       allow(game).to receive(:current_mark=).and_call_original
-    end
-  end
-
-  def mock_board
-    instance_double('TicTacToe::Board').tap do |board|
-      allow(board).to receive(:move)
-      allow(board).to receive(:board_to_string)
-      allow(board).to receive(:attack_sets).and_return([[" ", " ", " "]])
-      allow(board).to receive(:legal?).and_return(true)
     end
   end
 
@@ -78,8 +69,8 @@ describe TicTacToe::Console do
 
   describe 'when running the game loop' do
     it 'keeps running while the board is not complete' do
-      allow(TicTacToe::Rules).to receive(:finished?).and_return(false, false, true)
-      expect(TicTacToe::Rules).to receive(:finished?).exactly(3).times
+      allow(game).to receive(:try_move).and_return(true)
+      expect(TicTacToe::Rules).to receive(:finished?).exactly(3).times.and_return(false, false, true)
       console_shell.game_loop
     end
   end
