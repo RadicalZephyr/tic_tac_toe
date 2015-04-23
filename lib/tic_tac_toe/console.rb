@@ -22,6 +22,11 @@ module TicTacToe
       @console.puts "Please try again."
     end
 
+    def show_illegal_move_message
+      @console.puts "That move has already been played."
+      @console.puts "Please try again."
+    end
+
     def show_board(board)
       @console.puts "\nIt is the #{game.current_mark}'s move."
       @console.puts board.board_to_string
@@ -65,6 +70,7 @@ module TicTacToe
       moved = false
       while not moved
         moved = game.try_move(index: get_move)
+        show_illegal_move_message if not moved
       end
     end
 
