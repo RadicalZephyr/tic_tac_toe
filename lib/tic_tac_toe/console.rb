@@ -24,7 +24,7 @@ module TicTacToe
 
     def show_board(board)
       @console.puts "\nIt is the #{@current_mark}'s move."
-      @console.puts board.board_to_string
+      @console.puts game.board.board_to_string
       @console.puts
     end
 
@@ -38,10 +38,6 @@ module TicTacToe
       else
         @console.puts "It was a draw."
       end
-    end
-
-    def board
-      game.board
     end
 
     def get_move
@@ -60,12 +56,12 @@ module TicTacToe
     end
 
     def do_turn
-      show_board(board)
+      show_board(game.board)
       moved = false
       while not moved
         move_index = get_move
-        if board.legal?(move_index)
-          board.move(@current_mark, move_index)
+        if game.board.legal?(move_index)
+          game.board.move(@current_mark, move_index)
           moved = true
         end
       end
@@ -75,10 +71,10 @@ module TicTacToe
 
     def game_loop
       show_welcome_message
-      while not board.finished?
+      while not game.board.finished?
         do_turn
       end
-      display_winner(board.who_won?)
+      display_winner(game.board.who_won?)
     end
   end
 
