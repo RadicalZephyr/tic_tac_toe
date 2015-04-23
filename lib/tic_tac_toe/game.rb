@@ -16,6 +16,11 @@ module TicTacToe
       @console.gets.chop
     end
 
+    def show_move_error_message
+      @console.puts "Sorry, I didn't understand your move."
+      @console.puts "Please try again."
+    end
+
     def get_move
       got_input = false
       while not got_input
@@ -24,8 +29,7 @@ module TicTacToe
           input = Integer(str)
           got_input = true if input.between?(0,8)
         rescue ArgumentError
-          @console.puts "Sorry, I didn't understand your move."
-          @console.puts "Please try again."
+          show_move_error_message
         end
       end
 
