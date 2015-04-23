@@ -53,17 +53,24 @@ module TicTacToe
       @current_mark = NEXT_PLAYER[@current_mark]
     end
 
-    def game_loop
+    def show_welcome_message
       @console.puts "Welcome to Tic Tac Toe!"
-      while not @board.finished?
-        do_turn
-      end
-      winner_mark = @board.who_won?
+    end
+
+    def display_winner(winner_mark)
       if winner_mark
         @console.puts "The #{winner_mark}'s win!"
       else
         @console.puts "It was a draw."
       end
+    end
+
+    def game_loop
+      show_welcome_message
+      while not @board.finished?
+        do_turn
+      end
+      display_winner(@board.who_won?)
     end
   end
 
