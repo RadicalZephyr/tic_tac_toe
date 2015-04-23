@@ -44,7 +44,7 @@ describe TicTacToe::Board do
         board.move(mark, n)
       end
 
-      expect(board.who_won?).to eq mark
+      expect(TicTacToe::Board.who_won?(board)).to eq mark
     end
 
     it 'knows when someone has won' do
@@ -57,24 +57,24 @@ describe TicTacToe::Board do
     end
 
     it 'returns nil for non-won boards' do
-      expect(board.who_won?).to eq nil
+      expect(TicTacToe::Board.who_won?(board)).to eq nil
 
       board.move("X", 0)
       board.move("X", 1)
-      expect(board.who_won?).to eq nil
+      expect(TicTacToe::Board.who_won?(board)).to eq nil
 
       board.move("X", 5)
       board.move("X", 8)
-      expect(board.who_won?).to eq nil
+      expect(TicTacToe::Board.who_won?(board)).to eq nil
 
       board.move("X", 6)
-      expect(board.who_won?).to eq nil
+      expect(TicTacToe::Board.who_won?(board)).to eq nil
 
       board.move("O", 2)
       board.move("O", 3)
       board.move("O", 4)
       board.move("O", 7)
-      expect(board.who_won?).to eq nil
+      expect(TicTacToe::Board.who_won?(board)).to eq nil
     end
   end
 
@@ -93,49 +93,49 @@ describe TicTacToe::Board do
       set_board board, ["X", "X", "O",
                         "O", "O", "X",
                         "X", "X", "O"]
-      expect(board.draw?).to eq true
+      expect(TicTacToe::Board.draw?(board)).to eq true
 
       set_board board, ["X", "X", "O",
                         "O", "X", "X",
                         "X", "O", "O"]
-      expect(board.draw?).to eq true
+      expect(TicTacToe::Board.draw?(board)).to eq true
 
       set_board board, ["X", "X", "O",
                         "O", "O", "X",
                         "X", "O", "x"]
-      expect(board.draw?).to eq true
+      expect(TicTacToe::Board.draw?(board)).to eq true
     end
 
     it 'doesn\'t report false positive draws' do
-      expect(board.draw?).to eq false
+      expect(TicTacToe::Board.draw?(board)).to eq false
     end
   end
 
   describe 'when checking if the board is done' do
 
     it 'is not complete if it is empty' do
-      expect(board.finished?).to eq false
+      expect(TicTacToe::Board.finished?(board)).to eq false
     end
 
     it 'is not complete if not full' do
       set_board board, ["X", " ", "X",
                         "O", "O", " ",
                         "X", "O", " "]
-      expect(board.finished?).to eq false
+      expect(TicTacToe::Board.finished?(board)).to eq false
     end
 
     it 'may be not full if someone won' do
       set_board board, ["X", "X", "X",
                         "O", "O", " ",
                         "X", "O", " "]
-      expect(board.finished?).to eq true
+      expect(TicTacToe::Board.finished?(board)).to eq true
     end
 
     it 'is complete if there is a draw' do
       set_board board, ["X", "X", "O",
                         "O", "X", "X",
                         "X", "O", "O"]
-      expect(board.finished?).to eq true
+      expect(TicTacToe::Board.finished?(board)).to eq true
     end
   end
 end

@@ -29,6 +29,7 @@ describe TicTacToe::Console do
     instance_double('TicTacToe::Board').tap do |board|
       allow(board).to receive(:move)
       allow(board).to receive(:board_to_string)
+      allow(board).to receive(:attack_sets).and_return([[" ", " ", " "]])
       allow(board).to receive(:legal?).and_return(true)
     end
   end
@@ -77,9 +78,8 @@ describe TicTacToe::Console do
 
   describe 'when running the game loop' do
     it 'keeps running while the board is not complete' do
-      allow(board).to receive(:who_won?)
-      allow(board).to receive(:finished?).and_return(false, false, true)
-      expect(board).to receive(:finished?).exactly(3).times
+      allow(TicTacToe::Board).to receive(:finished?).and_return(false, false, true)
+      expect(TicTacToe::Board).to receive(:finished?).exactly(3).times
       console_shell.game_loop
     end
   end
