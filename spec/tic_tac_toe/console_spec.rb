@@ -4,7 +4,8 @@ require 'io/console'
 describe TicTacToe::Console do
   let(:console) { mock_console }
   let(:board) { mock_board }
-  let(:console_shell) { TicTacToe::Console.new(console, board) }
+  let(:game) { double }
+  let(:console_shell) { TicTacToe::Console.new(console, game, board) }
 
   def mock_console
     instance_double('IO').tap do |console|

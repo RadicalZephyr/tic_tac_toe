@@ -1,12 +1,12 @@
 module TicTacToe
   class Console
-    attr_reader :current_mark
+    attr_reader :current_mark, :game
 
     NEXT_PLAYER = {"X" => "O",
                    "O" => "X"}
 
-    def initialize(console, board)
-      @console, @board = console, board
+    def initialize(console, game, board)
+      @console, @game, @board = console, game, board
       @current_mark = "X"
     end
 
