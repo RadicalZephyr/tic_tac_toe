@@ -1,6 +1,7 @@
 module TicTacToe
   class Console
-    attr_reader :current_mark, :game
+    attr_reader :game
+    attr_accessor :current_mark
 
     NEXT_PLAYER = {"X" => "O",
                    "O" => "X"}
@@ -23,7 +24,7 @@ module TicTacToe
     end
 
     def show_board(board)
-      @console.puts "\nIt is the #{@current_mark}'s move."
+      @console.puts "\nIt is the #{current_mark}'s move."
       @console.puts game.board.board_to_string
       @console.puts
     end
@@ -56,7 +57,7 @@ module TicTacToe
     end
 
     def swap_mark
-      @current_mark = NEXT_PLAYER[@current_mark]
+      self.current_mark=(NEXT_PLAYER[current_mark])
     end
 
     def do_turn
@@ -65,7 +66,7 @@ module TicTacToe
       while not moved
         move_index = get_move
         if game.board.legal?(move_index)
-          game.board.move(@current_mark, move_index)
+          game.board.move(current_mark, move_index)
           moved = true
         end
       end

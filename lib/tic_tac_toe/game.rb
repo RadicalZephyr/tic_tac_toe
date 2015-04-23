@@ -1,6 +1,6 @@
 module TicTacToe
   class Game
-    attr_accessor :board
+    attr_accessor :current_mark, :board
 
   end
 end
