@@ -1,6 +1,6 @@
 module TicTacToe
   class Console
-    attr_reader :current_mark, :game
+    attr_reader :current_mark, :game, :board
 
     NEXT_PLAYER = {"X" => "O",
                    "O" => "X"}
@@ -55,13 +55,12 @@ module TicTacToe
     end
 
     def do_turn
-      board = @board
       show_board(board)
       moved = false
       while not moved
         move_index = get_move
-        if @board.legal?(move_index)
-          @board.move(@current_mark, move_index)
+        if board.legal?(move_index)
+          board.move(@current_mark, move_index)
           moved = true
         end
       end
@@ -71,10 +70,10 @@ module TicTacToe
 
     def game_loop
       show_welcome_message
-      while not @board.finished?
+      while not board.finished?
         do_turn
       end
-      display_winner(@board.who_won?)
+      display_winner(board.who_won?)
     end
   end
 
