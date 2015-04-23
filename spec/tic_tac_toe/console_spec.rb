@@ -4,7 +4,7 @@ require 'io/console'
 describe TicTacToe::Console do
   let(:console) { mock_console }
   let(:board) { mock_board }
-  let(:game) { TicTacToe::Console.new(console, board) }
+  let(:console_shell) { TicTacToe::Console.new(console, board) }
 
   def mock_console
     instance_double('IO').tap do |console|
@@ -25,27 +25,27 @@ describe TicTacToe::Console do
 
   describe 'when playing' do
     it 'changes the active player after every move' do
-      expect { game.do_turn }.to change { game.current_mark }
-      expect { game.do_turn }.to change { game.current_mark }
+      expect { console_shell.do_turn }.to change { console_shell.current_mark }
+      expect { console_shell.do_turn }.to change { console_shell.current_mark }
     end
 
     it 'changes the board marks based on user input' do
       expect(board).to receive(:move).with(anything, 1)
-      game.do_turn
+      console_shell.do_turn
     end
 
     it "Doesn't allow the same move twice." do
       allow(console).to receive(:gets).and_return("1\n")
       allow(board).to receive(:legal?).and_return(true, false, true)
       expect(board).to receive(:move).with(anything, 1)
-      game.do_turn
-      game.do_turn
+      console_shell.do_turn
+      console_shell.do_turn
     end
 
     it 'Keeps reading until it gets a legal move' do
       allow(board).to receive(:legal?).and_return(false, false, true)
       expect(board).to receive(:move).with(anything, 1)
-      game.do_turn
+      console_shell.do_turn
     end
 
   end
@@ -54,17 +54,17 @@ describe TicTacToe::Console do
 
     def with(input:, expecting:)
       allow(console).to receive(:gets).and_return("#{input}\n")
-      expect(game.get_move).to eq expecting
+      expect(console_shell.get_move).to eq expecting
     end
 
     def ignores(input:)
       allow(console).to receive(:gets).and_return("#{input}\n", "1\n")
-      expect(game.get_move).to eq 1
+      expect(console_shell.get_move).to eq 1
     end
 
     it 'keeps reading until it gets a number' do
       allow(console).to receive(:gets).and_return("abcd\n", "def\n", "{1a\n", "1\n")
-      expect(game.get_move).to eq 1
+      expect(console_shell.get_move).to eq 1
     end
 
     it 'should only return a number between 0 and 8' do
@@ -83,7 +83,7 @@ describe TicTacToe::Console do
       allow(board).to receive(:who_won?)
       allow(board).to receive(:finished?).and_return(false, false, true)
       expect(board).to receive(:finished?).exactly(3).times
-      game.game_loop
+      console_shell.game_loop
     end
   end
 
