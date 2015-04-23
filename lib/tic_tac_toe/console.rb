@@ -4,11 +4,6 @@ module TicTacToe
 
     def initialize(console, game)
       @console, @game = console, game
-      game.current_mark=("X")
-    end
-
-    def current_mark
-      game.current_mark
     end
 
     def prompt_move
