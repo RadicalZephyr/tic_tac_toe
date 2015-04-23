@@ -7,5 +7,14 @@ module TicTacToe
       @current_mark = "X"
     end
 
+    def try_move(index:)
+      if board.legal?(index)
+        board.move(current_mark, index)
+        true
+      else
+        false
+      end
+    end
+
   end
 end

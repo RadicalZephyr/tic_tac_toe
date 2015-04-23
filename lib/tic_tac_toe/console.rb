@@ -63,12 +63,7 @@ module TicTacToe
     end
 
     def try_move(index:)
-      if game.board.legal?(index)
-        game.board.move(game.current_mark, index)
-        true
-      else
-        false
-      end
+      game.try_move(index: index)
     end
 
     def do_turn
