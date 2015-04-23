@@ -24,5 +24,13 @@ module TicTacToe
       end
     end
 
+    def finished?
+      TicTacToe::Rules.finished?(board)
+    end
+
+    def who_won?
+      TicTacToe::Rules.who_won?(board)
+    end
+
   end
 end
