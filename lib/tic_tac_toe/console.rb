@@ -12,19 +12,23 @@ module TicTacToe
       @console.gets.chop
     end
 
+    def try_again
+      @console.puts "Please try again."
+    end
+
     def show_move_error_message
       @console.puts "Sorry, I didn't understand your move."
-      @console.puts "Please try again."
+      try_again
     end
 
     def show_invalid_move_message
       @console.puts "That is not a valid move choice."
-      @console.puts "Please try again."
+      try_again
     end
 
     def show_illegal_move_message
       @console.puts "That move has already been played."
-      @console.puts "Please try again."
+      try_again
     end
 
     def show_board(board)
