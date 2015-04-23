@@ -2,6 +2,9 @@ module TicTacToe
   class Game
     attr_accessor :current_mark, :board
 
+    NEXT_PLAYER = {"X" => "O",
+                   "O" => "X"}
+
     def initialize(board)
       @board = board
       @current_mark = "X"
