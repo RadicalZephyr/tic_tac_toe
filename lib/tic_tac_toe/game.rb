@@ -10,6 +10,10 @@ module TicTacToe
       @current_mark = "X"
     end
 
+    def swap_mark
+      @current_mark = NEXT_PLAYER[current_mark]
+    end
+
     def try_move(index:)
       if board.legal?(index)
         board.move(current_mark, index)

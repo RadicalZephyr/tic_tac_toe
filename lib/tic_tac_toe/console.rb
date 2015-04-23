@@ -56,7 +56,7 @@ module TicTacToe
     end
 
     def swap_mark
-      game.current_mark=(TicTacToe::Game::NEXT_PLAYER[game.current_mark])
+      game.swap_mark
     end
 
     def try_move(index:)
