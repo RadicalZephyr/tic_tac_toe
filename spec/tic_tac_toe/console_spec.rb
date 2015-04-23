@@ -34,27 +34,14 @@ describe TicTacToe::Console do
   end
 
   describe 'when playing' do
-    it 'changes the active player after every move' do
-      expect { console_shell.do_turn }.to change { console_shell.current_mark }
-      expect { console_shell.do_turn }.to change { console_shell.current_mark }
-    end
 
-    it 'changes the board marks based on user input' do
-      expect(board).to receive(:move).with(anything, 1)
-      console_shell.do_turn
-    end
-
-    it "Doesn't allow the same move twice." do
-      allow(console).to receive(:gets).and_return("1\n")
-      allow(board).to receive(:legal?).and_return(true, false, true)
-      expect(board).to receive(:move).with(anything, 1)
-      console_shell.do_turn
+    it 'Makes a move based on user input' do
+      expect(game).to receive(:try_move).with({:index => 1}).and_return(true)
       console_shell.do_turn
     end
 
     it 'Keeps reading until it gets a legal move' do
-      allow(board).to receive(:legal?).and_return(false, false, true)
-      expect(board).to receive(:move).with(anything, 1)
+      expect(game).to receive(:try_move).with({:index => 1}).exactly(3).times.and_return(false, false, true)
       console_shell.do_turn
     end
 
