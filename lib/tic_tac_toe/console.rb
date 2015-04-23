@@ -1,12 +1,13 @@
 module TicTacToe
   class Console
-    attr_reader :current_mark, :game, :board
+    attr_reader :current_mark, :game
 
     NEXT_PLAYER = {"X" => "O",
                    "O" => "X"}
 
     def initialize(console, game, board)
       @console, @game, @board = console, game, board
+      game.board=(board)
       @current_mark = "X"
     end
 
@@ -37,6 +38,10 @@ module TicTacToe
       else
         @console.puts "It was a draw."
       end
+    end
+
+    def board
+      game.board
     end
 
     def get_move
