@@ -10,12 +10,16 @@ module TicTacToe
       @current_mark = "X"
     end
 
+    def prompt_move
+      @console.print "Enter your move [0-8]: "
+      @console.flush
+      @console.gets.chop
+    end
+
     def get_move
       got_input = false
       while not got_input
-        @console.print "Enter your move [0-8]: "
-        @console.flush
-        str = @console.gets.chop
+        str = prompt_move
         begin
           input = Integer(str)
           got_input = true if input.between?(0,8)
