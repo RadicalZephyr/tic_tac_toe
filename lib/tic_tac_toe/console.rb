@@ -62,15 +62,21 @@ module TicTacToe
       game.current_mark=(NEXT_PLAYER[game.current_mark])
     end
 
+    def try_move(index:)
+      if game.board.legal?(index)
+        game.board.move(game.current_mark, index)
+        true
+      else
+        false
+      end
+    end
+
     def do_turn
       show_board(game.board)
       moved = false
       while not moved
         move_index = get_move
-        if game.board.legal?(move_index)
-          game.board.move(game.current_mark, move_index)
-          moved = true
-        end
+        moved = try_move(index: move_index)
       end
 
       swap_mark
