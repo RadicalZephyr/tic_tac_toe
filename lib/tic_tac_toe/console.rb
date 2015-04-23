@@ -66,8 +66,6 @@ module TicTacToe
         move_index = get_move
         moved = try_move(index: move_index)
       end
-
-      game.swap_mark
     end
 
     def game_loop

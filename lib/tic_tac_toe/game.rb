@@ -17,6 +17,7 @@ module TicTacToe
     def try_move(index:)
       if board.legal?(index)
         board.move(current_mark, index)
+        swap_mark
         true
       else
         false
