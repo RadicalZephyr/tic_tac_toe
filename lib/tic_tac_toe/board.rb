@@ -53,8 +53,7 @@ module TicTacToe
     end
 
     def who_won?
-      board_marks = attack_sets
-      board_marks.map { |marks| winning_marks? marks }.find(&:itself)
+      attack_sets.map { |marks| winning_marks? marks }.find(&:itself)
     end
 
     def draw?
