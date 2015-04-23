@@ -15,25 +15,25 @@ module TicTacToe
     end
 
     def initialize
-      @_marks = Array.new(9, " ")
+      @marks = Array.new(9, " ")
     end
 
     def board_to_string
-      rows = @_marks.each_slice(3)
+      rows = @marks.each_slice(3)
       row_strings = rows.map { |row| Array(row).join(" | ") }
       row_strings.join("\n--+---+--\n")
     end
 
     def pos index
-      @_marks[index]
+      @marks[index]
     end
 
     def move(mark, index)
-      @_marks[index] = mark
+      @marks[index] = mark
     end
 
     def legal? index
-      @_marks[index] == " "
+      @marks[index] == " "
     end
 
     def all_marks_same? marks
@@ -41,7 +41,7 @@ module TicTacToe
     end
 
     def get_board_marks
-      WIN_PLACES.map { |places| places.map { |n| @_marks.at n }}
+      WIN_PLACES.map { |places| places.map { |n| @marks.at n }}
     end
 
     def winning_marks? marks
@@ -54,7 +54,7 @@ module TicTacToe
     end
 
     def draw?
-      who_won? == nil and @_marks.none? { |m| m == " " } ? true : false
+      who_won? == nil and @marks.none? { |m| m == " " } ? true : false
     end
 
     def finished?
