@@ -32,10 +32,15 @@ module TicTacToe
       input
     end
 
-    def do_turn
+    def show_board(board)
       @console.puts "\nIt is the #{@current_mark}'s move."
-      @console.puts @board.board_to_string
+      @console.puts board.board_to_string
       @console.puts
+    end
+
+    def do_turn
+      board = @board
+      show_board(board)
       moved = false
       while not moved
         move_index = get_move
