@@ -54,8 +54,7 @@ module TicTacToe
       show_board(game.board)
       moved = false
       while not moved
-        move_index = get_move
-        moved = game.try_move(index: move_index)
+        moved = game.try_move(index: get_move)
       end
     end
 
