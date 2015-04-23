@@ -50,16 +50,12 @@ module TicTacToe
       input
     end
 
-    def try_move(index:)
-      game.try_move(index: index)
-    end
-
     def do_turn
       show_board(game.board)
       moved = false
       while not moved
         move_index = get_move
-        moved = try_move(index: move_index)
+        moved = game.try_move(index: move_index)
       end
     end
 
