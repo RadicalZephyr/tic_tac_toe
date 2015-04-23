@@ -65,10 +65,10 @@ module TicTacToe
 
     def game_loop
       show_welcome_message
-      while not TicTacToe::Rules.finished?(game.board)
+      while not game.finished?
         do_turn
       end
-      display_winner(TicTacToe::Rules.who_won?(game.board))
+      display_winner(game.who_won?)
     end
   end
 
