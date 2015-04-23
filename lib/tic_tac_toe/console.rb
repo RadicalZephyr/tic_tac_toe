@@ -17,6 +17,11 @@ module TicTacToe
       @console.puts "Please try again."
     end
 
+    def show_invalid_move_message
+      @console.puts "That is not a valid move choice."
+      @console.puts "Please try again."
+    end
+
     def show_board(board)
       @console.puts "\nIt is the #{game.current_mark}'s move."
       @console.puts board.board_to_string
@@ -42,7 +47,11 @@ module TicTacToe
         str = prompt_move
         begin
           input = Integer(str)
-          got_input = true if input.between?(0,8)
+          if input.between?(0,8)
+            got_input = true
+          else
+            show_invalid_move_message
+          end
         rescue ArgumentError
           show_move_error_message
         end
