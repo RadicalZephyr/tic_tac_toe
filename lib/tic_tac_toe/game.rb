@@ -21,6 +21,24 @@ module TicTacToe
       @console.puts "Please try again."
     end
 
+    def show_board(board)
+      @console.puts "\nIt is the #{@current_mark}'s move."
+      @console.puts board.board_to_string
+      @console.puts
+    end
+
+    def show_welcome_message
+      @console.puts "Welcome to Tic Tac Toe!"
+    end
+
+    def display_winner(winner_mark)
+      if winner_mark
+        @console.puts "The #{winner_mark}'s win!"
+      else
+        @console.puts "It was a draw."
+      end
+    end
+
     def get_move
       got_input = false
       while not got_input
@@ -36,12 +54,6 @@ module TicTacToe
       input
     end
 
-    def show_board(board)
-      @console.puts "\nIt is the #{@current_mark}'s move."
-      @console.puts board.board_to_string
-      @console.puts
-    end
-
     def do_turn
       board = @board
       show_board(board)
@@ -55,18 +67,6 @@ module TicTacToe
       end
 
       @current_mark = NEXT_PLAYER[@current_mark]
-    end
-
-    def show_welcome_message
-      @console.puts "Welcome to Tic Tac Toe!"
-    end
-
-    def display_winner(winner_mark)
-      if winner_mark
-        @console.puts "The #{winner_mark}'s win!"
-      else
-        @console.puts "It was a draw."
-      end
     end
 
     def game_loop
