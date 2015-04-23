@@ -5,7 +5,8 @@ require "tic_tac_toe/game"
 
 module TicTacToe
   def TicTacToe.run
-    g = TicTacToe::Console.new(IO::console, TicTacToe::Game, TicTacToe::Board.new)
+    g = TicTacToe::Console.new(IO::console,
+                               TicTacToe::Game.new(TicTacToe::Board.new))
     g.game_loop
   end
 end

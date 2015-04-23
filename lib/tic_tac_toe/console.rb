@@ -5,9 +5,8 @@ module TicTacToe
     NEXT_PLAYER = {"X" => "O",
                    "O" => "X"}
 
-    def initialize(console, game, board)
-      @console, @game, @board = console, game, board
-      game.board=(board)
+    def initialize(console, game)
+      @console, @game = console, game
       game.current_mark=("X")
     end
 
