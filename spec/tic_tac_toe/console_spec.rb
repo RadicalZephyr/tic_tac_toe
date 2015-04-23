@@ -78,8 +78,8 @@ describe TicTacToe::Console do
 
   describe 'when running the game loop' do
     it 'keeps running while the board is not complete' do
-      allow(TicTacToe::Board).to receive(:finished?).and_return(false, false, true)
-      expect(TicTacToe::Board).to receive(:finished?).exactly(3).times
+      allow(TicTacToe::Rules).to receive(:finished?).and_return(false, false, true)
+      expect(TicTacToe::Rules).to receive(:finished?).exactly(3).times
       console_shell.game_loop
     end
   end
