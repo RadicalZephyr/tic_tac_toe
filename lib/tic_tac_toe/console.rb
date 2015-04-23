@@ -2,9 +2,6 @@ module TicTacToe
   class Console
     attr_reader :game
 
-    NEXT_PLAYER = {"X" => "O",
-                   "O" => "X"}
-
     def initialize(console, game)
       @console, @game = console, game
       game.current_mark=("X")
@@ -59,7 +56,7 @@ module TicTacToe
     end
 
     def swap_mark
-      game.current_mark=(NEXT_PLAYER[game.current_mark])
+      game.current_mark=(TicTacToe::Game::NEXT_PLAYER[game.current_mark])
     end
 
     def try_move(index:)
