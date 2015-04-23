@@ -55,10 +55,6 @@ module TicTacToe
       input
     end
 
-    def swap_mark
-      game.swap_mark
-    end
-
     def try_move(index:)
       game.try_move(index: index)
     end
@@ -71,7 +67,7 @@ module TicTacToe
         moved = try_move(index: move_index)
       end
 
-      swap_mark
+      game.swap_mark
     end
 
     def game_loop
