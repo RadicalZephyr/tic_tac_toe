@@ -38,53 +38,54 @@ describe TicTacToe::Board do
     end
   end
 
-  describe 'when checking if there is a winner' do
-    def do_winning_test board, mark, places
-      places.each do |n|
-        board.move(mark, n)
+  describe TicTacToe::Rules do
+
+    describe 'when checking if there is a winner' do
+      def do_winning_test board, mark, places
+        places.each do |n|
+          board.move(mark, n)
+        end
+
+        expect(TicTacToe::Rules.who_won?(board)).to eq mark
       end
 
-      expect(TicTacToe::Rules.who_won?(board)).to eq mark
-    end
-
-    it 'knows when someone has won' do
-      ["X", "O"].each do |mark|
-        TicTacToe::Board.win_places.each do |places|
-          board = TicTacToe::Board.new
-          do_winning_test board, mark, places
+      it 'knows when someone has won' do
+        ["X", "O"].each do |mark|
+          TicTacToe::Board.win_places.each do |places|
+            board = TicTacToe::Board.new
+            do_winning_test board, mark, places
+          end
         end
       end
+
+      it 'returns nil for non-won boards' do
+        expect(TicTacToe::Rules.who_won?(board)).to eq nil
+
+        board.move("X", 0)
+        board.move("X", 1)
+        expect(TicTacToe::Rules.who_won?(board)).to eq nil
+
+        board.move("X", 5)
+        board.move("X", 8)
+        expect(TicTacToe::Rules.who_won?(board)).to eq nil
+
+        board.move("X", 6)
+        expect(TicTacToe::Rules.who_won?(board)).to eq nil
+
+        board.move("O", 2)
+        board.move("O", 3)
+        board.move("O", 4)
+        board.move("O", 7)
+        expect(TicTacToe::Rules.who_won?(board)).to eq nil
+      end
     end
 
-    it 'returns nil for non-won boards' do
-      expect(TicTacToe::Rules.who_won?(board)).to eq nil
-
-      board.move("X", 0)
-      board.move("X", 1)
-      expect(TicTacToe::Rules.who_won?(board)).to eq nil
-
-      board.move("X", 5)
-      board.move("X", 8)
-      expect(TicTacToe::Rules.who_won?(board)).to eq nil
-
-      board.move("X", 6)
-      expect(TicTacToe::Rules.who_won?(board)).to eq nil
-
-      board.move("O", 2)
-      board.move("O", 3)
-      board.move("O", 4)
-      board.move("O", 7)
-      expect(TicTacToe::Rules.who_won?(board)).to eq nil
+    def set_board board, marks
+      marks.each_with_index do |m, i|
+        board.move(m, i)
+      end
     end
-  end
 
-  def set_board board, marks
-    marks.each_with_index do |m, i|
-      board.move(m, i)
-    end
-  end
-
-  describe TicTacToe::Rules do
     describe 'when checking for draws' do
       it 'knows when its a draw' do
 
