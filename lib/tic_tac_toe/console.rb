@@ -19,7 +19,7 @@ module TicTacToe
 
     def show_board(board)
       @console.puts "\nIt is the #{game.current_mark}'s move."
-      @console.puts game.board.board_to_string
+      @console.puts board.board_to_string
       @console.puts
     end
 
