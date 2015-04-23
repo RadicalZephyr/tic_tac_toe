@@ -40,7 +40,7 @@ module TicTacToe
       @marks.none? { |m| m == " " }
     end
 
-    def get_board_marks
+    def attack_sets
       WIN_PLACES.map { |places| places.map { |n| @marks.at n }}
     end
 
@@ -53,7 +53,7 @@ module TicTacToe
     end
 
     def who_won?
-      board_marks = get_board_marks
+      board_marks = attack_sets
       board_marks.map { |marks| winning_marks? marks }.find(&:itself)
     end
 
