@@ -55,6 +55,10 @@ module TicTacToe
       input
     end
 
+    def swap_mark
+      @current_mark = NEXT_PLAYER[@current_mark]
+    end
+
     def do_turn
       show_board(game.board)
       moved = false
@@ -66,7 +70,7 @@ module TicTacToe
         end
       end
 
-      @current_mark = NEXT_PLAYER[@current_mark]
+      swap_mark
     end
 
     def game_loop
