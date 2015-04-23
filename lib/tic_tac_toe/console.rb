@@ -28,6 +28,7 @@ module TicTacToe
     end
 
     def display_winner(winner_mark)
+      show_board(game.board)
       if winner_mark
         @console.puts "The #{winner_mark}'s win!"
       else
