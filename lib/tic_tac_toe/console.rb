@@ -1,5 +1,5 @@
 module TicTacToe
-  class Game
+  class Console
     attr_reader :current_mark
 
     NEXT_PLAYER = {"X" => "O",
