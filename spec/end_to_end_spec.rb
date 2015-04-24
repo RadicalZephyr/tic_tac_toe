@@ -39,4 +39,13 @@ describe "Playing a full game" do
     shell.game_loop
   end
 
+  it 'plays multiple games from main loop' do
+    x_moves = [0, 1, 3, 8, 4]
+    y_moves = [2, 6, 7, 5]
+    moves = [make_moves(x_moves, y_moves)] * 2
+    inputs = moves.zip(["y\n", "n\n"]).flatten
+    allow(console).to receive(:gets).and_return(*inputs)
+    expect(shell).to receive(:game_loop).twice
+    shell.main_loop
+  end
 end
