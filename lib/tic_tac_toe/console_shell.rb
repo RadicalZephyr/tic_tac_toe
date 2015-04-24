@@ -86,6 +86,11 @@ module TicTacToe
       end
       display_winner(game.who_won?)
     end
+
+    def main_loop
+      game_loop
+    end
+
   end
 
 end
