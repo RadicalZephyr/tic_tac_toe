@@ -1,5 +1,6 @@
 module TicTacToe
-  class Console
+
+  class ConsoleShell
     attr_reader :game
 
     def initialize(console, game)
