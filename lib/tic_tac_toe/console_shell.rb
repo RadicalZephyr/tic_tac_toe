@@ -90,7 +90,7 @@ module TicTacToe
       moved = false
       while not moved
         moved = game.try_move(index: get_move)
-        show_illegal_move_message if not moved
+        show_illegal_move_message unless moved
       end
     end
 
@@ -105,7 +105,7 @@ module TicTacToe
       show_welcome_message
       loop do
         game_loop
-        break if not play_again?
+        break unless play_again?
       end
     end
 
