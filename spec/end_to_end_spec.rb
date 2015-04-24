@@ -22,7 +22,7 @@ describe "Playing a full game" do
 
   def with_moves(x_moves:, y_moves:)
     inputs = make_moves(x_moves, y_moves)
-    allow(console).to receive(:gets).and_return(*inputs)
+    expect(console).to receive(:gets).and_return(*inputs)
   end
 
   describe "handling yes or no questions" do
