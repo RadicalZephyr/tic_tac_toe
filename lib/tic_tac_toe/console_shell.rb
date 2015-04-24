@@ -95,7 +95,6 @@ module TicTacToe
     end
 
     def game_loop
-      show_welcome_message
       while not game.finished?
         do_turn
       end
@@ -103,6 +102,7 @@ module TicTacToe
     end
 
     def main_loop
+      show_welcome_message
       loop do
         game_loop
         break if not play_again?
