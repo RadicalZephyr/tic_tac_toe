@@ -78,6 +78,8 @@ describe TicTacToe::ConsoleShell do
   describe 'Running the console shell' do
     it 'keeps running while the user says yes to games' do
       allow(game).to receive(:finished?).and_return(true)
+      allow(console).to receive(:gets).and_return("y", "y", "n")
+      expect(console_shell).to receive(:game_loop).twice
       console_shell.main_loop
     end
   end
