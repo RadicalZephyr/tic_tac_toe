@@ -15,9 +15,13 @@ describe "Playing a full game" do
     end
   end
 
+  def make_moves(xs, ys)
+    moves = xs.zip(ys).flatten
+    moves.map { |move| move.to_s + "\n" }
+  end
+
   def with_moves(x_moves:, y_moves:)
-    moves = x_moves.zip(y_moves).flatten
-    inputs = moves.map { |move| move.to_s + "\n" }
+    inputs = make_moves(x_moves, y_moves)
     allow(console).to receive(:gets).and_return(*inputs)
   end
 
