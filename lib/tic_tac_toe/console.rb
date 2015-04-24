@@ -9,7 +9,7 @@ module TicTacToe
     def prompt_move
       @console.print "Enter your move [0-8]: "
       @console.flush
-      @console.gets.chop
+      @console.gets.chomp
     end
 
     def try_again
