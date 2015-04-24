@@ -16,7 +16,7 @@ describe "Playing a full game" do
   end
 
   def make_moves(xs, ys)
-    moves = xs.zip(ys).flatten
+    moves = xs.zip(ys).flatten.compact
     moves.map { |move| move.to_s + "\n" }
   end
 
