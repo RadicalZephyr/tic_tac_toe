@@ -13,6 +13,21 @@ module TicTacToe
       @console.gets.chomp
     end
 
+    def yn_to_bool(input)
+      case input.downcase
+      when "y", "yes"
+        true
+      when "n", "no"
+        false
+      end
+    end
+
+    def play_again?
+      @console.print "Would you like to play again? "
+      @console.flush
+      yn_to_bool(@console.gets.chomp)
+    end
+
     def try_again
       @console.puts "Please try again."
     end
@@ -88,7 +103,10 @@ module TicTacToe
     end
 
     def main_loop
-      game_loop
+      loop do
+        game_loop
+        break if not play_again?
+      end
     end
 
   end
