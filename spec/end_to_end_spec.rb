@@ -64,7 +64,7 @@ describe "Playing a full game" do
     y_moves = [2, 6, 7, 5]
     moves = [make_moves(x_moves, y_moves)] * 2
     inputs = moves.zip(["y\n", "n\n"]).flatten
-    allow(console).to receive(:gets).and_return(*inputs)
+    expect(console).to receive(:gets).and_return(*inputs)
     expect(shell).to receive(:game_loop).twice
     shell.main_loop
   end
