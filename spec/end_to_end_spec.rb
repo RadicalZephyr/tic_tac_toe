@@ -24,4 +24,12 @@ describe "Playing a full game" do
     shell.game_loop
   end
 
+  it "ends after a draw" do
+    x_moves = [0, 1, 3, 8, 4]
+    y_moves = [2, 6, 7, 5]
+    moves = x_moves.zip(y_moves).flatten
+    inputs = moves.map { |move| move.to_s + "\n" }
+    allow(console).to receive(:gets).and_return(*inputs)
+    shell.game_loop
+  end
 end
