@@ -1,3 +1,5 @@
+require 'tic_tac_toe/human'
+
 module TicTacToe
 
   class ConsoleShell
@@ -70,22 +72,7 @@ module TicTacToe
     end
 
     def get_move
-      got_input = false
-      while not got_input
-        str = prompt_move
-        begin
-          input = Integer(str)
-          if input.between?(0,8)
-            got_input = true
-          else
-            show_invalid_move_message
-          end
-        rescue ArgumentError
-          show_move_error_message
-        end
-      end
-
-      input
+      TicTacToe::Human.new(self).get_move
     end
 
     def do_turn
