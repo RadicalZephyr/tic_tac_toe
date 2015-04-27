@@ -70,6 +70,7 @@ describe TicTacToe::ConsoleShell do
 
   describe 'Choosing players' do
     it 'Can return two human players' do
+      allow(console).to receive(:gets).and_return("h\nh\n")
       expect(console_shell.choose_players).to eq([player, player])
     end
   end
