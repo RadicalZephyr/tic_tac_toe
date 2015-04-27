@@ -76,6 +76,10 @@ module TicTacToe
       @player
     end
 
+    def choose_players
+      [get_human, get_human]
+    end
+
     def do_turn
       show_move_message
       show_board(game.board)
