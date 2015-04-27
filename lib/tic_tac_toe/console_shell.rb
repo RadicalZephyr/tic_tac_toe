@@ -71,8 +71,12 @@ module TicTacToe
       end
     end
 
+    def get_human
+      TicTacToe::Human.new(self)
+    end
+
     def get_move
-      TicTacToe::Human.new(self).get_move
+      get_human.get_move
     end
 
     def do_turn
