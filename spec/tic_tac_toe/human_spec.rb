@@ -3,13 +3,17 @@ require 'spec_helper'
 describe TicTacToe::Human do
   describe 'when validating input' do
     let(:shell) { mock_shell }
-    let(:human) { TicTacToe::Human.new(shell) }
+    let(:human) { test_human(shell) }
 
     def mock_shell
       instance_double("TicTacToe::ConsoleShell").tap do |shell|
         allow(shell).to receive(:show_invalid_move_message)
         allow(shell).to receive(:show_move_error_message)
       end
+    end
+
+    def test_human(shell)
+      TicTacToe::Human.new(shell)
     end
 
     def with(input:, expecting:)
