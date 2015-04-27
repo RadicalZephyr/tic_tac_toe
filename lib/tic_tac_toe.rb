@@ -8,6 +8,6 @@ module TicTacToe
   def TicTacToe.run
     game = TicTacToe::Game.new(TicTacToe::Board.new)
     shell = TicTacToe::ConsoleShell.new(IO::console, game)
-    shell.game_loop
+    shell.main_loop
   end
 end
