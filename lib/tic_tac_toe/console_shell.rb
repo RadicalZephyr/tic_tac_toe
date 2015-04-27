@@ -73,9 +73,7 @@ module TicTacToe
     end
 
     def get_human
-      TicTacToe::Human.new.tap do |h|
-        h.set_shell(self)
-      end
+      @player
     end
 
     def do_turn
@@ -83,7 +81,7 @@ module TicTacToe
       show_board(game.board)
       moved = false
       while not moved
-        moved = game.try_move(index: @player.get_move)
+        moved = game.try_move(index: get_human.get_move)
         show_illegal_move_message unless moved
       end
     end
