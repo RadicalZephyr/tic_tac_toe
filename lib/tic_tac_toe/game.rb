@@ -7,7 +7,12 @@ module TicTacToe
 
     def initialize(board)
       @board = board
+      reset
+    end
+
+    def reset
       @current_mark = "X"
+      board.reset
     end
 
     def swap_mark

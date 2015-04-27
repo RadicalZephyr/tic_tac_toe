@@ -106,6 +106,7 @@ module TicTacToe
       loop do
         game_loop
         break unless play_again?
+        game.reset
       end
     end
 
