@@ -16,6 +16,12 @@ module TicTacToe
       @console.gets.chomp
     end
 
+    def prompt_player(mark)
+      @console.print "Who should play #{mark}'s ([h]uman, [r]andom or [a]i)?"
+      @console.flush
+      @console.gets.chomp
+    end
+
     def yn_to_bool(input)
       case input.downcase
       when "y", "yes"
@@ -76,8 +82,23 @@ module TicTacToe
       @player
     end
 
+    def get_player(mark)
+      loop do
+        input = prompt_player(mark)
+        puts "Got input: '#{input}'"
+        case input
+        when "h", "human"
+          return @player
+        when "r", "random"
+          return TicTacToe::AI::Random.new(Random.new)
+        end
+      end
+    end
+
     def choose_players
-      [get_human, get_human]
+      ["X", "O"].map do |mark|
+        get_player(mark)
+      end
     end
 
     def do_turn
