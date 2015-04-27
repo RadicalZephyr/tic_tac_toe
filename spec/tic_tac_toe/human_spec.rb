@@ -13,7 +13,9 @@ describe TicTacToe::Human do
     end
 
     def test_human(shell)
-      TicTacToe::Human.new(shell)
+      TicTacToe::Human.new.tap do |h|
+        h.set_shell(shell)
+      end
     end
 
     def with(input:, expecting:)
