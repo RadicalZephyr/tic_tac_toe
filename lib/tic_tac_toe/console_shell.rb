@@ -72,7 +72,9 @@ module TicTacToe
     end
 
     def get_human
-      TicTacToe::Human.new(self)
+      TicTacToe::Human.new.tap do |h|
+        h.set_shell(self)
+      end
     end
 
     def get_move

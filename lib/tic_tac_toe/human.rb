@@ -2,7 +2,7 @@ module TicTacToe
   class Human
     attr_reader :shell
 
-    def initialize(shell)
+    def set_shell(shell)
       @shell = shell
     end
 
