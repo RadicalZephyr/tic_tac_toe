@@ -67,6 +67,26 @@ describe TicTacToe::ConsoleShell do
     end
   end
 
+  describe "handling yes or no questions" do
+    it "handles y or yes as true" do
+      ["y", "yes"].each do |text|
+        expect(console_shell.yn_to_bool(text)).to be_truthy
+      end
+    end
+
+    it "handles n or no as false" do
+      ["n", "no"].each do |text|
+        expect(console_shell.yn_to_bool(text)).to be_falsey
+      end
+    end
+
+    it "handles anything else as nil" do
+      ["ab", "euonth" "8oe02b"].each do |text|
+        expect(console_shell.yn_to_bool(text)).to be_nil
+      end
+    end
+  end
+
   describe 'when running the game loop' do
     it 'keeps running while the board is not complete' do
       allow(game).to receive(:try_move).and_return(true)
