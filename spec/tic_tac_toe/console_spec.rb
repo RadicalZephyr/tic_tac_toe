@@ -68,6 +68,12 @@ describe TicTacToe::ConsoleShell do
     end
   end
 
+  describe 'Choosing players' do
+    it 'Can return two human players' do
+      expect(console_shell.choose_players).to eq([player, player])
+    end
+  end
+
   describe 'Running the console shell' do
 
     it 'it only plays one game if the user says no' do
