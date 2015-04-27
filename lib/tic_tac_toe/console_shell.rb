@@ -47,8 +47,11 @@ module TicTacToe
       try_again
     end
 
-    def show_board(board)
+    def show_move_message
       @console.puts "\nIt is the #{game.current_mark}'s move."
+    end
+
+    def show_board(board)
       @console.puts board.board_to_string
       @console.puts
     end
@@ -86,6 +89,7 @@ module TicTacToe
     end
 
     def do_turn
+      show_move_message
       show_board(game.board)
       moved = false
       while not moved
