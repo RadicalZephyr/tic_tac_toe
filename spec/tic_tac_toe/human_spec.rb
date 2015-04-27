@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TicTacToe::Human do
   describe 'when validating input' do
     let(:shell) { mock_shell }
-    let(:console_shell) { TicTacToe::Human.new(shell) }
+    let(:human) { TicTacToe::Human.new(shell) }
 
     def mock_shell
       instance_double("TicTacToe::ConsoleShell").tap do |shell|
@@ -14,17 +14,17 @@ describe TicTacToe::Human do
 
     def with(input:, expecting:)
       allow(shell).to receive(:prompt_move).and_return("#{input}\n")
-      expect(console_shell.get_move).to eq expecting
+      expect(human.get_move).to eq expecting
     end
 
     def ignores(input:)
       allow(shell).to receive(:prompt_move).and_return("#{input}\n", "1\n")
-      expect(console_shell.get_move).to eq 1
+      expect(human.get_move).to eq 1
     end
 
     it 'keeps reading until it gets a number' do
       allow(shell).to receive(:prompt_move).and_return("abcd\n", "def\n", "{1a\n", "1\n")
-      expect(console_shell.get_move).to eq 1
+      expect(human.get_move).to eq 1
     end
 
     it 'should only return a number between 0 and 8' do
