@@ -15,6 +15,10 @@ module TicTacToe
     end
 
     def initialize
+      reset
+    end
+
+    def reset
       @marks = Array.new(9, " ")
     end
 
