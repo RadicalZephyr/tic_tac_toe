@@ -39,34 +39,6 @@ describe TicTacToe::ConsoleShell do
 
   end
 
-  describe 'when validating input' do
-
-    def with(input:, expecting:)
-      allow(console).to receive(:gets).and_return("#{input}\n")
-      expect(console_shell.get_move).to eq expecting
-    end
-
-    def ignores(input:)
-      allow(console).to receive(:gets).and_return("#{input}\n", "1\n")
-      expect(console_shell.get_move).to eq 1
-    end
-
-    it 'keeps reading until it gets a number' do
-      allow(console).to receive(:gets).and_return("abcd\n", "def\n", "{1a\n", "1\n")
-      expect(console_shell.get_move).to eq 1
-    end
-
-    it 'should only return a number between 0 and 8' do
-      ignores(input: "-10")
-      ignores(input: "-1")
-      ignores(input: "9")
-      ignores(input: "15")
-      with(input: "0", expecting: 0)
-      with(input: "4", expecting: 4)
-      with(input: "8", expecting: 8)
-    end
-  end
-
   describe "handling yes or no questions" do
     it "handles y or yes as true" do
       ["y", "yes"].each do |text|
