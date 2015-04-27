@@ -25,26 +25,6 @@ describe "Playing a full game" do
     expect(console).to receive(:gets).and_return(*inputs)
   end
 
-  describe "handling yes or no questions" do
-    it "handles y or yes as true" do
-      ["y", "yes"].each do |text|
-        expect(shell.yn_to_bool(text)).to be_truthy
-      end
-    end
-
-    it "handles n or no as false" do
-      ["n", "no"].each do |text|
-        expect(shell.yn_to_bool(text)).to be_falsey
-      end
-    end
-
-    it "handles anything else as nil" do
-      ["ab", "euonth" "8oe02b"].each do |text|
-        expect(shell.yn_to_bool(text)).to be_nil
-      end
-    end
-  end
-
   it "ends after a win" do
     x_moves = [0, 1, 2]
     y_moves = [3, 4]
