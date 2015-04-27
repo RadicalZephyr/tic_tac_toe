@@ -5,8 +5,9 @@ module TicTacToe
   class ConsoleShell
     attr_reader :game
 
-    def initialize(console, game)
-      @console, @game = console, game
+    def initialize(console, game, player)
+      @console, @game, @player = console, game, player
+      player.set_shell(self)
     end
 
     def prompt_move
@@ -77,16 +78,12 @@ module TicTacToe
       end
     end
 
-    def get_move
-      get_human.get_move
-    end
-
     def do_turn
       show_move_message
       show_board(game.board)
       moved = false
       while not moved
-        moved = game.try_move(index: get_move)
+        moved = game.try_move(index: @player.get_move)
         show_illegal_move_message unless moved
       end
     end

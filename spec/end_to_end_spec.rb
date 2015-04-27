@@ -5,7 +5,8 @@ describe "Playing a full game" do
   let(:console) { mock_console }
   let(:board)   { TicTacToe::Board.new }
   let(:game)    { TicTacToe::Game.new(board) }
-  let(:shell)   { TicTacToe::ConsoleShell.new(console, game) }
+  let(:player)  { TicTacToe::Human.new }
+  let(:shell)   { TicTacToe::ConsoleShell.new(console, game, player) }
 
   def mock_console
     instance_double('IO').tap do |console|
