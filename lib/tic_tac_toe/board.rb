@@ -32,7 +32,7 @@ module TicTacToe
       return self
     end
 
-    def board_to_string
+    def to_s
       rows = @marks.each_slice(3)
       row_strings = rows.map { |row| Array(row).join(" | ") }
       row_strings.join("\n--+---+--\n")
