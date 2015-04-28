@@ -4,6 +4,7 @@ require "tic_tac_toe/board"
 require "tic_tac_toe/game"
 require "tic_tac_toe/rules"
 require "tic_tac_toe/ai/random"
+require "tic_tac_toe/ai/minimax"
 
 module TicTacToe
 
