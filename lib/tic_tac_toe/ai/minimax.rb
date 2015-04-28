@@ -47,30 +47,6 @@ module TicTacToe
         end.max_by { |i, s| s }
       end
 
-      def empty_space(imarks)
-        imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
-      end
-
-      def score(node)
-        get_wins(node.indexed_attack_sets).count
-      end
-
-      def find_forks(board)
-        negamax({1 => @my_mark, -1 => @other_mark}, board, 10, 1).first
-      end
-
-      def get_indices_for(attacks)
-        attacks.map { |imarks| empty_space(imarks) if yield(imarks)  }.flatten.compact
-      end
-
-      def get_wins(attacks)
-        get_indices_for(attacks) { |imarks| i_can_win?(imarks) }
-      end
-
-      def get_blocks(attacks)
-        get_indices_for(attacks) { |imarks| they_can_win?(imarks) }
-      end
-
       def get_move(board)
         negamax({1 => @my_mark, -1 => @other_mark}, board, 10, 1).first
       end
