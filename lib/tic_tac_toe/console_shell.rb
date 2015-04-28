@@ -100,9 +100,8 @@ module TicTacToe
     end
 
     def choose_players
-      ["X", "O"].map do |mark|
-        get_player(mark)
-      end
+      {"X" => get_player("X"),
+       "O" => get_player("O")}
     end
 
     def do_turn
