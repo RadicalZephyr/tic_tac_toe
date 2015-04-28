@@ -24,6 +24,29 @@ module TicTacToe
         has_my_marks(imarks: imarks, count: 0)
       end
 
+      def score_node(node)
+        winner = TicTacToe::Rules.who_won?(node)
+        if winner == @my_mark
+          1
+        elsif winner == @other_mark
+          -1
+        elsif TicTacToe::Rules.draw?(node)
+          0
+        end
+      end
+
+      def negamax(marks, node, depth, color)
+        if depth == 0 or TicTacToe::Rules.finished?(node)
+          return [0, color * depth * score_node(node)]
+        end
+
+        node.empty_spaces.map do |index|
+          next_child = node.speculative_move(marks[color], index)
+          _, score = negamax(marks, next_child, depth - 1, -color)
+          [index, -score]
+        end.max_by { |i, s| s }
+      end
+
       def empty_space(imarks)
         imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
       end
