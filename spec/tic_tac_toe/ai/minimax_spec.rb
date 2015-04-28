@@ -79,5 +79,19 @@ describe TicTacToe::AI::Minimax do
       expect(ai.get_move(board)).to eq(6)
     end
 
+    it 'in the center' do
+      board = TicTacToe::Board.from(["X", "O", " ",
+                                     "O", " ", " ",
+                                     "X", " ", " "])
+      expect(ai.get_move(board)).to eq(4)
+    end
+
+    it 'in the corner or on the side' do
+      board = TicTacToe::Board.from(["X", "O", " ",
+                                     " ", "X", " ",
+                                     " ", " ", "O"])
+      expect(ai.get_move(board)).to eq(3).or eq(6)
+    end
   end
+
 end
