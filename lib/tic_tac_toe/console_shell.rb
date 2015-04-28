@@ -69,7 +69,7 @@ module TicTacToe
     end
 
     def show_board(board)
-      @console.puts board.board_to_string
+      @console.puts board
       @console.puts
     end
 
