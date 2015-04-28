@@ -4,7 +4,7 @@ require 'io/console'
 describe "Playing a full game" do
   let(:console) { mock_console }
   let(:board)   { TicTacToe::Board.new }
-  let(:game)    { TicTacToe::Game.new(board) }
+  let(:game)    { TicTacToe::Game.make_new_game(board) }
   let(:player)  { TicTacToe::Human.new }
   let(:shell)   { TicTacToe::ConsoleShell.new(console, game, player) }
 
