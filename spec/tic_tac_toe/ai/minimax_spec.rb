@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TicTacToe::AI::Minimax do
-  let(:ai) { TicTacToe::AI::Minimax.new }
+  let(:ai) { TicTacToe::AI::Minimax.new("X") }
 
   describe 'wins when it has two in a row' do
     it 'on the left' do
