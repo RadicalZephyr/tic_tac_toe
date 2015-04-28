@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TicTacToe::Game do
 
   let(:board) { TicTacToe::Board.new }
-  let(:game)  { TicTacToe::Game.new(board) }
+  let(:game)  { TicTacToe::Game.make_new_game(board) }
 
   context 'when playing' do
     it 'changes the active player after every move' do
