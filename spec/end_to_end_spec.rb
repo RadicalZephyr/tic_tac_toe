@@ -3,7 +3,7 @@ require 'io/console'
 
 describe "Playing a full game" do
   let(:console) { mock_console }
-  let(:shell)   { TicTacToe::ConsoleShell.setup_shell(console) }
+  let(:shell)   { TicTacToe::ConsoleShell.new_shell(console) }
 
   def mock_console
     instance_double('IO').tap do |console|
