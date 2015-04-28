@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'rspec/expectations'
 
 describe TicTacToe::AI::Minimax do
   let(:ai) { TicTacToe::AI::Minimax.new("X") }
@@ -91,6 +92,41 @@ describe TicTacToe::AI::Minimax do
                                      " ", "X", " ",
                                      " ", " ", "O"])
       expect(ai.get_move(board)).to eq(3).or eq(6)
+    end
+  end
+
+  describe 'blocks opponents forks' do
+
+    RSpec::Matchers.define :be_any_of do |a, b|
+      match do |actual|
+        actual == a or actual == b
+      end
+    end
+
+    RSpec::Matchers.define :be_any_of do |a, b, c|
+      match do |actual|
+        actual == a or actual == b or actual == c
+      end
+    end
+
+    RSpec::Matchers.define :be_any_of do |a, b, c, d|
+      match do |actual|
+        actual == a or actual == b or actual == c or actual == d
+      end
+    end
+
+    it 'on the side' do
+      board = TicTacToe::Board.from(["O", " ", " ",
+                                     " ", "X", " ",
+                                     " ", " ", "O"])
+      expect(ai.get_move(board)).to be_any_of(1, 3, 5, 7)
+    end
+
+    it 'in the center' do
+      board = TicTacToe::Board.from(["O", "O", "X",
+                                     " ", " ", " ",
+                                     " ", " ", " "])
+      expect(ai.get_move(board)).to eq(4)
     end
   end
 
