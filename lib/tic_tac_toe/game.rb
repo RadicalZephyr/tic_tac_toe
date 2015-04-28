@@ -5,14 +5,19 @@ module TicTacToe
     NEXT_PLAYER = {"X" => "O",
                    "O" => "X"}
 
+    def self.make_new_game(board)
+      game = TicTacToe::Game.new(board)
+      game.reset
+    end
+
     def initialize(board)
       @board = board
-      reset
     end
 
     def reset
       @current_mark = "X"
       board.reset
+      return self
     end
 
     def swap_mark
