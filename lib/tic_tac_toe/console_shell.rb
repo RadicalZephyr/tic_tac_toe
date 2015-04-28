@@ -84,9 +84,7 @@ module TicTacToe
 
     def get_player(mark)
       loop do
-        input = prompt_player(mark)
-        puts "Got input: '#{input}'"
-        case input
+        case prompt_player(mark)
         when "h", "human"
           return @player
         when "r", "random"
