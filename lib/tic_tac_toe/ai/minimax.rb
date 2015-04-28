@@ -37,7 +37,7 @@ module TicTacToe
 
       def negamax(marks, node, depth, color)
         if depth == 0 or TicTacToe::Rules.finished?(node)
-          return [0, color * depth * score_node(node)]
+          return [-1, color * depth * score_node(node)]
         end
 
         node.empty_spaces.map do |index|
