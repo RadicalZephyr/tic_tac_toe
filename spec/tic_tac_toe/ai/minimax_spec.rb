@@ -122,7 +122,7 @@ describe TicTacToe::AI::Minimax do
       expect(ai.get_move(board)).to be_any_of(1, 3, 5, 7)
     end
 
-    it 'on the side' do
+    xit 'on the side' do
       board = TicTacToe::Board.from([" ", " ", "O",
                                      " ", "X", " ",
                                      "O", " ", " "])
