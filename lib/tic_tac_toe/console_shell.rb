@@ -25,7 +25,7 @@ module TicTacToe
     end
 
     def prompt_player(mark)
-      @console.print "Who should play #{mark}'s ([h]uman, [r]andom or [a]i)?"
+      @console.print "Who should play #{mark}'s ([h]uman, [r]andom or [a]i)? "
       @console.flush
       @console.gets.chomp
     end
