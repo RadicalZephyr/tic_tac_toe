@@ -3,8 +3,8 @@ module TicTacToe
 
     class Minimax
 
-      def initialize(my_mark)
-        @my_mark = my_mark
+      def initialize(my_mark, other_mark)
+        @my_mark, @other_mark = my_mark, other_mark
       end
 
       def count_marks(marks)
