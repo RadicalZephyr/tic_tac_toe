@@ -124,6 +124,7 @@ module TicTacToe
     def main_loop
       show_welcome_message
       loop do
+        players = choose_players
         game_loop
         break unless play_again?
         game.reset
