@@ -22,6 +22,29 @@ describe TicTacToe::Board do
     expect(board.pos 10).to eq(nil)
   end
 
+  describe 'when creating empty indices' do
+    it 'can handle a full board' do
+      board = TicTacToe::Board.from(["X", "O", "X",
+                                     "X", "X", "O",
+                                     "O", "X", "O"])
+      expect(board.empty_spaces).to contain_exactly()
+    end
+
+    it 'can handle a mostly full board' do
+      board = TicTacToe::Board.from(["X", " ", "X",
+                                     "X", "X", "O",
+                                     "O", " ", "O"])
+      expect(board.empty_spaces).to contain_exactly(1, 7)
+    end
+
+    it 'produces all indices for an empty board' do
+      board = TicTacToe::Board.from([" ", " ", " ",
+                                     " ", " ", " ",
+                                     " ", " ", " "])
+      expect(board.empty_spaces).to contain_exactly(*(0..8))
+    end
+  end
+
   describe 'when checking if a move is legal' do
     it 'will say unmarked spaces are legal' do
       (0...9).each do |index|
