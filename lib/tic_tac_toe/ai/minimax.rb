@@ -56,12 +56,7 @@ module TicTacToe
       end
 
       def find_forks(board)
-        scores = board.empty_spaces.map do |index|
-          node = board.speculative_move("X", index)
-          [index, score(node)]
-        end
-
-        scores.max_by { |i, s| s }.first
+        negamax({1 => @my_mark, -1 => @other_mark}, board, 10, 1).first
       end
 
       def get_indices_for(attacks)
