@@ -6,7 +6,7 @@ module TicTacToe
       @shell = shell
     end
 
-    def get_move
+    def get_move(_)
       got_input = false
       while not got_input
         str = shell.prompt_move
