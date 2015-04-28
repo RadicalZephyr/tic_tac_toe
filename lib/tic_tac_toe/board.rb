@@ -58,6 +58,9 @@ module TicTacToe
       WIN_PLACES.map { |places| places.map { |n| @marks.at n }}
     end
 
+    def indexed_attack_sets
+      WIN_PLACES.map { |places| places.map { |n| [n, @marks.at(n)] }}
+    end
   end
 
 end
