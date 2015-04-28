@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TicTacToe::Board do
-  let(:board) { TicTacToe::Board.new }
+  let(:board) { TicTacToe::Board.empty_board }
 
   it 'initially has 9 empty positions' do
     (0...9).each do |i|

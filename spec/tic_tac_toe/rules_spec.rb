@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe TicTacToe::Rules do
-  let(:board) { TicTacToe::Board.new }
+  let(:board) { TicTacToe::Board.empty_board }
 
   describe 'when checking if there is a winner' do
     def do_winning_test board, mark, places
@@ -15,7 +15,7 @@ describe TicTacToe::Rules do
     it 'knows when someone has won' do
       ["X", "O"].each do |mark|
         TicTacToe::Board.win_places.each do |places|
-          board = TicTacToe::Board.new
+          board = TicTacToe::Board.empty_board
           do_winning_test board, mark, places
         end
       end

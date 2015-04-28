@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe TicTacToe::Game do
 
-  let(:board) { TicTacToe::Board.new }
+  let(:board) { TicTacToe::Board.empty_board }
   let(:game)  { TicTacToe::Game.make_new_game(board) }
 
   context 'when playing' do
