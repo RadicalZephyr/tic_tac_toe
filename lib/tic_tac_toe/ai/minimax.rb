@@ -16,13 +16,21 @@ module TicTacToe
         counts[@my_mark] == 2 && counts[" "] == 1
       end
 
+      def they_can_win?(imarks)
+        counts = count_marks(imarks.map { |imark| imark.mark })
+        counts[@my_mark] == 0 && counts[" "] == 1
+      end
+
       def empty_space(imarks)
         imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
       end
 
       def get_move(board)
         attacks = board.indexed_attack_sets
-        attacks.map { |imarks| empty_space(imarks) if i_can_win?(imarks)  }.flatten.compact.first
+        win = attacks.map { |imarks| empty_space(imarks) if i_can_win?(imarks)  }.flatten.compact.first
+        block = attacks.map { |imarks| empty_space(imarks) if they_can_win?(imarks)  }.flatten.compact.first
+
+        win or block
       end
 
     end
