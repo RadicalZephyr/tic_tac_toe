@@ -133,7 +133,7 @@ describe TicTacToe::AI::Minimax do
       board = TicTacToe::Board.from(["O", "O", "X",
                                      " ", " ", " ",
                                      " ", " ", " "])
-      expect(ai.get_move(board)).to eq(4)
+      expect(ai.get_move(board)).to be_any_of(4, 5)
     end
   end
 
