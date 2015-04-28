@@ -8,8 +8,7 @@ require "tic_tac_toe/ai/random"
 module TicTacToe
 
   def TicTacToe.run
-    game = TicTacToe::Game.make_new_game(TicTacToe::Board.new)
-    shell = TicTacToe::ConsoleShell.new(IO::console, game)
+    shell = TicTacToe::ConsoleShell.setup_shell(IO::console)
     shell.main_loop
   end
 end

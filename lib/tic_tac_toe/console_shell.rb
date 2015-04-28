@@ -5,6 +5,12 @@ module TicTacToe
   class ConsoleShell
     attr_reader :game
 
+    def self.setup_shell(console)
+      game = TicTacToe::Game.make_new_game(TicTacToe::Board.new)
+      player = TicTacToe::Human.new
+      TicTacToe::ConsoleShell.new(console, game, player)
+    end
+
     def initialize(console, game, player)
       @console, @game, @player = console, game, player
       player.set_shell(self)
