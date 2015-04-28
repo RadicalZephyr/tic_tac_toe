@@ -11,14 +11,17 @@ module TicTacToe
         marks.each_with_object(Hash.new(0)) { |mark, counts| counts[mark] += 1 }
       end
 
-      def i_can_win?(imarks)
+      def has_my_marks(imarks:, count:)
         counts = count_marks(imarks.map { |imark| imark.mark })
-        counts[@my_mark] == 2 && counts[" "] == 1
+        counts[@my_mark] == count && counts[" "] == 1
+      end
+
+      def i_can_win?(imarks)
+        has_my_marks(imarks: imarks, count: 2)
       end
 
       def they_can_win?(imarks)
-        counts = count_marks(imarks.map { |imark| imark.mark })
-        counts[@my_mark] == 0 && counts[" "] == 1
+        has_my_marks(imarks: imarks, count: 0)
       end
 
       def empty_space(imarks)
