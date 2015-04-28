@@ -28,12 +28,16 @@ module TicTacToe
         imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
       end
 
+      def find_forks(board)
+        4
+      end
+
       def get_move(board)
         attacks = board.indexed_attack_sets
         win   = attacks.map { |imarks| empty_space(imarks) if i_can_win?(imarks)  }.flatten.compact.first
         block = attacks.map { |imarks| empty_space(imarks) if they_can_win?(imarks)  }.flatten.compact.first
 
-        win or block
+        win or block or find_forks(board)
       end
 
     end
