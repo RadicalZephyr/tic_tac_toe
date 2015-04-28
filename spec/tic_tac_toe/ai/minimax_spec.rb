@@ -26,4 +26,14 @@ describe TicTacToe::AI::Minimax do
     end
 
   end
+
+  describe 'blocks when the opponent would win' do
+    it 'on the left' do
+      board = TicTacToe::Board.from([" ", "O", "O",
+                                     " ", " ", " ",
+                                     " ", " ", " "])
+      expect(ai.get_move(board)).to eq(0)
+
+    end
+  end
 end
