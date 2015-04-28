@@ -46,6 +46,12 @@ module TicTacToe
       @marks[index] = mark
     end
 
+    def speculative_move(mark, index)
+      board = TicTacToe::Board.from(Array.new(@marks))
+      board.move(mark, index)
+      return board
+    end
+
     def legal? index
       @marks[index] == " "
     end
