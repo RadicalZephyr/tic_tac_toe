@@ -51,11 +51,11 @@ describe TicTacToe::AI::Minimax do
   end
 
   describe 'creates forks' do
-    xit 'on the fourth corner' do
-      board = TicTacToe::Board.from(["X", "", " ",
-                                     " ", "O ", " ",
-                                     " ", " ", "X"])
-      expect(ai.get_move(board)).to eq(6)
+    it 'in the center' do
+      board = TicTacToe::Board.from(["X", "X", "O",
+                                     " ", " ", " ",
+                                     " ", " ", " "])
+      expect(ai.get_move(board)).to eq(4)
 
     end
   end
