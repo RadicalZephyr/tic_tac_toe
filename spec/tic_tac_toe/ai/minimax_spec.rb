@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rspec/expectations'
 
 describe TicTacToe::AI::Minimax do
-  let(:ai) { TicTacToe::AI::Minimax.new("X") }
+  let(:ai) { TicTacToe::AI::Minimax.new("X", "O") }
 
   describe 'wins when it has two in a row' do
     it 'on the left' do
