@@ -14,9 +14,17 @@ module TicTacToe
       WIN_PLACES
     end
 
+    def self.from(marks)
+      board = TicTacToe::Board.new(marks)
+    end
+
     def self.empty_board
-      board = TicTacToe::Board.new
+      board = TicTacToe::Board.new([])
       board.reset
+    end
+
+    def initialize(marks)
+      @marks = marks
     end
 
     def reset
