@@ -137,6 +137,29 @@ describe TicTacToe::AI::Minimax do
     end
   end
 
+  describe 'plays second correctly' do
+    it 'from a corner opening' do
+      board = TicTacToe::Board.from(["O", " ", " ",
+                                     " ", " ", " ",
+                                     " ", " ", " "])
+      expect(ai.get_move(board)).to eq(4)
+    end
+
+    it 'from a center opening' do
+      board = TicTacToe::Board.from([" ", " ", " ",
+                                     " ", "O", " ",
+                                     " ", " ", " "])
+      expect(ai.get_move(board)).to be_any_of(0, 2, 6, 8)
+    end
+
+    it 'from a side opening' do
+      board = TicTacToe::Board.from([" ", "O", " ",
+                                     " ", " ", " ",
+                                     " ", " ", " "])
+      expect(ai.get_move(board)).to be_any_of(4, 0, 2, 7)
+    end
+  end
+
   describe 'negamax' do
     it 'scores an immediate loss as -10' do
       board = TicTacToe::Board.from(["O", "O", "O",
