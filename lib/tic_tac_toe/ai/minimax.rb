@@ -41,12 +41,16 @@ module TicTacToe
         scores.max_by { |i, s| s }.first
       end
 
+      def get_indices_for(attacks)
+        attacks.map { |imarks| empty_space(imarks) if yield(imarks)  }.flatten.compact
+      end
+
       def get_wins(attacks)
-        attacks.map { |imarks| empty_space(imarks) if i_can_win?(imarks)  }.flatten.compact
+        get_indices_for(attacks) { |imarks| i_can_win?(imarks) }
       end
 
       def get_blocks(attacks)
-        attacks.map { |imarks| empty_space(imarks) if they_can_win?(imarks)  }.flatten.compact
+        get_indices_for(attacks) { |imarks| they_can_win?(imarks) }
       end
 
       def get_move(board)
