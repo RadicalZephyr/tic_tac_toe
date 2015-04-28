@@ -28,8 +28,19 @@ module TicTacToe
         imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
       end
 
+      def score(node)
+        get_wins(node.indexed_attack_sets).count
+      end
+
       def find_forks(board)
-        4
+        scores = board.empty_spaces.map do |index|
+          node = board.speculative_move("X", index)
+          [index, score(node)]
+        end
+
+        scores.max_by { |i, s| s }.first
+      end
+
       def get_wins(attacks)
         attacks.map { |imarks| empty_space(imarks) if i_can_win?(imarks)  }.flatten.compact
       end
