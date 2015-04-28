@@ -12,12 +12,12 @@ module TicTacToe
       end
 
       def i_can_win?(imarks)
-        counts = count_marks(imarks.map { |imark| imark[1] })
+        counts = count_marks(imarks.map { |imark| imark.mark })
         counts[@my_mark] == 2 && counts[" "] == 1
       end
 
       def empty_space(imarks)
-        imarks.select { |imark| imark[1] == " " }.map { |imark| imark[0] }
+        imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
       end
 
       def get_move(board)
