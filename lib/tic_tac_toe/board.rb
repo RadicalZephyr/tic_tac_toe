@@ -14,12 +14,14 @@ module TicTacToe
       WIN_PLACES
     end
 
-    def initialize
-      reset
+    def self.empty_board
+      board = TicTacToe::Board.new
+      board.reset
     end
 
     def reset
       @marks = Array.new(9, " ")
+      return self
     end
 
     def board_to_string
