@@ -72,11 +72,7 @@ module TicTacToe
       end
 
       def get_move(board)
-        attacks = board.indexed_attack_sets
-        win   = get_wins(attacks).first
-        block = get_blocks(attacks).first
-
-        win or block or find_forks(board)
+        negamax({1 => @my_mark, -1 => @other_mark}, board, 10, 1).first
       end
 
     end
