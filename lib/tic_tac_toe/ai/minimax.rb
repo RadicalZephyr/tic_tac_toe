@@ -30,12 +30,18 @@ module TicTacToe
 
       def find_forks(board)
         4
+      def get_wins(attacks)
+        attacks.map { |imarks| empty_space(imarks) if i_can_win?(imarks)  }.flatten.compact
+      end
+
+      def get_blocks(attacks)
+        attacks.map { |imarks| empty_space(imarks) if they_can_win?(imarks)  }.flatten.compact
       end
 
       def get_move(board)
         attacks = board.indexed_attack_sets
-        win   = attacks.map { |imarks| empty_space(imarks) if i_can_win?(imarks)  }.flatten.compact.first
-        block = attacks.map { |imarks| empty_space(imarks) if they_can_win?(imarks)  }.flatten.compact.first
+        win   = get_wins(attacks).first
+        block = get_blocks(attacks).first
 
         win or block or find_forks(board)
       end
