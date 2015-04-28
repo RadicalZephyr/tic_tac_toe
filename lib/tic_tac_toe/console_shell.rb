@@ -4,6 +4,7 @@ module TicTacToe
 
   class ConsoleShell
     attr_reader :game
+    attr_accessor :players
 
     def self.new_shell(console)
       game = TicTacToe::Game.make_new_game(TicTacToe::Board.new)
@@ -14,6 +15,7 @@ module TicTacToe
     def initialize(console, game, player)
       @console, @game, @player = console, game, player
       player.set_shell(self)
+      @players = {"X" => player, "O" => player}
     end
 
     def prompt_move
