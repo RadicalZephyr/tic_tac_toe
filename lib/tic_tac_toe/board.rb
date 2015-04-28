@@ -63,6 +63,10 @@ module TicTacToe
     def indexed_attack_sets
       WIN_PLACES.map { |places| places.map { |n| IndexedCell.new(n, @marks.at(n)) }}
     end
+
+    def empty_spaces
+      @marks.map.with_index { |mark, index| index if mark == " " }.compact
+    end
   end
 
 end
