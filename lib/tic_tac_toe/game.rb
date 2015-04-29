@@ -24,6 +24,12 @@ module TicTacToe
       @current_mark = NEXT_PLAYER[current_mark]
     end
 
+    def move(index:)
+      raise ArgumentError unless board.legal?(index)
+      board.move(current_mark, index)
+      swap_mark
+    end
+
     def try_move(index:)
       if board.legal?(index)
         board.move(current_mark, index)
