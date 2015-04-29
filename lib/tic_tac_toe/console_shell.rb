@@ -114,8 +114,12 @@ module TicTacToe
       moved = false
       current_player = @players[game.current_mark]
       while not moved
-        moved = game.try_move(index: current_player.get_move(game.board))
-        show_illegal_move_message unless moved
+        begin
+          game.move(index: current_player.get_move(game.board))
+          moved = true
+        rescue ArgumentError
+          show_illegal_move_message
+        end
       end
     end
 

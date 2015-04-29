@@ -29,12 +29,14 @@ describe TicTacToe::ConsoleShell do
   describe 'when playing' do
 
     it 'Makes a move based on user input' do
-      expect(game).to receive(:try_move).with({:index => 1}).and_return(true)
+      expect(game).to receive(:move).with({:index => 1})
       console_shell.do_turn
     end
 
     it 'Keeps reading until it gets a legal move' do
-      expect(game).to receive(:try_move).with({:index => 1}).exactly(3).times.and_return(false, false, true)
+      allow(console).to receive(:gets).and_return("1\n", "1\n", "2\n")
+      allow(game).to receive(:move).with({:index => 1}).and_raise(ArgumentError)
+      allow(game).to receive(:move).with({:index => 2})
       console_shell.do_turn
     end
 
@@ -62,7 +64,7 @@ describe TicTacToe::ConsoleShell do
 
   describe 'when running the game loop' do
     it 'keeps running while the board is not complete' do
-      allow(game).to receive(:try_move).and_return(true)
+      allow(game).to receive(:move)
       expect(game).to receive(:finished?).exactly(3).times.and_return(false, false, true)
       console_shell.game_loop
     end
