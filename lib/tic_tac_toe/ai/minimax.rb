@@ -40,12 +40,15 @@ module TicTacToe
           return [-1, color * depth * score_node(node)]
         end
 
-        node.empty_spaces.map do |index|
+        best = [-1, -100]
+        node.empty_spaces.each do |index|
           next_child = node.speculative_move(marks[color], index)
           _, score = negamax(marks, next_child, depth - 1, -beta, -alpha, -color)
           val = -score # Invert the returned score as in regular negamax
-          [index, val]
-        end.max_by { |i, s| s }
+          best = [best, [index, val]].max_by { |i, s| s }
+        end
+
+        return best
       end
 
       def get_move(board)
