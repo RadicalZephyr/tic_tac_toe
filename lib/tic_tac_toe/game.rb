@@ -30,16 +30,6 @@ module TicTacToe
       swap_mark
     end
 
-    def try_move(index:)
-      if board.legal?(index)
-        board.move(current_mark, index)
-        swap_mark
-        true
-      else
-        false
-      end
-    end
-
     def finished?
       TicTacToe::Rules.finished?(board)
     end
