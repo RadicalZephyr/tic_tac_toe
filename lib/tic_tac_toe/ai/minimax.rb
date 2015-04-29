@@ -43,7 +43,8 @@ module TicTacToe
         node.empty_spaces.map do |index|
           next_child = node.speculative_move(marks[color], index)
           _, score = negamax(marks, next_child, depth - 1, -beta, -alpha, -color)
-          [index, -score]
+          val = -score # Invert the returned score as in regular negamax
+          [index, val]
         end.max_by { |i, s| s }
       end
 
