@@ -4,19 +4,18 @@ describe TicTacToe::Rules do
   let(:board) { TicTacToe::Board.empty_board }
 
   describe 'when checking if there is a winner' do
-    def do_winning_test board, mark, places
+    def set_marks(board, mark, places)
       places.each do |n|
         board.move(mark, n)
       end
-
-      expect(TicTacToe::Rules.who_won?(board)).to eq mark
     end
 
     it 'knows when someone has won' do
       ["X", "O"].each do |mark|
         TicTacToe::Board.win_places.each do |places|
           board = TicTacToe::Board.empty_board
-          do_winning_test board, mark, places
+          set_marks(board, mark, places)
+          expect(TicTacToe::Rules.who_won?(board)).to eq(mark)
         end
       end
     end
