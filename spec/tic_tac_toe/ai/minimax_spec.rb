@@ -135,6 +135,13 @@ describe TicTacToe::AI::Minimax do
                                      " ", " ", " "])
       expect(ai.get_move(board)).to be_any_of(4, 5)
     end
+
+    it 'in the center' do
+      board = TicTacToe::Board.from(["O", " ", " ",
+                                     " ", "O", " ",
+                                     " ", " ", "X"])
+      expect(ai.get_move(board)).to be_any_of(2, 6)
+    end
   end
 
   describe 'plays second correctly' do
