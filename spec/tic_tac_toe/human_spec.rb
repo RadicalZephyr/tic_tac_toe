@@ -20,17 +20,17 @@ describe TicTacToe::Human do
 
     def with(input:, expecting:)
       allow(shell).to receive(:prompt_move).and_return("#{input}\n")
-      expect(human.get_move(nil)).to eq expecting
+      expect(human.get_move(nil)).to eq(expecting)
     end
 
     def ignores(input:)
       allow(shell).to receive(:prompt_move).and_return("#{input}\n", "1\n")
-      expect(human.get_move(nil)).to eq 1
+      expect(human.get_move(nil)).to eq(1)
     end
 
     it 'keeps reading until it gets a number' do
       allow(shell).to receive(:prompt_move).and_return("abcd\n", "def\n", "{1a\n", "1\n")
-      expect(human.get_move(nil)).to eq 1
+      expect(human.get_move(nil)).to eq(1)
     end
 
     it 'should only return a number between 0 and 8' do

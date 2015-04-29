@@ -38,7 +38,7 @@ module TicTacToe
       row_strings.join("\n--+---+--\n")
     end
 
-    def pos index
+    def pos(index)
       @marks[index]
     end
 
@@ -52,7 +52,7 @@ module TicTacToe
       return board
     end
 
-    def legal? index
+    def legal?(index)
       @marks[index] == " "
     end
 
