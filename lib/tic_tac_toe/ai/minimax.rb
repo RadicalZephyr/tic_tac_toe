@@ -46,8 +46,11 @@ module TicTacToe
           _, score = negamax(marks, next_child, depth - 1, -beta, -alpha, -color)
           val = -score # Invert the returned score as in regular negamax
           best = [best, [index, val]].max_by { |i, s| s }
+          alpha = [alpha, val].max
+          if alpha >= beta
+            break
+          end
         end
-
         return best
       end
 
