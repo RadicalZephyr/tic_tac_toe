@@ -70,8 +70,12 @@ module TicTacToe
         end
       end
 
+      def should_stop?(node, mark)
+        TicTacToe::Rules.finished?(node) or has_win?(node, mark) or whose_fork?(node)
+      end
+
       def negamax(marks, node, depth, alpha, beta, color)
-        if depth == 0 or TicTacToe::Rules.finished?(node) or has_win?(node, marks[color]) or whose_fork?(node)
+        if depth == 0 or should_stop?(node, marks[color])
           score = score_node(node, marks[color])
           if
             pos = get_win(node, marks[color])
