@@ -192,6 +192,25 @@ describe TicTacToe::AI::Minimax do
 
       expect(ai.negamax({1  => "X", -1 => "O"}, board, 10, 100, -100, 1)).to eq([0, 100])
     end
+
+    describe 'scores an established fork as a win' do
+      it 'for the ai' do
+        board = TicTacToe::Board.from(["X", " ", "O",
+                                       " ", "O", " ",
+                                       "X", " ", "X"])
+
+        expect(ai.negamax({1  => "X", -1 => "O"}, board, 10, 100, -100, 1)).to include(100)
+      end
+
+      it 'for the opponent' do
+        board = TicTacToe::Board.from(["X", "O", "O",
+                                       " ", "O", " ",
+                                       " ", " ", "X"])
+
+        expect(ai.negamax({1  => "X", -1 => "O"}, board, 10, -100, 100, -1)).to include(100)
+      end
+    end
+
   end
 
   describe 'recognizes imminent wins' do
