@@ -37,6 +37,15 @@ module TicTacToe
         get_wins(attacks, mark).uniq.count > 1
       end
 
+      def has_win?(node, mark)
+        attacks = node.indexed_attack_sets
+        get_wins(attacks, mark).uniq.count == 1
+      end
+
+      def will_win?(node, mark)
+        has_win?(node, mark) ? mark : nil
+      end
+
       def score_node(node, mark)
         winner = TicTacToe::Rules.who_won?(node)
         if winner == @my_mark
