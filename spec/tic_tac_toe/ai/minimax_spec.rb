@@ -116,13 +116,6 @@ describe TicTacToe::AI::Minimax do
     end
 
     it 'on the side' do
-      board = TicTacToe::Board.from(["O", " ", " ",
-                                     " ", "X", " ",
-                                     " ", " ", "O"])
-      expect(ai.get_move(board)).to be_any_of(1, 3, 5, 7)
-    end
-
-    it 'on the side' do
       board = TicTacToe::Board.from([" ", " ", "O",
                                      " ", "X", " ",
                                      "O", " ", " "])
@@ -136,7 +129,7 @@ describe TicTacToe::AI::Minimax do
       expect(ai.get_move(board)).to be_any_of(4, 5)
     end
 
-    it 'in the center' do
+    it 'on either side' do
       board = TicTacToe::Board.from(["O", " ", " ",
                                      " ", "O", " ",
                                      " ", " ", "X"])
