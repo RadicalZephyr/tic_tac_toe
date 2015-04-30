@@ -16,13 +16,6 @@ module TicTacToe
         counts[mark] == 2 && counts[" "] == 1
       end
 
-      def i_can_win?(imarks)
-        mark_can_win?(imarks, @my_mark)
-      end
-
-      def they_can_win?(imarks)
-        mark_can_win?(imarks, @other_mark)
-      end
       def empty_space(imarks)
         imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
       end
@@ -32,11 +25,11 @@ module TicTacToe
       end
 
       def get_wins(attacks)
-        get_indices_for(attacks) { |imarks| i_can_win?(imarks) }
+        get_indices_for(attacks) { |imarks| mark_can_win?(imarks, @my_mark) }
       end
 
       def get_blocks(attacks)
-        get_indices_for(attacks) { |imarks| they_can_win?(imarks) }
+        get_indices_for(attacks) { |imarks| mark_can_win?(imarks, @other_mark) }
       end
 
       def has_fork?(node)
