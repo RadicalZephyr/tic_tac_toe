@@ -41,10 +41,6 @@ module TicTacToe
         get_wins(node, mark).uniq.count == 1
       end
 
-      def get_win(node, mark)
-        get_wins(node, mark).first
-      end
-
       def will_win?(node, mark)
         mark if has_win?(node, mark)
       end
@@ -79,7 +75,7 @@ module TicTacToe
       def negamax(marks, node, depth, alpha, beta, color)
         if depth == 0 or should_stop?(node, marks[color])
           score = score_node(node, marks[color])
-          pos = get_win(node, marks[color]) || -1
+          pos = get_wins(node, marks[color]).first || -1
           return [pos, color * depth * score]
         end
 
