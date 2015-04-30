@@ -168,7 +168,7 @@ describe TicTacToe::AI::Minimax do
   end
 
   describe 'negamax' do
-    it 'scores an immediate loss as -10' do
+    it 'scores an immediate loss as -100' do
       board = TicTacToe::Board.from(["O", "O", "O",
                                      " ", " ", " ",
                                      " ", " ", " "])
@@ -176,7 +176,7 @@ describe TicTacToe::AI::Minimax do
       expect(ai.negamax({1  => "X", -1 => "O"}, board, 10, -100, 100, 1)).to eq([-1, -100])
     end
 
-    it 'scores an immediate win as 10' do
+    it 'scores an immediate win as 100' do
       board = TicTacToe::Board.from(["X", "X", "X",
                                      " ", " ", " ",
                                      " ", " ", " "])
