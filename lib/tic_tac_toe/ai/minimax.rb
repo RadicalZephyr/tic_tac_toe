@@ -37,7 +37,7 @@ module TicTacToe
         get_wins(attacks, mark).uniq.count > 1
       end
 
-      def score_node(node)
+      def score_node(node, mark)
         winner = TicTacToe::Rules.who_won?(node)
         if winner == @my_mark
           10
@@ -50,7 +50,7 @@ module TicTacToe
 
       def negamax(marks, node, depth, alpha, beta, color)
         if depth == 0 or TicTacToe::Rules.finished?(node)
-          return [-1, color * depth * score_node(node)]
+          return [-1, color * depth * score_node(node, marks[color])]
         end
 
         best = [-1, -1000]
