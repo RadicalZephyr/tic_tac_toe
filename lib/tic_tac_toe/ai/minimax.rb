@@ -41,9 +41,9 @@ module TicTacToe
 
       def has_fork?(node)
         attacks = node.indexed_attack_sets
-        if get_wins(attacks).count > 1
+        if get_wins(attacks).uniq.count > 1
           @my_mark
-        elsif get_blocks(attacks).count > 1
+        elsif get_blocks(attacks).uniq.count > 1
           @other_mark
         end
       end
