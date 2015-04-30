@@ -27,9 +27,9 @@ module TicTacToe
       def score_node(node)
         winner = TicTacToe::Rules.who_won?(node)
         if winner == @my_mark
-          1
+          10
         elsif winner == @other_mark
-          -1
+          -10
         elsif TicTacToe::Rules.draw?(node)
           0
         end
@@ -40,7 +40,7 @@ module TicTacToe
           return [-1, color * depth * score_node(node)]
         end
 
-        best = [-1, -100]
+        best = [-1, -1000]
         node.empty_spaces.each do |index|
           next_child = node.speculative_move(marks[color], index)
           _, score = negamax(marks, next_child, depth - 1, -beta, -alpha, -color)
@@ -55,7 +55,7 @@ module TicTacToe
       end
 
       def get_move(board)
-        negamax({1 => @my_mark, -1 => @other_mark}, board, 10, -100, 100, 1).first
+        negamax({1 => @my_mark, -1 => @other_mark}, board, 10, -1000, 1000, 1).first
       end
 
     end
