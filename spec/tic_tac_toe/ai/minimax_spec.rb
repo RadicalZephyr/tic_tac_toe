@@ -186,29 +186,12 @@ describe TicTacToe::AI::Minimax do
   end
 
   describe 'recognizes forks' do
-    it 'as two lines of attack' do
-      ["X", "O"].each do |m|
-        board = TicTacToe::Board.from([ m,   m,  " ",
-                                        m,  " ", " ",
-                                       " ", " ", " "])
-
-        expect(ai.has_fork?(board)).to eq(m)
-      end
-    end
-
-    it "can't be blocked by one move" do
-      [["X", "O"], ["O", "X"]].each do |m, o|
-        board = TicTacToe::Board.from([" ",  m,   m,
-                                        m,   o, " ",
-                                        m,  " ", " "])
-
-        expect(ai.has_fork?(board)).to be_nil
-      end
-    end
-
-    it "can deal with other forks" do
+    it "as two lines of attack" do
       ["X", "O"].each do |m|
         boards = [[ m,   m,  " ",
+                    m,  " ", " ",
+                    " ", " ", " "],
+                  [ m,   m,  " ",
                    " ",  m,  " ",
                    " ", " ", " "],
                   [" ",  m,  " ",
@@ -225,6 +208,16 @@ describe TicTacToe::AI::Minimax do
 
           expect(ai.has_fork?(board)).to eq(m)
         end
+      end
+    end
+
+    it "can't be blocked by one move" do
+      [["X", "O"], ["O", "X"]].each do |m, o|
+        board = TicTacToe::Board.from([" ",  m,   m,
+                                        m,   o, " ",
+                                        m,  " ", " "])
+
+        expect(ai.has_fork?(board)).to be_nil
       end
     end
   end
