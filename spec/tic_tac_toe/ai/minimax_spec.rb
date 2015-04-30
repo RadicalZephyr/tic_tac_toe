@@ -187,19 +187,13 @@ describe TicTacToe::AI::Minimax do
 
   describe 'recognizes forks' do
     it 'as two lines of attack' do
-      board = TicTacToe::Board.from(["X", "X", " ",
-                                     "X", " ", " ",
-                                     " ", " ", " "])
+      ["X", "O"].each do |m|
+        board = TicTacToe::Board.from([ m,   m,  " ",
+                                        m,  " ", " ",
+                                       " ", " ", " "])
 
-      expect(ai.has_fork?(board)).to eq("X")
-    end
-
-    it 'for either player' do
-      board = TicTacToe::Board.from(["O", "O", " ",
-                                     "O", " ", " ",
-                                     " ", " ", " "])
-
-      expect(ai.has_fork?(board)).to eq("O")
+        expect(ai.has_fork?(board)).to eq(m)
+      end
     end
   end
 
