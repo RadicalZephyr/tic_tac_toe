@@ -65,6 +65,8 @@ module TicTacToe
           -10
         elsif TicTacToe::Rules.draw?(node)
           0
+        else
+          get_wins(node, @my_mark).uniq.count - get_wins(node, @other_mark).uniq.count
         end
       end
 
@@ -76,7 +78,7 @@ module TicTacToe
         if depth == 0 or should_stop?(node, marks[color])
           score = score_node(node, marks[color])
           pos = get_wins(node, marks[color]).first || -1
-          return [pos, color * depth * score]
+          return [pos, color * score * [1, depth].max]
         end
 
         best = [-1, -1000]
@@ -94,7 +96,7 @@ module TicTacToe
       end
 
       def get_move(board)
-        negamax({1 => @my_mark, -1 => @other_mark}, board, 10, -1000, 1000, 1).first
+        negamax({1 => @my_mark, -1 => @other_mark}, board, 3, -1000, 1000, 1).first
       end
 
     end
