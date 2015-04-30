@@ -28,10 +28,6 @@ module TicTacToe
         get_indices_for(attacks) { |imarks| mark_can_win?(imarks, mark) }
       end
 
-      def get_blocks(attacks)
-        get_indices_for(attacks) { |imarks| mark_can_win?(imarks, @other_mark) }
-      end
-
       def get_wins(node, mark)
         attacks = node.indexed_attack_sets
         get_wins_from_attacks(attacks, mark)
