@@ -176,6 +176,22 @@ describe TicTacToe::AI::Minimax do
 
       expect(ai.negamax({1  => "X", -1 => "O"}, board, 10, -100, 100, 1)).to eq([-1, 100])
     end
+
+    it 'scores an imminent loss as -100' do
+      board = TicTacToe::Board.from([" ", "O", "O",
+                                     " ", " ", " ",
+                                     " ", " ", " "])
+
+      expect(ai.negamax({1  => "X", -1 => "O"}, board, 10, -100, 100, -1)).to eq([0, 100])
+    end
+
+    it 'scores an imminent win as 100' do
+      board = TicTacToe::Board.from([" ", "X", "X",
+                                     " ", " ", " ",
+                                     " ", " ", " "])
+
+      expect(ai.negamax({1  => "X", -1 => "O"}, board, 10, 100, -100, 1)).to eq([0, 100])
+    end
   end
 
   describe 'recognizes imminent wins' do
