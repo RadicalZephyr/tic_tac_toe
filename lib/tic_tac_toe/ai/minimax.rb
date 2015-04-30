@@ -24,7 +24,7 @@ module TicTacToe
         attacks.map { |imarks| empty_space(imarks) if yield(imarks)  }.flatten.compact
       end
 
-      def get_wins(attacks, mark)
+      def get_wins_from_attacks(attacks, mark)
         get_indices_for(attacks) { |imarks| mark_can_win?(imarks, mark) }
       end
 
@@ -32,19 +32,21 @@ module TicTacToe
         get_indices_for(attacks) { |imarks| mark_can_win?(imarks, @other_mark) }
       end
 
-      def has_fork?(node, mark)
+      def get_wins(node, mark)
         attacks = node.indexed_attack_sets
-        get_wins(attacks, mark).uniq.count > 1
+        get_wins_from_attacks(attacks, mark)
+      end
+
+      def has_fork?(node, mark)
+        get_wins(node, mark).uniq.count > 1
       end
 
       def has_win?(node, mark)
-        attacks = node.indexed_attack_sets
-        get_wins(attacks, mark).uniq.count == 1
+        get_wins(node, mark).uniq.count == 1
       end
 
       def get_win(node, mark)
-        attacks = node.indexed_attack_sets
-        get_wins(attacks, mark).first
+        get_wins(node, mark).first
       end
 
       def will_win?(node, mark)
