@@ -59,8 +59,12 @@ module TicTacToe
         end
       end
 
+      def find_winner(node, mark)
+        TicTacToe::Rules.who_won?(node) || will_win?(node, mark) || whose_fork?(node)
+      end
+
       def score_node(node, mark)
-        winner = TicTacToe::Rules.who_won?(node) || will_win?(node, mark) || whose_fork?(node)
+        winner = find_winner(node, mark)
         if winner == @my_mark
           10
         elsif winner == @other_mark
