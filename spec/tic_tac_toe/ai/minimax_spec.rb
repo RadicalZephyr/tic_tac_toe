@@ -195,6 +195,17 @@ describe TicTacToe::AI::Minimax do
         expect(ai.has_fork?(board)).to eq(m)
       end
     end
+
+    it "can't be blocked by one move" do
+      [["X", "O"], ["O", "X"]].each do |m, o|
+        board = TicTacToe::Board.from([" ",  m,   m,
+                                        m,   o, " ",
+                                        m,  " ", " "])
+
+        expect(ai.has_fork?(board)).to be_nil
+      end
+
+    end
   end
 
 end
