@@ -39,7 +39,7 @@ describe TicTacToe::AI::Minimax do
     it 'in the center' do
       board = TicTacToe::Board.from(["O", " ", "O",
                                      "O", " ", "X",
-                                     "X", "O", "x"])
+                                     "X", "O", "X"])
       expect(ai.get_move(board)).to eq(1)
     end
 
