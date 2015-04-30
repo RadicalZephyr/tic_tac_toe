@@ -193,6 +193,14 @@ describe TicTacToe::AI::Minimax do
 
       expect(ai.has_fork?(board)).to eq("X")
     end
+
+    it 'for either player' do
+      board = TicTacToe::Board.from(["O", "O", " ",
+                                     "O", " ", " ",
+                                     " ", " ", " "])
+
+      expect(ai.has_fork?(board)).to eq("O")
+    end
   end
 
 end
