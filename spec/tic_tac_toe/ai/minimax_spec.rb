@@ -178,6 +178,40 @@ describe TicTacToe::AI::Minimax do
     end
   end
 
+  describe 'recognizes imminent wins' do
+    it 'as a single line of attack on the correct turn' do
+      ["X", "O"].each do |mark|
+        mar = mark
+        boards = [[" ", mar, mar,
+                   " ", " ", " ",
+                   " ", " ", " "],
+                  [mar, " ", mar,
+                   " ", " ", " ",
+                   " ", " ", " "],
+                  [" ", " ", " ",
+                   " ", mar, mar,
+                   " ", " ", " "],
+                  [" ", " ", mar,
+                   " ", " ", " ",
+                   " ", " ", mar],
+                  [" ", mar, " ",
+                   " ", mar, " ",
+                   " ", " ", " "],
+                  [" ", " ", mar,
+                   " ", mar, " ",
+                   " ", " ", " "],
+                  [mar, " ", " ",
+                   " ", mar, " ",
+                   " ", " ", " "]]
+        boards.each do |board_marks|
+          board = TicTacToe::Board.from(board_marks)
+          expect(ai.has_win?(board, mark)).to be_truthy
+          expect(ai.will_win?(board, mark)).to eq(mark)
+        end
+      end
+    end
+  end
+
   describe 'recognizes forks' do
     it "as two lines of attack" do
       ["X", "O"].each do |m|
