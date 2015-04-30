@@ -23,9 +23,29 @@ module TicTacToe
       def they_can_win?(imarks)
         has_my_marks(imarks: imarks, count: 0)
       end
+      def empty_space(imarks)
+        imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
+      end
+
+      def get_indices_for(attacks)
+        attacks.map { |imarks| empty_space(imarks) if yield(imarks)  }.flatten.compact
+      end
+
+      def get_wins(attacks)
+        get_indices_for(attacks) { |imarks| i_can_win?(imarks) }
+      end
+
+      def get_blocks(attacks)
+        get_indices_for(attacks) { |imarks| they_can_win?(imarks) }
+      end
 
       def has_fork?(node)
-        "X"
+        attacks = node.indexed_attack_sets
+        if get_wins(attacks).count > 1
+          @my_mark
+        elsif get_blocks(attacks).count > 1
+          @other_mark
+        end
       end
 
       def score_node(node)
