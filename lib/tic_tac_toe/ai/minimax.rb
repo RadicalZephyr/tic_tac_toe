@@ -81,11 +81,7 @@ module TicTacToe
       def negamax(marks, node, depth, alpha, beta, color)
         if depth == 0 or should_stop?(node, marks[color])
           score = score_node(node, marks[color])
-          if
-            pos = get_win(node, marks[color])
-          else
-            pos = -1
-          end
+          pos = get_win(node, marks[color]) || -1
           return [pos, color * depth * score]
         end
 
