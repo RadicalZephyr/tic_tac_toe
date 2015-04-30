@@ -24,6 +24,10 @@ module TicTacToe
         has_my_marks(imarks: imarks, count: 0)
       end
 
+      def has_fork?(node)
+        "X"
+      end
+
       def score_node(node)
         winner = TicTacToe::Rules.who_won?(node)
         if winner == @my_mark
