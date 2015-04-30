@@ -199,7 +199,7 @@ describe TicTacToe::AI::Minimax do
         boards.each do |marks|
           board = TicTacToe::Board.from(marks)
 
-          expect(ai.has_fork?(board)).to eq(m)
+          expect(ai.has_fork?(board, m)).to be_truthy
         end
       end
     end
@@ -210,7 +210,7 @@ describe TicTacToe::AI::Minimax do
                                         m,   o, " ",
                                         m,  " ", " "])
 
-        expect(ai.has_fork?(board)).to be_nil
+        expect(ai.has_fork?(board, m)).to be_falsey
       end
     end
   end
