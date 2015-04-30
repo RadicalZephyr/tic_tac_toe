@@ -204,7 +204,28 @@ describe TicTacToe::AI::Minimax do
 
         expect(ai.has_fork?(board)).to be_nil
       end
+    end
 
+    it "can deal with other forks" do
+      ["X", "O"].each do |m|
+        boards = [[ m,   m,  " ",
+                   " ",  m,  " ",
+                   " ", " ", " "],
+                  [" ",  m,  " ",
+                   " ",  m,   m,
+                   " ", " ", " "],
+                  [" ", " ", " ",
+                   " ",  m,  " ",
+                   " ",  m,   m],
+                  [m,   " ",  m,
+                   " ",  m,  " ",
+                   " ", " ", " "]]
+        boards.each do |marks|
+          board = TicTacToe::Board.from(marks)
+
+          expect(ai.has_fork?(board)).to eq(m)
+        end
+      end
     end
   end
 
