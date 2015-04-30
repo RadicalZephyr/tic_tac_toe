@@ -183,6 +183,16 @@ describe TicTacToe::AI::Minimax do
 
       expect(ai.negamax({1  => "X", -1 => "O"}, board, 10, -100, 100, 1)).to eq([-1, 100])
     end
-
   end
+
+  describe 'recognizes forks' do
+    it 'as two lines of attack' do
+      board = TicTacToe::Board.from(["X", "X", " ",
+                                     "X", " ", " ",
+                                     " ", " ", " "])
+
+      expect(ai.has_fork?(board)).to eq("X")
+    end
+  end
+
 end
