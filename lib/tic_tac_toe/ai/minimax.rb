@@ -51,8 +51,16 @@ module TicTacToe
         mark if has_win?(node, mark)
       end
 
+      def whose_fork?(node)
+        if has_fork?(node, @my_mark)
+          @my_mark
+        elsif has_fork?(node, @other_mark)
+          @other_mark
+        end
+      end
+
       def score_node(node, mark)
-        winner = TicTacToe::Rules.who_won?(node) || will_win?(node, mark)
+        winner = TicTacToe::Rules.who_won?(node) || will_win?(node, mark) || whose_fork?(node)
         if winner == @my_mark
           10
         elsif winner == @other_mark
@@ -63,7 +71,7 @@ module TicTacToe
       end
 
       def negamax(marks, node, depth, alpha, beta, color)
-        if depth == 0 or TicTacToe::Rules.finished?(node) or has_win?(node, marks[color])
+        if depth == 0 or TicTacToe::Rules.finished?(node) or has_win?(node, marks[color]) or whose_fork?(node)
           score = score_node(node, marks[color])
           if
             pos = get_win(node, marks[color])
