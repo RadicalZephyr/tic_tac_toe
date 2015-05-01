@@ -15,7 +15,7 @@ module TicTacToe
     end
 
     def self.from(marks)
-      board = TicTacToe::Board.new(marks)
+      TicTacToe::Board.new(marks)
     end
 
     def self.empty_board
