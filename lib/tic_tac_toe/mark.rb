@@ -16,7 +16,7 @@ module TicTacToe
     end
 
     def blank?
-      true
+      symbol == " "
     end
 
   end
