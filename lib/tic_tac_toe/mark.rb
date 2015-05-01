@@ -1,17 +1,18 @@
 module TicTacToe
 
   class Mark
+    attr_reader :symbol
 
     def initialize(symbol = " ")
       @symbol = symbol
     end
 
-    def mark(symbol)
-      Mark.new(symbol)
+    def ==(o)
+      o.class == self.class && o.symbol == self.symbol
     end
 
-    def symbol
-      @symbol
+    def mark(symbol)
+      Mark.new(symbol)
     end
 
     def blank?
