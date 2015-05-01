@@ -7,6 +7,11 @@ describe TicTacToe::Mark do
     expect(mark.blank?).to be_truthy
   end
 
+  it 'is not blank if it has been marked' do
+    mark = TicTacToe::Mark.new.mark("O")
+    expect(mark.blank?).to be_falsey
+  end
+
   it 'can hold a mark' do
     mark = TicTacToe::Mark.new.mark("X")
     expect(mark.symbol).to eq("X")
