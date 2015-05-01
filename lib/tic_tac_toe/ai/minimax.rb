@@ -33,26 +33,6 @@ module TicTacToe
         get_wins_from_attacks(attacks, mark)
       end
 
-      def has_fork?(node, mark)
-        get_wins(node, mark).uniq.count > 1
-      end
-
-      def has_win?(node, mark)
-        get_wins(node, mark).uniq.count == 1
-      end
-
-      def will_win?(node, mark)
-        mark if has_win?(node, mark)
-      end
-
-      def whose_fork?(node)
-        if has_fork?(node, @my_mark)
-          @my_mark
-        elsif has_fork?(node, @other_mark)
-          @other_mark
-        end
-      end
-
       def score_node(node, mark)
         winner = TicTacToe::Rules.who_won?(node)
         if winner == @my_mark
