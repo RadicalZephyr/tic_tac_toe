@@ -54,7 +54,9 @@ module TicTacToe
       end
 
       def find_winner(node, mark)
-        TicTacToe::Rules.who_won?(node) || will_win?(node, mark) || whose_fork?(node)
+        TicTacToe::Rules.who_won?(node) ||
+          will_win?(node, mark) ||
+          whose_fork?(node)
       end
 
       def score_node(node, mark)
@@ -66,12 +68,17 @@ module TicTacToe
         elsif TicTacToe::Rules.draw?(node)
           0
         else
-          get_wins(node, @my_mark).uniq.count - get_wins(node, @other_mark).uniq.count
+          win_count = get_wins(node, @my_mark).uniq.count
+          block_count = get_wins(node, @other_mark).uniq.count
+
+          win_count - block_count
         end
       end
 
       def should_stop?(node, mark)
-        TicTacToe::Rules.finished?(node) or has_win?(node, mark) or whose_fork?(node)
+        TicTacToe::Rules.finished?(node) or
+          has_win?(node, mark) or
+          whose_fork?(node)
       end
 
       def negamax(marks, node, depth, alpha, beta, color)
@@ -84,8 +91,9 @@ module TicTacToe
         best = [-1, -1000]
         node.empty_spaces.each do |index|
           next_child = node.speculative_move(marks[color], index)
-          _, score = negamax(marks, next_child, depth - 1, -beta, -alpha, -color)
-          val = -score # Invert the returned score as in regular negamax
+          _, score = negamax(marks, next_child,
+                             depth - 1, -beta, -alpha, -color)
+          val = -score # Invert the returned score
           best = [best, [index, val]].max_by { |i, s| s }
           alpha = [alpha, val].max
           if alpha >= beta
@@ -96,7 +104,8 @@ module TicTacToe
       end
 
       def get_move(board)
-        negamax({1 => @my_mark, -1 => @other_mark}, board, 3, -1000, 1000, 1).first
+        marks = {1 => @my_mark, -1 => @other_mark}
+        negamax(marks, board, 3, -1000, 1000, 1).first
       end
 
     end
