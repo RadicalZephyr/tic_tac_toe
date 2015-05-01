@@ -11,11 +11,6 @@ module TicTacToe
         marks.each_with_object(Hash.new(0)) { |mark, counts| counts[mark] += 1 }
       end
 
-      def mark_can_win?(imarks, mark)
-        counts = count_marks(imarks.map { |imark| imark.mark })
-        counts[mark] == 2 && counts[" "] == 1
-      end
-
       def empty_space(imarks)
         imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
       end
@@ -25,7 +20,10 @@ module TicTacToe
       end
 
       def get_wins_from_attacks(attacks, mark)
-        get_indices_for(attacks) { |imarks| mark_can_win?(imarks, mark) }
+        get_indices_for(attacks) do |imarks|
+          counts = count_marks(imarks.map { |imark| imark.mark })
+          counts[mark] == 2 && counts[" "] == 1
+        end
       end
 
       def get_wins(node, mark)
@@ -52,8 +50,7 @@ module TicTacToe
       def negamax(marks, node, depth, alpha, beta, color)
         if depth == 0 or TicTacToe::Rules.finished?(node)
           score = score_node(node, marks[color])
-          pos = get_wins(node, marks[color]).first || -1
-          return [pos, color * score * [1, depth].max]
+          return [-1, color * score * [1, depth].max]
         end
 
         best = [-1, -1000]
