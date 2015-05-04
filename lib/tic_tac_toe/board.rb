@@ -17,7 +17,7 @@ module TicTacToe
     end
 
     def self.from(marks)
-      TicTacToe::Board.new(marks.map { |m| m.kind_of?(String) ? TicTacToe::Mark.new(m) : m }.to_a)
+      TicTacToe::Board.new(marks.map { |m| TicTacToe::BLANK.mark(m) }.to_a)
     end
 
     def self.empty_board
