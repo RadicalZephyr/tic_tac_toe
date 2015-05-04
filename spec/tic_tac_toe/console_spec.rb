@@ -28,12 +28,12 @@ describe TicTacToe::ConsoleShell do
 
   describe 'when playing' do
 
-    it 'Makes a move based on user input' do
+    it 'makes a move based on user input' do
       expect(game).to receive(:move).with({:index => 1})
       console_shell.do_turn
     end
 
-    it 'Keeps reading until it gets a legal move' do
+    it 'keeps reading until it gets a legal move' do
       allow(console).to receive(:gets).and_return("1\n", "1\n", "2\n")
       allow(game).to receive(:move).with({:index => 1}).and_raise(ArgumentError)
       allow(game).to receive(:move).with({:index => 2})
@@ -70,21 +70,21 @@ describe TicTacToe::ConsoleShell do
     end
   end
 
-  describe 'Choosing players' do
-    it 'Can return two human players' do
+  describe 'choosing players' do
+    it 'can return two human players' do
       allow(console).to receive(:gets).and_return("h\n", "h\n")
       expect(console_shell.choose_players).to include("X" => player,
                                                       "O" => player)
     end
 
-    it 'Can return one human and one ai player' do
+    it 'can return one human and one ai player' do
       allow(console).to receive(:gets).and_return("h\n", "r\n")
       expect(console_shell.choose_players).to include("X" => player,
                                                       "O" => an_instance_of(TicTacToe::AI::Random))
     end
   end
 
-  describe 'Running the console shell' do
+  describe 'running the console shell' do
 
     it 'it only plays one game if the user says no' do
       allow(game).to receive(:finished?).and_return(true)
