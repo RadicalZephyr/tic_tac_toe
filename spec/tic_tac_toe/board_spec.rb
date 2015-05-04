@@ -27,6 +27,7 @@ describe TicTacToe::Board do
       board = TicTacToe::Board.from(["X", "O", "X",
                                      "X", "X", "O",
                                      "O", "X", "O"])
+      expect(board.full?).to be_truthy
       expect(board.empty_spaces).to contain_exactly()
     end
 
@@ -34,6 +35,7 @@ describe TicTacToe::Board do
       board = TicTacToe::Board.from(["X", " ", "X",
                                      "X", "X", "O",
                                      "O", " ", "O"])
+      expect(board.full?).to be_falsey
       expect(board.empty_spaces).to contain_exactly(1, 7)
     end
 
