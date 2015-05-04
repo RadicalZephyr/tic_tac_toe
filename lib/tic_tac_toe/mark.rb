@@ -1,7 +1,6 @@
 module TicTacToe
 
   class Mark
-
     attr_reader :symbol
 
     def initialize(symbol = " ")
@@ -11,6 +10,7 @@ module TicTacToe
     def ==(o)
       o.class == self.class && o.symbol == self.symbol
     end
+    alias_method :eql?, :==
 
     def hash
       @symbol.hash
