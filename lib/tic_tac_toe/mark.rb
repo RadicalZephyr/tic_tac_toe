@@ -11,6 +11,10 @@ module TicTacToe
       o.class == self.class && o.symbol == self.symbol
     end
 
+    def hash
+      @symbol.hash
+    end
+
     def mark(symbol)
       Mark.new(symbol)
     end
