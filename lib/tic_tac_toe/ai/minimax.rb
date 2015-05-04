@@ -12,7 +12,7 @@ module TicTacToe
       end
 
       def empty_space(imarks)
-        imarks.select { |imark| imark.mark == " " }.map { |imark| imark.index }
+        imarks.select { |imark| imark.mark.blank? }.map { |imark| imark.index }
       end
 
       def get_indices_for(attacks)
@@ -22,7 +22,7 @@ module TicTacToe
       def get_wins_from_attacks(attacks, mark)
         get_indices_for(attacks) do |imarks|
           counts = count_marks(imarks.map { |imark| imark.mark })
-          counts[mark] == 2 && counts[" "] == 1
+          counts[mark] == 2 && counts[TicTacToe::BLANK] == 1
         end
       end
 
