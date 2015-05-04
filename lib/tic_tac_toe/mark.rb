@@ -19,6 +19,10 @@ module TicTacToe
       symbol == " "
     end
 
+    def to_s
+      @symbol
+    end
+
   end
 
 end
