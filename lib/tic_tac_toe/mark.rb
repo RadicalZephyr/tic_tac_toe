@@ -1,6 +1,7 @@
 module TicTacToe
 
   class Mark
+
     attr_reader :symbol
 
     def initialize(symbol = " ")
@@ -28,5 +29,7 @@ module TicTacToe
     end
 
   end
+
+  BLANK = TicTacToe::Mark.new
 
 end
