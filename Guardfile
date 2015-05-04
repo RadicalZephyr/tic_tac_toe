@@ -55,3 +55,9 @@ guard :rspec, cmd: "bundle exec rspec" do
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
 end
+
+guard 'rack', :config => "bin/tic_tac_toe.ru" do
+  watch('Gemfile.lock')
+  watch('bin/tic_tac_toe.ru')
+  watch(%r{^lib/.*})
+end
