@@ -6,12 +6,13 @@ module TicTacToe
     end
 
     def self.winning_marks?(marks)
-      marks[0] if all_marks_same?(marks) and marks[0] != " "
+      marks[0] if all_marks_same?(marks) && !(marks[0].blank?)
     end
 
     def self.who_won?(board)
       board.attack_sets.map { |marks| winning_marks?(marks) }.find(&:itself)
     end
+
 
     def self.draw?(board)
       who_won?(board) == nil and board.full? ? true : false
