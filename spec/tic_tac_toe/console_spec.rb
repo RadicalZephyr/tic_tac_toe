@@ -73,14 +73,14 @@ describe TicTacToe::ConsoleShell do
   describe 'choosing players' do
     it 'can return two human players' do
       allow(console).to receive(:gets).and_return("h\n", "h\n")
-      expect(console_shell.choose_players).to include("X" => player,
-                                                      "O" => player)
+      expect(console_shell.choose_players).to include(TicTacToe::Game::X => player,
+                                                      TicTacToe::Game::O => player)
     end
 
     it 'can return one human and one ai player' do
       allow(console).to receive(:gets).and_return("h\n", "r\n")
-      expect(console_shell.choose_players).to include("X" => player,
-                                                      "O" => an_instance_of(TicTacToe::AI::Random))
+      expect(console_shell.choose_players).to include(TicTacToe::Game::X => player,
+                                                      TicTacToe::Game::O => an_instance_of(TicTacToe::AI::Random))
     end
   end
 
