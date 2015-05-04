@@ -50,7 +50,8 @@ module TicTacToe
       def negamax(marks, node, depth, alpha, beta, color)
         if depth == 0 or TicTacToe::Rules.finished?(node)
           score = score_node(node, marks[color])
-          return [-1, color * score * [1, depth].max]
+          weight = [1, depth].max
+          return [-1, color * score * weight]
         end
 
         best = [-1, -1000]
