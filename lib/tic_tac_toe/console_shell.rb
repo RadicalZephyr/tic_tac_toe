@@ -1,4 +1,5 @@
 require 'tic_tac_toe/human'
+require 'tic_tac_toe/game'
 
 module TicTacToe
 
@@ -15,7 +16,8 @@ module TicTacToe
     def initialize(console, game, player)
       @console, @game, @player = console, game, player
       player.set_shell(self)
-      @players = {"X" => player, "O" => player}
+      @players = {TicTacToe::Game::X => player,
+                  TicTacToe::Game::O => player}
     end
 
     def prompt_move
@@ -104,8 +106,10 @@ module TicTacToe
     end
 
     def choose_players
-      {"X" => get_player("X", "O"),
-       "O" => get_player("O", "X")}
+      {TicTacToe::Game::X => get_player(TicTacToe::Game::X,
+                                        TicTacToe::Game::O),
+       TicTacToe::Game::O => get_player(TicTacToe::Game::O,
+                                        TicTacToe::Game::X)}
     end
 
     def do_turn
