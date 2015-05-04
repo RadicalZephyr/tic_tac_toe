@@ -15,7 +15,7 @@ describe TicTacToe::Rules do
         TicTacToe::Board.win_places.each do |places|
           board = TicTacToe::Board.empty_board
           set_marks(board, mark, places)
-          expect(TicTacToe::Rules.who_won?(board)).to eq(mark)
+          expect(TicTacToe::Rules.who_won?(board)).to eq(TicTacToe::Mark.new(mark))
         end
       end
     end
