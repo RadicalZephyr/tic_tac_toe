@@ -17,7 +17,7 @@ module TicTacToe
     end
 
     def mark(symbol)
-      Mark.new(symbol)
+      symbol.kind_of?(String) ? Mark.new(symbol) : symbol
     end
 
     def blank?
