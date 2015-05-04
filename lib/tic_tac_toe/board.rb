@@ -1,3 +1,5 @@
+require "tic_tac_toe/mark"
+
 module TicTacToe
 
   class Board
@@ -15,7 +17,7 @@ module TicTacToe
     end
 
     def self.from(marks)
-      TicTacToe::Board.new(marks)
+      TicTacToe::Board.new(marks.map { |m| TicTacToe::Mark.new(m) }.to_a)
     end
 
     def self.empty_board
@@ -28,7 +30,7 @@ module TicTacToe
     end
 
     def reset
-      @marks = Array.new(9, " ")
+      @marks = Array.new(9, TicTacToe::Mark.new)
       return self
     end
 
@@ -43,7 +45,7 @@ module TicTacToe
     end
 
     def move(mark, index)
-      @marks[index] = mark
+      @marks[index] = @marks[index].mark(mark)
     end
 
     def speculative_move(mark, index)
@@ -53,11 +55,11 @@ module TicTacToe
     end
 
     def legal?(index)
-      @marks[index] == " "
+      @marks[index].blank?
     end
 
     def full?
-      @marks.none? { |m| m == " " }
+      @marks.none? { |m| m.blank? }
     end
 
     def attack_sets
@@ -71,7 +73,7 @@ module TicTacToe
     end
 
     def empty_spaces
-      @marks.map.with_index { |mark, index| index if mark == " " }.compact
+      @marks.map.with_index { |mark, index| index if mark.blank? }.compact
     end
   end
 

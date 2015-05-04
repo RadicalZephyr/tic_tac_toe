@@ -5,16 +5,16 @@ describe TicTacToe::Board do
 
   it 'initially has 9 empty positions' do
     (0...9).each do |i|
-      expect(board.pos i).to eq(" ")
+      expect(board.pos(i).blank?).to be_truthy
     end
 
   end
 
   it 'can make moves' do
     board.move("X", 0)
-    expect(board.pos 0).to eq("X")
+    expect(board.pos(0)).to eq(TicTacToe::Mark.new("X"))
     (1...9).each do |i|
-      expect(board.pos i).to eq(" ")
+      expect(board.pos(i)).to eq(TicTacToe::Mark.new)
     end
   end
 
