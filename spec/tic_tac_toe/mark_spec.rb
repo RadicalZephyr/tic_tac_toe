@@ -17,6 +17,11 @@ describe TicTacToe::Mark do
     expect(mark.symbol).to eq("X")
   end
 
+  it 'the default blank is equivalent to any blank' do
+    expect(TicTacToe::BLANK.blank?).to be_truthy
+    expect(TicTacToe::BLANK).to eq(TicTacToe::Mark.new)
+  end
+
   it 'two blank marks are equivalent' do
     expect(TicTacToe::Mark.new == TicTacToe::Mark.new).to be_truthy
   end
