@@ -1,9 +1,14 @@
+require 'tic_tac_toe/mark'
+
 module TicTacToe
   class Game
     attr_accessor :current_mark, :board
 
-    NEXT_PLAYER = {"X" => "O",
-                   "O" => "X"}
+    X = TicTacToe::Mark.new("X")
+    O = TicTacToe::Mark.new("O")
+
+    NEXT_PLAYER = {X => O,
+                   O => X}
 
     def self.make_new_game(board)
       game = TicTacToe::Game.new(board)
@@ -15,7 +20,7 @@ module TicTacToe
     end
 
     def reset
-      @current_mark = "X"
+      @current_mark = X
       board.reset
       return self
     end
