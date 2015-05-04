@@ -29,4 +29,17 @@ describe TicTacToe::Mark do
   it 'two marks with the same symbol are equivalent' do
     expect(TicTacToe::Mark.new.mark("X") == TicTacToe::Mark.new.mark("X")).to be_truthy
   end
+
+  it 'should be usable as a hash key' do
+    x = TicTacToe::Mark.new("X")
+    o = TicTacToe::Mark.new("O")
+    blank = TicTacToe::Mark.new
+    marks = {x => :xval,
+             o => :oval,
+             blank => :blankval}
+    expect(marks[TicTacToe::Mark.new("X")]).to eq(:xval)
+    expect(marks[TicTacToe::Mark.new("O")]).to eq(:oval)
+    expect(marks[TicTacToe::Mark.new]).to eq(:blankval)
+  end
+
 end
