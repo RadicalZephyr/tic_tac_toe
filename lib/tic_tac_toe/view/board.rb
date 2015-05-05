@@ -1,7 +1,7 @@
 require 'mustache'
 
 module TicTacToe
-  module Views
+  module View
 
     class Board < Mustache
       attr_reader :board
