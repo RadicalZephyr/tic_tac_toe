@@ -6,8 +6,6 @@ module TicTacToe
     class Board < Mustache
       attr_reader :board
 
-      self.template_path = File.dirname(__FILE__)
-
       def initialize(board)
         @board = board
       end

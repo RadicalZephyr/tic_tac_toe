@@ -7,8 +7,6 @@ module TicTacToe
     class Game < Mustache
       attr_reader :game, :x_mark, :o_mark
 
-      self.template_path = File.dirname(__FILE__)
-
       def initialize(game)
         @game = game
         @x_mark = TicTacToe::Game::X
