@@ -8,19 +8,23 @@
             <div id="X" class="current-player">Player X</div>
             <div id="O" class="">Player O</div>
         </div>
-        <table>
-            <tr><td><div class="X-marker"></div></td>
-                <td><div class=""><input id="move1" type="radio" name="move" value="" required="true" >
-                    <label for="move1"></label></div></td>
-                <td><div class="O-marker"></div></td></tr>
-            <tr><td><div class=""><input id="move3" type="radio" name="move" value="" required="true" >
-                <label for="move3"></label></div></td>
-                <td><div class="X-marker"></div></td>
-                <td><div class=""><input id="move5" type="radio" name="move" value="" required="true" >
-                    <label for="move5"></label></div></td></tr>
-            <tr><td><div class="O-marker"></div></td>
-                <td><div class="X-marker"></div></td>
-                <td><div class=""><input id="move8" type="radio" name="move" value="" required="true" >
-                    <label for="move8"></label></div></td></tr>
+        <form action="/stuff-and-things" method="post">
+            <table>
+                <tr><td><div class="X-marker"></div></td>
+                    <td><div class=""><input id="move1" type="radio" name="move" value="" required="true" >
+                        <label for="move1"></label></div></td>
+                    <td><div class="O-marker"></div></td></tr>
+                <tr><td><div class=""><input id="move3" type="radio" name="move" value="" required="true" >
+                    <label for="move3"></label></div></td>
+                    <td><div class="X-marker"></div></td>
+                    <td><div class=""><input id="move5" type="radio" name="move" value="" required="true" >
+                        <label for="move5"></label></div></td></tr>
+                <tr><td><div class="O-marker"></div></td>
+                    <td><div class="X-marker"></div></td>
+                    <td><div class=""><input id="move8" type="radio" name="move" value="" required="true" >
+                        <label for="move8"></label></div></td></tr>
+            </table>
+            <input type="submit">
+        </form>
     </body>
 </html>
