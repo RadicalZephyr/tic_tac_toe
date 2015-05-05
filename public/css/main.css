@@ -70,6 +70,31 @@ td div {
   width: 175px;
 }
 
+input[type=radio]:not(old){
+  margin  : 0;
+  padding : 0;
+  opacity : 0;
+  height  : 175px;
+  width   : 175px;
+  cursor  : pointer;
+}
+
+input[type=radio]:not(old) + label{
+  display : inline-block;
+  position: relative;
+  top: -210px;
+  height  : 175px;
+  width   : 175px;
+  background-image : url('/images/ex.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor  : pointer;
+}
+
+input[type=radio]:not(old):checked + label{
+  background-image : url('/images/oh.svg');
+}
+
 #players {
   margin-left:auto;
   margin-right:auto;
