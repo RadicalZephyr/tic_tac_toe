@@ -2,6 +2,11 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <style>
+         input[type=radio]:not(old):checked + label{
+             background-image : url('/images/oh.svg');
+         }
+        </style>
     </head>
     <body>
         <div id="players">
@@ -24,7 +29,7 @@
                     <td><div class=""><input id="move8" type="radio" name="move" value="" required >
                         <label for="move8"></label></div></td></tr>
             </table>
-            <input type="submit">
+            <input type="submit" value="Make Move">
         </form>
     </body>
 </html>

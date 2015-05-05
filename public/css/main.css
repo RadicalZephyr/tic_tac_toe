@@ -92,10 +92,6 @@ input[type=radio]:not(old) + label{
   cursor  : pointer;
 }
 
-input[type=radio]:not(old):checked + label{
-  background-image : url('/images/oh.svg');
-}
-
 #players {
   margin-left:auto;
   margin-right:auto;
