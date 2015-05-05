@@ -19,11 +19,11 @@ module TicTacToe
         end
       end
 
-      def is_row_start(index)
+      def is_row_start?(index)
         (index % 3) == 0
       end
 
-      def is_row_end(index)
+      def is_row_end?(index)
         (index % 3) == 2
       end
     end
