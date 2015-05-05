@@ -5,7 +5,7 @@ describe TicTacToe::View::Game do
 
   it 'can find the mustache template' do
     gv = TicTacToe::View::Game.new(TicTacToe::Game.make_new_game(TicTacToe::Board.empty_board))
-    gv.render
+    expect(gv.render).to be_a(String).and start_with('<!DOCTYPE html>').and end_with("</html>\n")
   end
 
 end
