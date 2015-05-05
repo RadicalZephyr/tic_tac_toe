@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <style>
+     input[type=radio]:not(old):checked + label{
+         background-image : url('/images/{{current_mark}}.svg');
+     }
+    </style>
+  </head>
+  <body>
+    <div id="players">
+      <div{{#x_current}} class="current-player"{{/x_current}}>Player {{x_mark}}</div>
+      <div{{#o_current}} class="current-player"{{/o_current}}>Player {{o_mark}}</div>
+    </div>
+    <form action="{{post_url}}" method="post">
+      {{{board}}}
+      <input type="submit" value="Make Move">
+    </form>
+  </body>
+</html>
