@@ -63,6 +63,8 @@ td {
   font-size: 120px;
   border: 2px solid #cccccc;
   -webkit-border-radius: 15px;
+  -moz-border-radius:    15px;
+  border-radius:         15px;
 }
 
 td div {
@@ -85,7 +87,6 @@ input[type=radio]:not(old) + label{
   top: -210px;
   height  : 175px;
   width   : 175px;
-  background-image : url('/images/ex.svg');
   background-repeat: no-repeat;
   background-position: center;
   cursor  : pointer;
@@ -111,7 +112,9 @@ input[type=radio]:not(old):checked + label{
 
 .current-player {
   color: black !important;
-  -webkit-transform: scale(1.5);
+  -webkit-transform: scale(1.n5);
+  -moz-transform:    scale(1.5);
+  transform:         scale(1.5);
 }
 
 .X-marker {
