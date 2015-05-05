@@ -1,8 +1,8 @@
 require 'mustache'
-require 'tic_tac_toe/views/board'
+require 'tic_tac_toe/view/board'
 
 module TicTacToe
-  module Views
+  module View
 
     class Game < Mustache
       attr_reader :game, :x_mark, :o_mark
@@ -37,7 +37,7 @@ module TicTacToe
       end
 
       def board
-        TicTacToe::Views::Board.new(game.board).render
+        TicTacToe::View::Board.new(game.board).render
       end
     end
 
