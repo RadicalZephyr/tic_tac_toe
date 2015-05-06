@@ -12,7 +12,7 @@ module TicTacToe
 
       def positions
         board.map.with_index do |mark, index|
-          {:mark => mark,
+          {:mark => mark.to_s,
            :index => index,
            :beginrow => is_row_start?(index),
            :endrow =>   is_row_end?(index)}
