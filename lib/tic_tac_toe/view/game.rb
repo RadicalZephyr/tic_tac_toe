@@ -13,10 +13,6 @@ module TicTacToe
         @o_mark = TicTacToe::Game::O
       end
 
-      def post_url
-        # TODO: this
-      end
-
       def current_mark
         case game.current_mark
         when x_mark
