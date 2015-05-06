@@ -14,7 +14,7 @@ module TicTacToe
         board.map.with_index do |mark, index|
           {:mark => mark.to_s,
            :index => index,
-           :mark? => mark.blank?,
+           :blank? => mark.blank?,
            :beginrow => is_row_start?(index),
            :endrow =>   is_row_end?(index)}
         end

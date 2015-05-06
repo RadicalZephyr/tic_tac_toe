@@ -17,7 +17,7 @@ describe TicTacToe::View::Board do
 
   it 'Returns correct position data' do
     bv = TicTacToe::View::Board.new(TicTacToe::Board.empty_board)
-    expect(bv.positions).to include({:mark => " ", :index => 0,
+    expect(bv.positions).to include({:blank? => true, :mark => " ", :index => 0,
                                      :beginrow => true, :endrow => false})
   end
 
