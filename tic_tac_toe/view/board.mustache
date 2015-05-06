@@ -1,9 +1,9 @@
   <table>
     {{#positions}}
       {{#beginrow}}<tr>{{/beginrow}}
-        <td><div{{^mark?}}>{{/mark?}}{{#mark?}} class="{{mark}}-marker">
+        <td><div{{^blank?}}>{{/blank?}}{{#blank?}} class="{{mark}}-marker">
           <input id="move{{index}}" type="radio" name="move" value="{{index}}" required >
           <label for="move{{index}}"></label>
-      {{/mark?}}{{#endrow}}</tr>{{/endrow}}
+        {{/blank?}}</td>{{#endrow}}</tr>{{/endrow}}
     {{/positions}}
   </table>
