@@ -8,7 +8,7 @@ module TicTacToe
     attr_accessor :players
 
     def self.new_shell(console)
-      game = TicTacToe::Game.make_new_game(TicTacToe::Board.empty_board)
+      game = TicTacToe::Game.new_game(TicTacToe::Board.empty_board)
       player = TicTacToe::Human.new
       TicTacToe::ConsoleShell.new(console, game, player)
     end
