@@ -7,7 +7,12 @@ module TicTacToe
     end
 
     def call(env)
-      [200, {}, ["Hello World"]]
+      if env["PATH_INFO"] =~ %r{^/set/(.*)$}
+        @data = $1
+        [200, {}, ["You set the data to: ", @data.to_s]]
+      else
+        [200, {}, ["Hello, the data is: ", @data.to_s]]
+      end
     end
   end
 
