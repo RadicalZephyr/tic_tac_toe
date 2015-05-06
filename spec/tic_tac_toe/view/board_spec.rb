@@ -20,4 +20,11 @@ describe TicTacToe::View::Board do
     expect(bv.positions).to include({:mark => " ", :index => 0,
                                      :beginrow => true, :endrow => false})
   end
+
+  it 'Renders a semblance of a board' do
+    bv = TicTacToe::View::Board.new(TicTacToe::Board.empty_board)
+    result = bv.render
+    expect(result).to be_a(String).and start_with("  <table>").and end_with("  </table>\n")
+    expect(result).to include("<tr>").and include("</tr>").and include("<td>").and include("</td>")
+  end
 end
