@@ -37,6 +37,11 @@ module TicTacToe
       def board
         TicTacToe::View::Board.new(game.board).render
       end
+
+      def json_board
+        {:current_mark => game.current_mark.to_s,
+         :marks => game.board.map { |m| m.to_s }.to_a}.to_json
+      end
     end
 
   end
