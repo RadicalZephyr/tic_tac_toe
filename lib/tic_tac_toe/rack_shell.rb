@@ -1,3 +1,6 @@
+require 'tic_tac_toe'
+require 'tic_tac_toe/views'
+
 module TicTacToe
 
   class RackShell
@@ -7,11 +10,11 @@ module TicTacToe
     end
 
     def call(env)
-      if env["PATH_INFO"] =~ %r{^/set/(.*)$}
-        @data = $1
-        [200, {}, ["You set the data to: ", @data.to_s]]
+      if env["PATH_INFO"] =~ %r{^/new$}
+        @game = TicTacToe::Game.new(TicTacToe::Board.empty_board)
+        [200, {}, [TicTacToe::View::Game.new(@game).render]]
       else
-        [200, {}, ["Hello, the data is: ", @data.to_s]]
+        [404, {}, ["Not found."]]
       end
     end
   end
