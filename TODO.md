@@ -1,3 +1,5 @@
 # List of Stuff to Refactor
 
-- Tokens class to replace the space for a blank space on the board.
+- Utilize private method declarations
+- Organize code less clojurey
+- starting with not tictactoe in rack
