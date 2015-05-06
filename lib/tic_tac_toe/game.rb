@@ -10,7 +10,7 @@ module TicTacToe
     NEXT_PLAYER = {X => O,
                    O => X}
 
-    def self.make_new_game(board)
+    def self.new_game(board)
       game = TicTacToe::Game.new(board)
       game.reset
     end
