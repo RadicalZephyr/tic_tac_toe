@@ -49,6 +49,35 @@ module TicTacToe
       end
     end
 
+    def get_human
+      @player
+    end
+
+    def get_player(mark, other_mark)
+      loop do
+        case prompt_player(mark)
+        when "h", "human"
+          return @player
+        when "r", "random"
+          return TicTacToe::AI::Random.new(Random.new)
+        when "a", "ai"
+          return TicTacToe::AI::Minimax.new(mark, other_mark)
+        end
+      end
+    end
+
+    def choose_players
+      [get_player(TicTacToe::Game::X,
+                  TicTacToe::Game::O),
+       get_player(TicTacToe::Game::O,
+                  TicTacToe::Game::X)]
+    end
+
+
+    ########################################
+    ## I/O Methods
+    ########################################
+
     def prompt_move
       @console.print "Enter your move [0-8]: "
       @console.flush
@@ -115,30 +144,6 @@ module TicTacToe
       else
         @console.puts "It was a draw."
       end
-    end
-
-    def get_human
-      @player
-    end
-
-    def get_player(mark, other_mark)
-      loop do
-        case prompt_player(mark)
-        when "h", "human"
-          return @player
-        when "r", "random"
-          return TicTacToe::AI::Random.new(Random.new)
-        when "a", "ai"
-          return TicTacToe::AI::Minimax.new(mark, other_mark)
-        end
-      end
-    end
-
-    def choose_players
-      [get_player(TicTacToe::Game::X,
-                  TicTacToe::Game::O),
-       get_player(TicTacToe::Game::O,
-                  TicTacToe::Game::X)]
     end
 
   end
