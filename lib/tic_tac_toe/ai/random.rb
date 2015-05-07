@@ -10,6 +10,9 @@ module TicTacToe
       def get_move(board)
         @random_source.rand(8)
       end
+
+      def set_marks(_, _)
+      end
     end
 
   end
