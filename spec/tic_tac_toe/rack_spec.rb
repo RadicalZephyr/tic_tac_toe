@@ -8,7 +8,7 @@ describe TicTacToe::RackShell do
     app = TicTacToe::RackShell.new_shell
     req = Rack::MockRequest.new(app)
     response = req.get("/")
-    expect(response.accepted?).to be_truthy
+    expect(response.successful?).to be_truthy
   end
 
 end
