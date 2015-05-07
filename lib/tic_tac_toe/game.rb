@@ -32,6 +32,11 @@ module TicTacToe
       second_player.set_marks(O, X)
     end
 
+    def next_turn
+      current_player = players[current_mark]
+      move(index: current_player.get_move(board))
+    end
+
     def move(index:)
       raise ArgumentError unless board.legal?(index)
       board.move(current_mark, index)
