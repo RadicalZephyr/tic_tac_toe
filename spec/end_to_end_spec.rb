@@ -18,10 +18,26 @@ describe "Playing a full game" do
     moves.map { |move| move.to_s + "\n" }
   end
 
-  def with_moves(x_moves:, y_moves:)
-    inputs = make_moves(x_moves, y_moves)
+  it "ends after a win" do
+    x_moves = [0, 1, 2]
+    y_moves = [3, 4]
+
+    inputs = ["h\n", "h\n"] + make_moves(x_moves, y_moves)
     expect(console).to receive(:gets).and_return(*inputs)
+
+    shell.play_game
   end
+
+  it "ends after a draw" do
+    x_moves = [0, 1, 3, 8, 4]
+    y_moves = [2, 6, 7, 5]
+
+    inputs = ["h\n", "h\n"] + make_moves(x_moves, y_moves)
+    expect(console).to receive(:gets).and_return(*inputs)
+
+    shell.play_game
+  end
+
 
   it 'plays multiple games from main loop' do
     x_moves = [0, 1, 3, 8, 4]

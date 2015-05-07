@@ -20,11 +20,15 @@ module TicTacToe
     def main_loop
       show_welcome_message
       loop do
-        game.set_players(*choose_players)
-        game_loop
+        play_game
         break unless play_again?
         game.reset
       end
+    end
+
+    def play_game
+      game.set_players(*choose_players)
+      game_loop
     end
 
     def game_loop
