@@ -15,8 +15,7 @@ module TicTacToe
     def initialize(console, game, player)
       @console, @game, @player = console, game, player
       player.set_shell(self)
-      game.players= {TicTacToe::Game::X => player,
-                     TicTacToe::Game::O => player}
+      game.set_players(player, player)
     end
 
     def prompt_move
@@ -105,10 +104,10 @@ module TicTacToe
     end
 
     def choose_players
-      {TicTacToe::Game::X => get_player(TicTacToe::Game::X,
-                                        TicTacToe::Game::O),
-       TicTacToe::Game::O => get_player(TicTacToe::Game::O,
-                                        TicTacToe::Game::X)}
+      [get_player(TicTacToe::Game::X,
+                  TicTacToe::Game::O),
+       get_player(TicTacToe::Game::O,
+                  TicTacToe::Game::X)]
     end
 
     def do_turn
@@ -136,7 +135,7 @@ module TicTacToe
     def main_loop
       show_welcome_message
       loop do
-        game.players= choose_players
+        game.set_players(*choose_players)
         game_loop
         break unless play_again?
         game.reset
