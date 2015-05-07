@@ -15,7 +15,6 @@ module TicTacToe
     def initialize(console, game, player)
       @console, @game, @player = console, game, player
       player.set_shell(self)
-      game.set_players(player, player)
     end
 
     def prompt_move
