@@ -50,12 +50,6 @@ module TicTacToe
       input
     end
 
-    def prompt_move
-      @console.print "Enter your move [0-8]: "
-      @console.flush
-      @console.gets.chomp
-    end
-
     def show_move_error_message
       @console.puts "Sorry, I didn't understand your move."
       try_again
@@ -124,6 +118,12 @@ module TicTacToe
     ########################################
     ## I/O Methods
     ########################################
+
+    def prompt_move
+      @console.print "Enter your move [0-8]: "
+      @console.flush
+      @console.gets.chomp
+    end
 
     def prompt_player(mark)
       @console.print "Who should play #{mark}'s ([h]uman, [r]andom or [a]i)? "
