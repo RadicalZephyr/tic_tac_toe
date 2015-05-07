@@ -109,6 +109,23 @@ module TicTacToe
                   TicTacToe::Game::X)]
     end
 
+    def main_loop
+      show_welcome_message
+      loop do
+        game.set_players(*choose_players)
+        game_loop
+        break unless play_again?
+        game.reset
+      end
+    end
+
+    def game_loop
+      while not game.finished?
+        do_turn
+      end
+      display_winner(game.who_won?)
+    end
+
     def do_turn
       show_move_message
       show_board(game.board)
@@ -121,23 +138,6 @@ module TicTacToe
         rescue ArgumentError
           show_illegal_move_message
         end
-      end
-    end
-
-    def game_loop
-      while not game.finished?
-        do_turn
-      end
-      display_winner(game.who_won?)
-    end
-
-    def main_loop
-      show_welcome_message
-      loop do
-        game.set_players(*choose_players)
-        game_loop
-        break unless play_again?
-        game.reset
       end
     end
 
