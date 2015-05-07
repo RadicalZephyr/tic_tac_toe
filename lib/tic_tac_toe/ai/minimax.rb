@@ -3,48 +3,13 @@ module TicTacToe
 
     class Minimax
 
+      def get_move(board)
+        marks = {1 => @my_mark, -1 => @other_mark}
+        negamax(marks, board, 4, -1000, 1000, 1).first
+      end
+
       def set_marks(my_mark, other_mark)
         @my_mark, @other_mark = my_mark, other_mark
-      end
-
-      def count_marks(marks)
-        marks.each_with_object(Hash.new(0)) { |mark, counts| counts[mark] += 1 }
-      end
-
-      def empty_space(imarks)
-        imarks.select { |imark| imark.mark.blank? }.map { |imark| imark.index }
-      end
-
-      def get_indices_for(attacks)
-        attacks.map { |imarks| empty_space(imarks) if yield(imarks)  }.flatten.compact
-      end
-
-      def get_wins_from_attacks(attacks, mark)
-        get_indices_for(attacks) do |imarks|
-          counts = count_marks(imarks.map { |imark| imark.mark })
-          counts[mark] == 2 && counts[TicTacToe::BLANK] == 1
-        end
-      end
-
-      def get_wins(node, mark)
-        attacks = node.indexed_attack_sets
-        get_wins_from_attacks(attacks, mark)
-      end
-
-      def score_node(node, mark)
-        winner = TicTacToe::Rules.who_won?(node)
-        if winner == @my_mark
-          10
-        elsif winner == @other_mark
-          -10
-        elsif TicTacToe::Rules.draw?(node)
-          0
-        else
-          win_count = get_wins(node, @my_mark).uniq.count
-          block_count = get_wins(node, @other_mark).uniq.count
-
-          win_count - block_count
-        end
       end
 
       def negamax(marks, node, depth, alpha, beta, color)
@@ -69,9 +34,46 @@ module TicTacToe
         return best
       end
 
-      def get_move(board)
-        marks = {1 => @my_mark, -1 => @other_mark}
-        negamax(marks, board, 4, -1000, 1000, 1).first
+      private
+
+      def score_node(node, mark)
+        winner = TicTacToe::Rules.who_won?(node)
+        if winner == @my_mark
+          10
+        elsif winner == @other_mark
+          -10
+        elsif TicTacToe::Rules.draw?(node)
+          0
+        else
+          win_count = get_wins(node, @my_mark).uniq.count
+          block_count = get_wins(node, @other_mark).uniq.count
+
+          win_count - block_count
+        end
+      end
+
+      def get_wins(node, mark)
+        attacks = node.indexed_attack_sets
+        get_wins_from_attacks(attacks, mark)
+      end
+
+      def get_wins_from_attacks(attacks, mark)
+        get_indices_for(attacks) do |imarks|
+          counts = count_marks(imarks.map { |imark| imark.mark })
+          counts[mark] == 2 && counts[TicTacToe::BLANK] == 1
+        end
+      end
+
+      def get_indices_for(attacks)
+        attacks.map { |imarks| empty_space(imarks) if yield(imarks)  }.flatten.compact
+      end
+
+      def empty_space(imarks)
+        imarks.select { |imark| imark.mark.blank? }.map { |imark| imark.index }
+      end
+
+      def count_marks(marks)
+        marks.each_with_object(Hash.new(0)) { |mark, counts| counts[mark] += 1 }
       end
 
     end
