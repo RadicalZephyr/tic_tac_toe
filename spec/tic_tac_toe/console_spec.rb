@@ -43,6 +43,34 @@ describe TicTacToe::ConsoleShell do
       expect(console_shell).to receive(:game_loop).exactly(3).times
       console_shell.main_loop
     end
+  end
+
+  describe 'getting user input' do
+
+    def with(input:, expecting:)
+      allow(console_shell).to receive(:prompt_move).and_return("#{input}\n")
+      expect(console_shell.get_move).to eq(expecting)
+    end
+
+    def ignores(input:)
+      allow(console_shell).to receive(:prompt_move).and_return("#{input}\n", "1\n")
+      expect(console_shell.get_move).to eq(1)
+    end
+
+    it 'keeps reading until it gets a number' do
+      allow(console_shell).to receive(:prompt_move).and_return("abcd\n", "def\n", "{1a\n", "1\n")
+      expect(console_shell.get_move).to eq(1)
+    end
+
+    it 'should only return a number between 0 and 8' do
+      ignores(input: "-10")
+      ignores(input: "-1")
+      ignores(input: "9")
+      ignores(input: "15")
+      with(input: "0", expecting: 0)
+      with(input: "4", expecting: 4)
+      with(input: "8", expecting: 8)
+    end
 
   end
 end

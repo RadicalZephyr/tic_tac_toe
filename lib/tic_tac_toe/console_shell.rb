@@ -31,6 +31,25 @@ module TicTacToe
       game_loop
     end
 
+    def get_move
+      got_input = false
+      while not got_input
+        str = prompt_move
+        begin
+          input = Integer(str)
+          if input.between?(0,8)
+            got_input = true
+          else
+            show_invalid_move_message
+          end
+        rescue ArgumentError
+          show_move_error_message
+        end
+      end
+
+      input
+    end
+
     def prompt_move
       @console.print "Enter your move [0-8]: "
       @console.flush
