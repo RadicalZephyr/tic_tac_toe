@@ -14,7 +14,9 @@ module TicTacToe
     def call(env)
       req = Rack::Request.new(env)
 
-      if req.path =~ %r{^/new$}
+      if req.path =~ %r{^/$}
+        [200, {}, ["Hello, and welcome to Tic-Tac-Toe!"]]
+      elsif req.path =~ %r{^/new$}
         game = TicTacToe::Game.new_game(TicTacToe::Board.empty_board)
         [200, {}, [TicTacToe::View::Game.new(game).render]]
 
