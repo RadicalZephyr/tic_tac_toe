@@ -5,7 +5,6 @@ module TicTacToe
 
   class ConsoleShell
     attr_reader :game
-    attr_accessor :players
 
     def self.new_shell(console)
       game = TicTacToe::Game.new_game(TicTacToe::Board.empty_board)
@@ -16,8 +15,8 @@ module TicTacToe
     def initialize(console, game, player)
       @console, @game, @player = console, game, player
       player.set_shell(self)
-      @players = {TicTacToe::Game::X => player,
-                  TicTacToe::Game::O => player}
+      game.players= {TicTacToe::Game::X => player,
+                     TicTacToe::Game::O => player}
     end
 
     def prompt_move
@@ -116,7 +115,7 @@ module TicTacToe
       show_move_message
       show_board(game.board)
       moved = false
-      current_player = @players[game.current_mark]
+      current_player = game.players[game.current_mark]
       while not moved
         begin
           game.move(index: current_player.get_move(game.board))
@@ -137,7 +136,7 @@ module TicTacToe
     def main_loop
       show_welcome_message
       loop do
-        @players = choose_players
+        game.players= choose_players
         game_loop
         break unless play_again?
         game.reset

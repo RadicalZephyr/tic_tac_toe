@@ -2,7 +2,7 @@ require 'tic_tac_toe/mark'
 
 module TicTacToe
   class Game
-    attr_accessor :current_mark, :board
+    attr_accessor :current_mark, :board, :players
 
     X = TicTacToe::Mark.new("X")
     O = TicTacToe::Mark.new("O")
