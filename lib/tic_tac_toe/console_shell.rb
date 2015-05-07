@@ -102,7 +102,7 @@ module TicTacToe
         when "r", "random"
           return TicTacToe::AI::Random.new(Random.new)
         when "a", "ai"
-          return TicTacToe::AI::Minimax.new(mark, other_mark)
+          return TicTacToe::AI::Minimax.new.tap { |ai| ai.set_marks(mark, other_mark) }
         end
       end
     end
