@@ -38,6 +38,20 @@ describe "Playing a full game" do
     shell.play_game
   end
 
+  it 'can play games with random and ai players' do
+    inputs = ["r\n", "a\n"]
+    expect(console).to receive(:gets).and_return(*inputs)
+    shell.play_game
+    inputs = ["a\n", "r\n"]
+    expect(console).to receive(:gets).and_return(*inputs)
+    shell.play_game
+  end
+
+  it 'can play games with two ai players' do
+    inputs = ["a\n", "a\n"]
+    expect(console).to receive(:gets).and_return(*inputs)
+    shell.play_game
+  end
 
   it 'plays multiple games from main loop' do
     x_moves = [0, 1, 3, 8, 4]
