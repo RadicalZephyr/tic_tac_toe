@@ -37,12 +37,6 @@ module TicTacToe
       move(index: current_player.get_move(board))
     end
 
-    def move(index:)
-      raise ArgumentError unless board.legal?(index)
-      board.move(current_mark, index)
-      swap_mark
-    end
-
     def finished?
       TicTacToe::Rules.finished?(board)
     end
@@ -52,6 +46,12 @@ module TicTacToe
     end
 
     private
+
+    def move(index:)
+      raise ArgumentError unless board.legal?(index)
+      board.move(current_mark, index)
+      swap_mark
+    end
 
     def swap_mark
       @current_mark = NEXT_PLAYER[current_mark]
