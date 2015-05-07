@@ -94,7 +94,7 @@ module TicTacToe
       @player
     end
 
-    def get_player(mark, other_mark)
+    def get_player(mark)
       loop do
         case prompt_player(mark)
         when "h", "human"
@@ -102,16 +102,13 @@ module TicTacToe
         when "r", "random"
           return TicTacToe::AI::Random.new(Random.new)
         when "a", "ai"
-          return TicTacToe::AI::Minimax.new.tap { |ai| ai.set_marks(mark, other_mark) }
+          return TicTacToe::AI::Minimax.new
         end
       end
     end
 
     def choose_players
-      [get_player(TicTacToe::Game::X,
-                  TicTacToe::Game::O),
-       get_player(TicTacToe::Game::O,
-                  TicTacToe::Game::X)]
+      [get_player("X"), get_player("O")]
     end
 
 
