@@ -79,10 +79,9 @@ module TicTacToe
       show_move_message
       show_board(game.board)
       moved = false
-      current_player = game.players[game.current_mark]
       while not moved
         begin
-          game.move(index: current_player.get_move(game.board))
+          game.next_turn
           moved = true
         rescue ArgumentError
           show_illegal_move_message
