@@ -2,8 +2,14 @@ require 'spec_helper'
 require 'rspec/expectations'
 
 describe TicTacToe::AI::Minimax do
-  let(:ai) { TicTacToe::AI::Minimax.new(TicTacToe::Game::X,
-                                        TicTacToe::Game::O) }
+  let(:ai) { new_ai }
+
+  def new_ai
+    TicTacToe::AI::Minimax.new.tap do |ai|
+      ai.set_marks(TicTacToe::Game::X,
+                   TicTacToe::Game::O)
+    end
+  end
 
   describe 'wins when it has two in a row' do
     it 'on the left' do

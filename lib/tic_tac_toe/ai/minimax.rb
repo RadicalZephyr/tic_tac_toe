@@ -3,10 +3,6 @@ module TicTacToe
 
     class Minimax
 
-      def initialize(my_mark, other_mark)
-        set_marks(my_mark, other_mark)
-      end
-
       def set_marks(my_mark, other_mark)
         @my_mark, @other_mark = my_mark, other_mark
       end
