@@ -32,10 +32,6 @@ module TicTacToe
       second_player.set_marks(O, X)
     end
 
-    def swap_mark
-      @current_mark = NEXT_PLAYER[current_mark]
-    end
-
     def move(index:)
       raise ArgumentError unless board.legal?(index)
       board.move(current_mark, index)
@@ -48,6 +44,12 @@ module TicTacToe
 
     def who_won?
       TicTacToe::Rules.who_won?(board)
+    end
+
+    private
+
+    def swap_mark
+      @current_mark = NEXT_PLAYER[current_mark]
     end
 
   end
