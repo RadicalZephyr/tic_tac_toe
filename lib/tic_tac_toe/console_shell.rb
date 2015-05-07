@@ -31,6 +31,30 @@ module TicTacToe
       game_loop
     end
 
+    def prompt_move
+      @console.print "Enter your move [0-8]: "
+      @console.flush
+      @console.gets.chomp
+    end
+
+    def show_move_error_message
+      @console.puts "Sorry, I didn't understand your move."
+      try_again
+    end
+
+    def show_invalid_move_message
+      @console.puts "That is not a valid move choice."
+      try_again
+    end
+
+    def show_illegal_move_message
+      @console.puts "That move has already been played."
+      try_again
+    end
+
+
+    private
+
     def game_loop
       while not game.finished?
         do_turn
@@ -82,12 +106,6 @@ module TicTacToe
     ## I/O Methods
     ########################################
 
-    def prompt_move
-      @console.print "Enter your move [0-8]: "
-      @console.flush
-      @console.gets.chomp
-    end
-
     def prompt_player(mark)
       @console.print "Who should play #{mark}'s ([h]uman, [r]andom or [a]i)? "
       @console.flush
@@ -111,21 +129,6 @@ module TicTacToe
 
     def try_again
       @console.puts "Please try again."
-    end
-
-    def show_move_error_message
-      @console.puts "Sorry, I didn't understand your move."
-      try_again
-    end
-
-    def show_invalid_move_message
-      @console.puts "That is not a valid move choice."
-      try_again
-    end
-
-    def show_illegal_move_message
-      @console.puts "That move has already been played."
-      try_again
     end
 
     def show_move_message
