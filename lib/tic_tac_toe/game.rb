@@ -25,6 +25,11 @@ module TicTacToe
       return self
     end
 
+    def set_players(first_player, second_player)
+      @players = {X => first_player,
+                  O => second_player}
+    end
+
     def swap_mark
       @current_mark = NEXT_PLAYER[current_mark]
     end
