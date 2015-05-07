@@ -10,5 +10,8 @@ module TicTacToe
       shell.get_move
     end
 
+    def set_marks(_, _)
+    end
+
   end
 end
