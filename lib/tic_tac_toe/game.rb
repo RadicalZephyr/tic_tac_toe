@@ -28,6 +28,8 @@ module TicTacToe
     def set_players(first_player, second_player)
       @players = {X => first_player,
                   O => second_player}
+      first_player.set_marks(X, O)
+      second_player.set_marks(O, X)
     end
 
     def swap_mark
