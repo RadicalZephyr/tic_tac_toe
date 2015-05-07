@@ -17,6 +17,38 @@ module TicTacToe
       player.set_shell(self)
     end
 
+    def main_loop
+      show_welcome_message
+      loop do
+        game.set_players(*choose_players)
+        game_loop
+        break unless play_again?
+        game.reset
+      end
+    end
+
+    def game_loop
+      while not game.finished?
+        do_turn
+      end
+      display_winner(game.who_won?)
+    end
+
+    def do_turn
+      show_move_message
+      show_board(game.board)
+      moved = false
+      current_player = game.players[game.current_mark]
+      while not moved
+        begin
+          game.move(index: current_player.get_move(game.board))
+          moved = true
+        rescue ArgumentError
+          show_illegal_move_message
+        end
+      end
+    end
+
     def prompt_move
       @console.print "Enter your move [0-8]: "
       @console.flush
@@ -107,38 +139,6 @@ module TicTacToe
                   TicTacToe::Game::O),
        get_player(TicTacToe::Game::O,
                   TicTacToe::Game::X)]
-    end
-
-    def main_loop
-      show_welcome_message
-      loop do
-        game.set_players(*choose_players)
-        game_loop
-        break unless play_again?
-        game.reset
-      end
-    end
-
-    def game_loop
-      while not game.finished?
-        do_turn
-      end
-      display_winner(game.who_won?)
-    end
-
-    def do_turn
-      show_move_message
-      show_board(game.board)
-      moved = false
-      current_player = game.players[game.current_mark]
-      while not moved
-        begin
-          game.move(index: current_player.get_move(game.board))
-          moved = true
-        rescue ArgumentError
-          show_illegal_move_message
-        end
-      end
     end
 
   end
