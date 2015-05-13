@@ -1,4 +1,4 @@
-require 'tic_tac_toe'
+require 'rack_tac_toe'
 
 use Rack::Session::Cookie,
     :key => 'tictactoe.game',

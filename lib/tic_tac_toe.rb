@@ -1,6 +1,5 @@
 require "tic_tac_toe/version"
 require "tic_tac_toe/console_shell"
-require "tic_tac_toe/rack_shell"
 require "tic_tac_toe/board"
 require "tic_tac_toe/mark"
 require "tic_tac_toe/game"
