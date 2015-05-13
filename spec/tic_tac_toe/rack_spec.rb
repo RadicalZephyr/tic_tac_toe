@@ -15,4 +15,10 @@ describe TicTacToe::RackShell do
     expect(last_response.body).to include("Tic-Tac-Toe")
   end
 
+  it 'can receive an new game GET request' do
+    get '/new-game'
+    expect(last_response.successful?).to be_truthy
+    expect(last_response.body).to include("<table>")
+  end
+
 end
