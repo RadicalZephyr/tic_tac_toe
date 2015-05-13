@@ -16,6 +16,7 @@ describe TicTacToe::Router do
     view = double
     data = {:dummy => :data}
     router.add_route("/", :GET, view) { |req| data }
+    router.add_route("/something-else", :GET, view) { |req| nil }
     expect(view).to receive(:render).with(data)
 
     get '/'
