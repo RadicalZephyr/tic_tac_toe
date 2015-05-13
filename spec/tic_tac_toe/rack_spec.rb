@@ -3,12 +3,15 @@ require 'rack_spec_helper'
 require 'tic_tac_toe/rack_shell'
 
 describe TicTacToe::RackShell do
+  include Rack::Test::Methods
+
+  def app
+    TicTacToe::RackShell.new_shell
+  end
 
   it 'can receive an index/root GET request' do
-    app = TicTacToe::RackShell.new_shell
-    req = Rack::MockRequest.new(app)
-    response = req.get("/")
-    expect(response.successful?).to be_truthy
+    get '/'
+    expect(last_response.successful?).to be_truthy
   end
 
 end
