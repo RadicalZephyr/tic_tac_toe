@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'rack'
+require 'rack_spec_helper'
 require 'tic_tac_toe/rack_shell'
 
 describe TicTacToe::RackShell do
