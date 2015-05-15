@@ -15,7 +15,11 @@ module TicTacToe
     def match(env)
       route = routes[{:path => env["PATH_INFO"],
                       :method => env["REQUEST_METHOD"]}]
-      [200, {}, [route[:view].render(route[:block].call(env))]]
+      if route
+        [200, {}, [route[:view].render(route[:block].call(env))]]
+      else
+        [404, {}, []]
+      end
     end
 
   end

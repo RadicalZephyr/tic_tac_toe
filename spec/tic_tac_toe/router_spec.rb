@@ -23,4 +23,9 @@ describe TicTacToe::Router do
     get '/'
   end
 
+  it 'returns 404 when no route matches' do
+    get '/'
+    expect(last_response.not_found?).to be_truthy
+  end
+
 end
