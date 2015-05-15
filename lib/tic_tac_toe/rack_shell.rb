@@ -8,20 +8,19 @@ module TicTacToe
   class RackShell
 
     def self.new_shell
-      return RackShell.new
+      return RackShell.new(TicTacToe::Router.new)
+    end
+
+    def initialize(router)
+      @router = router
+      @router.add_route("/", :GET, TicTacToe::View::Home) { |_| nil }
+      @router.add_route("/new-game", :GET, TicTacToe::View::Game) do |_|
+        TicTacToe::Game.new_game(TicTacToe::Board.empty_board)
+      end
     end
 
     def call(env)
-      req = Rack::Request.new(env)
-
-      if req.path =~ %r{^/$}
-        [200, {}, [TicTacToe::View::Home.new.render]]
-      elsif req.path =~ %r{^/new-game$}
-        game = TicTacToe::Game.new_game(TicTacToe::Board.empty_board)
-        [200, {}, [TicTacToe::View::Game.new(game).render]]
-      else
-        [404, {}, ["Not found."]]
-      end
+      @router.match(env)
     end
   end
 
