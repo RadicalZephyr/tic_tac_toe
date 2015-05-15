@@ -11,13 +11,13 @@ describe TicTacToe::RackShell do
 
   it 'can receive an index/root GET request' do
     get '/'
-    expect(last_response.successful?).to be_truthy
+    expect(last_response).to be_successful
     expect(last_response.body).to include("Tic-Tac-Toe")
   end
 
   it 'can receive an new game GET request' do
     get '/new-game'
-    expect(last_response.successful?).to be_truthy
+    expect(last_response).to be_successful
     expect(last_response.body).to include("<table>")
   end
 
