@@ -21,4 +21,8 @@ describe TicTacToe::RackShell do
     expect(last_response.body).to include("<table>")
   end
 
+  it 'returns 404 for unknown routes' do
+    get '/totally-wacky'
+    expect(last_response).to be_not_found
+  end
 end
