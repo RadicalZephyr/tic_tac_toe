@@ -10,7 +10,7 @@ module TicTacToe
     end
 
     def self.who_won?(board)
-      board.attack_sets.map { |marks| winning_marks?(marks) }.find(&:itself)
+      board.attack_sets.map { |marks| winning_marks?(marks) }.compact.first
     end
 
 
