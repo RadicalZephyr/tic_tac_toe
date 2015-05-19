@@ -8,7 +8,11 @@ module TicTacToe
       attr_reader :game, :x_mark, :o_mark
 
       def self.render(game)
-        self.new(game).render
+        if game
+          self.new(game).render
+        else
+          "Shit, no game passed."
+        end
       end
 
       def initialize(game)

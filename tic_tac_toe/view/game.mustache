@@ -13,8 +13,7 @@
       <div{{#x_current}} class="current-player"{{/x_current}}>Player {{x_mark}}</div>
       <div{{#o_current}} class="current-player"{{/o_current}}>Player {{o_mark}}</div>
     </div>
-    <form action="/move" method="post">
-      <input type="hidden" name="game" value='{{{json_board}}}'>
+    <form action="/make-move" method="post">
       {{{board}}}
       <input type="submit" value="Make Move">
     </form>

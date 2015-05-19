@@ -23,6 +23,20 @@ module TicTacToe
 
         game
       end
+
+      @router.add_route("/make-move", :POST, TicTacToe::View::Game) do |env|
+        @req = Rack::Request.new(env)
+        game = @req.session[:game]
+        if game
+          game.next_turn
+        end
+        @req = nil
+        game
+      end
+    end
+
+    def get_move
+      Integer(@req["move"]) unless @req.nil?
     end
 
     def call(env)
