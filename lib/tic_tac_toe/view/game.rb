@@ -11,7 +11,7 @@ module TicTacToe
         if game
           self.new(game).render
         else
-          "Shit, no game passed."
+          "No game was found for this session."
         end
       end
 
