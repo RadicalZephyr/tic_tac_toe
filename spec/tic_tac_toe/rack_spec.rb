@@ -21,6 +21,14 @@ describe TicTacToe::RackShell do
     expect(last_response.body).to include("<table>")
   end
 
+  it 'can receive a make-move POST request' do
+    get '/new-game'
+    post '/make-move', "move=1"
+    expect(last_response).to be_successful
+    expect(last_response.body).to include("<table>")
+    expect(last_response.body).not_to include("id=\"move1\"")
+  end
+
   it 'returns 404 for unknown routes' do
     get '/totally-wacky'
     expect(last_response).to be_not_found
