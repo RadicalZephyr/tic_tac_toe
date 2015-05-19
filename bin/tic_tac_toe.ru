@@ -1,10 +1,7 @@
 require 'rack_tac_toe'
 
-use Rack::Session::Cookie,
-    :key => 'tictactoe.game',
+use Rack::Session::Pool,
     :domain => 'localhost',
-    :path => '/',
-    :expire_after => 1800,
-    :secret => 'my_super_secret_secret'
+    :expire_after => 1800
 use Rack::Static, :urls => ["/css", "/images"], :root => "public"
 run TicTacToe::RackShell.new_shell
