@@ -8,11 +8,12 @@ module TicTacToe
   class RackShell
 
     def self.new_shell
-      return RackShell.new(TicTacToe::Router.new)
+      return RackShell.new(TicTacToe::Router.new, TicTacToe::Human.new)
     end
 
-    def initialize(router)
-      @router = router
+    def initialize(router, player)
+      @router, @player = router, player
+      player.set_shell(self)
       @router.add_route("/", :GET, TicTacToe::View::Home) { |_| nil }
       @router.add_route("/new-game", :GET, TicTacToe::View::Game) do |env|
         req = Rack::Request.new(env)
