@@ -6,7 +6,8 @@ describe TicTacToe::RackShell do
   include Rack::Test::Methods
 
   def app
-    TicTacToe::RackShell.new_shell
+    app = TicTacToe::RackShell.new_shell
+    Rack::Session::Pool.new(app, :expire_after => 18000)
   end
 
   it 'can receive an index/root GET request' do
