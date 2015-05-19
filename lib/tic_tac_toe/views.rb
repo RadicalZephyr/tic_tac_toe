@@ -1,3 +1,3 @@
-require 'tic_tac_toe/view/home.rb'
-require 'tic_tac_toe/view/game.rb'
-require 'tic_tac_toe/view/board.rb'
+require 'tic_tac_toe/view/home'
+require 'tic_tac_toe/view/game'
+require 'tic_tac_toe/view/board'
