@@ -30,16 +30,30 @@ describe TicTacToe::View::Game do
   end
 
   context 'with a finished game' do
-    let(:game) { TicTacToe::Game.new(TicTacToe::Board.from(["X", " ", " ",
-                                                            "O", "X", "O",
-                                                            " ", " ", "X"])) }
+    context 'with X winning' do
+      let(:game) { TicTacToe::Game.new(TicTacToe::Board.from(["X", " ", " ",
+                                                              "O", "X", "O",
+                                                              " ", " ", "X"])) }
 
-    it 'displays the winning mark correctly' do
-      body = TicTacToe::View::Game.render(game)
-      expect(body).not_to include("<form")
-      expect(body).to include("Player X Wins!")
+      it 'displays the winning mark correctly' do
+        body = TicTacToe::View::Game.render(game)
+        expect(body).not_to include("<form")
+        expect(body).to include("Player X Wins!")
+      end
     end
 
+    context 'with a draw game' do
+      let(:game) { TicTacToe::Game.new(TicTacToe::Board.from(["X", "O", "X",
+                                                              "O", "X", "O",
+                                                              "O", "X", "O"])) }
+
+      it 'displays the draw message' do
+        body = TicTacToe::View::Game.render(game)
+        expect(body).not_to include("<form")
+        expect(body).not_to include("Wins!")
+        expect(body).to include("It's a draw!")
+      end
+    end
   end
 
 end
