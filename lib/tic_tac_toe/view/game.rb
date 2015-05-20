@@ -8,8 +8,10 @@ module TicTacToe
       attr_reader :game, :x_mark, :o_mark
 
       def self.render(game)
-        if game
+        if game && !game.finished?
           self.new(game).render
+        elsif game && game.finished?
+          FinishedGame.new(game).render
         else
           "No game was found for this session."
         end
@@ -43,5 +45,17 @@ module TicTacToe
       end
     end
 
+    class FinishedGame < Mustache
+      attr_reader :game, :winning_mark
+
+      def initialize(game)
+        @game = game
+        @winning_mark = game.who_won?.to_s
+      end
+
+      def board
+        TicTacToe::View::Board.render(game.board, true)
+      end
+    end
   end
 end
