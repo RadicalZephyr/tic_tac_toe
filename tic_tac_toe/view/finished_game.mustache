@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+  </head>
+  <body>
+    <div id="players">
+      <div class="current-player">
+        {{#winning_mark}}Player {{winning_mark}} Wins!{{/winning_mark}}{{^winning_mark}}It's a draw!{{/winning_mark}}
+      </div>
+    </div>
+      {{{board}}}
+  </body>
+</html>
