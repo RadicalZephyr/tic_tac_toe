@@ -6,6 +6,10 @@ module TicTacToe
     class Board < Mustache
       attr_reader :board
 
+      def self.render(board)
+        self.new(board).render
+      end
+
       def initialize(board)
         @board = board
       end
