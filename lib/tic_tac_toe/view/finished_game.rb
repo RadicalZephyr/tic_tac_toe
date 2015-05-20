@@ -21,7 +21,7 @@ module TicTacToe
       end
 
       def board
-        TicTacToe::View::Board.render(game.board)
+        TicTacToe::View::Board.render(game.board, true)
       end
     end
 
