@@ -50,7 +50,10 @@ module TicTacToe
 
       def initialize(game)
         @game = game
-        @winning_mark = game.who_won?.to_s
+        # This explicit nil check is to get around a weirdness in
+        # mustache.  It seems mustache sees an empty string as both
+        # true and false
+        @winning_mark = game.who_won?.nil? ? nil : game.who_won?.to_s
       end
 
       def board
