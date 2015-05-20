@@ -39,7 +39,7 @@ module TicTacToe
       end
 
       def board
-        TicTacToe::View::Board.new(game.board).render
+        TicTacToe::View::Board.render(game.board)
       end
     end
 
