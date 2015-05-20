@@ -51,9 +51,3 @@ guard :rspec, cmd: "bundle exec rspec" do
   dsl.watch_spec_files_for(ruby.lib_files)
 
 end
-
-guard 'rack', :config => "bin/tic_tac_toe.ru" do
-  watch('Gemfile.lock')
-  watch('bin/tic_tac_toe.ru')
-  watch(%r{^lib/.*})
-end
