@@ -1,5 +1,0 @@
-guard 'rack', :config => "bin/tic_tac_toe.ru" do
-  watch('Gemfile.lock')
-  watch('bin/tic_tac_toe.ru')
-  watch(%r{^lib/.*})
-end
