@@ -16,14 +16,14 @@ describe TicTacToe::RackShell do
     expect(last_response.body).to include("Tic-Tac-Toe")
   end
 
-  it 'can receive an new game GET request' do
-    get '/new-game'
+  it 'can receive an new game POST request' do
+    post '/new-game', "player1=h&player2=h"
     expect(last_response).to be_successful
     expect(last_response.body).to include("<table>")
   end
 
   it 'can receive a make-move POST request' do
-    get '/new-game'
+    post '/new-game', "player1=h&player2=h"
     post '/make-move', "move=1"
     expect(last_response).to be_successful
     expect(last_response.body).to include("<table>")
