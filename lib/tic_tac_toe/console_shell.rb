@@ -9,12 +9,13 @@ module TicTacToe
     def self.new_shell(console)
       game = TicTacToe::Game.new_game(TicTacToe::Board.empty_board)
       player = TicTacToe::Human.new
-      TicTacToe::ConsoleShell.new(console, game, player)
+      shell = TicTacToe::ConsoleShell.new(console, game, player)
+      player.set_shell(shell)
+      return shell
     end
 
     def initialize(console, game, player)
       @console, @game, @player = console, game, player
-      player.set_shell(self)
     end
 
     def main_loop
