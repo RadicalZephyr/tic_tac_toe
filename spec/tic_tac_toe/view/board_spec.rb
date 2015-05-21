@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'tic_tac_toe/view/board'
 
 describe TicTacToe::View::Board do
-  let(:bv) { TicTacToe::View::Board.new(TicTacToe::Board.empty_board, false) }
+  let(:bv) { TicTacToe::View::Board.new(TicTacToe::Core::Board.empty_board, false) }
 
   it 'Properly denotes row starts and ends' do
     starts = (0...9).map { |i| bv.is_row_start?(i) }
@@ -27,7 +27,7 @@ describe TicTacToe::View::Board do
   end
 
   it 'renders a finished board without radio buttons' do
-    boardview = TicTacToe::View::Board.new(TicTacToe::Board.empty_board, true)
+    boardview = TicTacToe::View::Board.new(TicTacToe::Core::Board.empty_board, true)
     expect(boardview.render).not_to include("<input")
   end
 end

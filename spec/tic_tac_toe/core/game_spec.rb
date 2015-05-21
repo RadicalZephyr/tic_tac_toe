@@ -3,7 +3,7 @@ require 'spec_helper'
 describe TicTacToe::Core::Game do
 
   let(:player) { mock_player }
-  let(:board) { TicTacToe::Board.empty_board }
+  let(:board) { TicTacToe::Core::Board.empty_board }
   let(:game) { test_game }
 
   def mock_player
