@@ -40,11 +40,11 @@ module TicTacToe
       end
 
       def finished?
-        TicTacToe::Rules.finished?(board)
+        TicTacToe::Core::Rules.finished?(board)
       end
 
       def who_won?
-        TicTacToe::Rules.who_won?(board)
+        TicTacToe::Core::Rules.who_won?(board)
       end
 
       private
