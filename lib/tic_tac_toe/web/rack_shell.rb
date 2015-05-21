@@ -16,7 +16,7 @@ module TicTacToe
         router.add_route("/", :GET, TicTacToe::View::Home) { |_| nil }
         router.add_route("/new-game", :POST, TicTacToe::View::Game) do |env|
           req = Rack::Request.new(env)
-          game = TicTacToe::Core::Game.new_game(TicTacToe::Board.empty_board)
+          game = TicTacToe::Core::Game.new_game(TicTacToe::Core::Board.empty_board)
           game.set_players(*shell.get_players(req))
           req.session[:game] = game
 

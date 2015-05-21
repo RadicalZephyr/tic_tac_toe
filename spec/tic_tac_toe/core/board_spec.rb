@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe TicTacToe::Board do
-  let(:board) { TicTacToe::Board.empty_board }
+describe TicTacToe::Core::Board do
+  let(:board) { TicTacToe::Core::Board.empty_board }
 
   it 'initially has 9 empty positions' do
     (0...9).each do |i|
@@ -24,7 +24,7 @@ describe TicTacToe::Board do
 
   describe 'when creating empty indices' do
     it 'can handle a full board' do
-      board = TicTacToe::Board.from(["X", "O", "X",
+      board = TicTacToe::Core::Board.from(["X", "O", "X",
                                      "X", "X", "O",
                                      "O", "X", "O"])
       expect(board.full?).to be_truthy
@@ -32,7 +32,7 @@ describe TicTacToe::Board do
     end
 
     it 'can handle a mostly full board' do
-      board = TicTacToe::Board.from(["X", " ", "X",
+      board = TicTacToe::Core::Board.from(["X", " ", "X",
                                      "X", "X", "O",
                                      "O", " ", "O"])
       expect(board.full?).to be_falsey
@@ -40,7 +40,7 @@ describe TicTacToe::Board do
     end
 
     it 'produces all indices for an empty board' do
-      board = TicTacToe::Board.from([" ", " ", " ",
+      board = TicTacToe::Core::Board.from([" ", " ", " ",
                                      " ", " ", " ",
                                      " ", " ", " "])
       expect(board.empty_spaces).to contain_exactly(*(0..8))

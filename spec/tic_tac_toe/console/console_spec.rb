@@ -3,7 +3,7 @@ require 'io/console'
 
 describe TicTacToe::Console::ConsoleShell do
   let(:console) { mock_console }
-  let(:board) { TicTacToe::Board.empty_board }
+  let(:board) { TicTacToe::Core::Board.empty_board }
   let(:game) { mock_game(board) }
   let(:player) { TicTacToe::Human.new }
   let(:console_shell) { TicTacToe::Console::ConsoleShell.new(console, game, player) }
