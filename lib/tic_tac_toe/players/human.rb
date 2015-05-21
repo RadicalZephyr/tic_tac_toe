@@ -1,16 +1,19 @@
 module TicTacToe
-  class Human
-    attr_reader :shell
+  module Player
 
-    def set_shell(shell)
-      @shell = shell
-    end
+    class Human
+      attr_reader :shell
 
-    def get_move(_)
-      shell.get_move
-    end
+      def set_shell(shell)
+        @shell = shell
+      end
 
-    def set_marks(_, _)
+      def get_move(_)
+        shell.get_move
+      end
+
+      def set_marks(_, _)
+      end
     end
 
   end

@@ -10,7 +10,7 @@ module TicTacToe
       attr_accessor :req
 
       def self.new_shell
-        router, player = TicTacToe::Web::Router.new, TicTacToe::Human.new
+        router, player = TicTacToe::Web::Router.new, TicTacToe::Player::Human.new
         shell = RackShell.new(router, player)
 
         router.add_route("/", :GET, TicTacToe::View::Home) { |_| nil }
