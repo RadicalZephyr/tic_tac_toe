@@ -1,4 +1,4 @@
-require 'tic_tac_toe/human'
+require 'tic_tac_toe/players/human'
 require 'tic_tac_toe/core/game'
 
 module TicTacToe
