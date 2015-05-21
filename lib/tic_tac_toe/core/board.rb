@@ -1,4 +1,4 @@
-require "tic_tac_toe/mark"
+require "tic_tac_toe/core/mark"
 
 module TicTacToe
 
