@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'io/console'
 
-describe TicTacToe::ConsoleShell do
+describe TicTacToe::Console::ConsoleShell do
   let(:console) { mock_console }
   let(:board) { TicTacToe::Board.empty_board }
   let(:game) { mock_game(board) }
   let(:player) { TicTacToe::Human.new }
-  let(:console_shell) { TicTacToe::ConsoleShell.new(console, game, player) }
+  let(:console_shell) { TicTacToe::Console::ConsoleShell.new(console, game, player) }
 
   def mock_console
     instance_double('IO').tap do |console|
