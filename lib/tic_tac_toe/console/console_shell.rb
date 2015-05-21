@@ -101,9 +101,9 @@ module TicTacToe
           when "h", "human"
             return @player
           when "r", "random"
-            return TicTacToe::AI::Random.new(Random.new)
+            return TicTacToe::Player::Random.new(Random.new)
           when "a", "ai"
-            return TicTacToe::AI::Minimax.new
+            return TicTacToe::Player::Minimax.new
           end
         end
       end

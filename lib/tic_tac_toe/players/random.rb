@@ -1,5 +1,5 @@
 module TicTacToe
-  module AI
+  module Player
 
     class Random
 
