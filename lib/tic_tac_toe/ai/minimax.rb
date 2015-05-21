@@ -60,7 +60,7 @@ module TicTacToe
       def get_wins_from_attacks(attacks, mark)
         get_indices_for(attacks) do |imarks|
           counts = count_marks(imarks.map { |imark| imark.mark })
-          counts[mark] == 2 && counts[TicTacToe::BLANK] == 1
+          counts[mark] == 2 && counts[TicTacToe::Core::BLANK] == 1
         end
       end
 
