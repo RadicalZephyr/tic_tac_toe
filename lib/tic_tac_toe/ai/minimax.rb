@@ -13,7 +13,7 @@ module TicTacToe
       end
 
       def negamax(marks, node, depth, alpha, beta, color)
-        if depth == 0 or TicTacToe::Rules.finished?(node)
+        if depth == 0 or TicTacToe::Core::Rules.finished?(node)
           score = score_node(node, marks[color])
           weight = [1, depth].max
           return [-1, color * score * weight]
@@ -37,12 +37,12 @@ module TicTacToe
       private
 
       def score_node(node, mark)
-        winner = TicTacToe::Rules.who_won?(node)
+        winner = TicTacToe::Core::Rules.who_won?(node)
         if winner == @my_mark
           10
         elsif winner == @other_mark
           -10
-        elsif TicTacToe::Rules.draw?(node)
+        elsif TicTacToe::Core::Rules.draw?(node)
           0
         else
           win_count = get_wins(node, @my_mark).uniq.count
