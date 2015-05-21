@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe TicTacToe::AI::Random do
+describe TicTacToe::Player::Random do
   let(:randomness) { instance_double("Random") }
   let(:board) { double }
-  let(:rando) { TicTacToe::AI::Random.new(randomness)}
+  let(:rando) { TicTacToe::Player::Random.new(randomness)}
 
   it 'Returns random moves' do
     allow(randomness).to receive(:rand).with(8).and_return(1, 2, 3)

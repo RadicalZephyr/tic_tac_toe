@@ -1,11 +1,11 @@
 require 'spec_helper'
 require 'rspec/expectations'
 
-describe TicTacToe::AI::Minimax do
+describe TicTacToe::Player::Minimax do
   let(:ai) { new_ai }
 
   def new_ai
-    TicTacToe::AI::Minimax.new.tap do |ai|
+    TicTacToe::Player::Minimax.new.tap do |ai|
       ai.set_marks(TicTacToe::Core::Game::X,
                    TicTacToe::Core::Game::O)
     end
