@@ -20,7 +20,7 @@ module TicTacToe
       end
 
       def self.from(marks)
-        TicTacToe::Core::Board.new(marks.map { |m| TicTacToe::BLANK.mark(m) }.to_a)
+        TicTacToe::Core::Board.new(marks.map { |m| TicTacToe::Core::BLANK.mark(m) }.to_a)
       end
 
       def self.empty_board
@@ -39,7 +39,7 @@ module TicTacToe
       end
 
       def reset
-        @marks = Array.new(9, TicTacToe::Mark.new)
+        @marks = Array.new(9, TicTacToe::Core::Mark.new)
         return self
       end
 

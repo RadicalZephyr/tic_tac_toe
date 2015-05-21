@@ -12,9 +12,9 @@ describe TicTacToe::Core::Board do
 
   it 'can make moves' do
     board.move("X", 0)
-    expect(board.pos(0)).to eq(TicTacToe::Mark.new("X"))
+    expect(board.pos(0)).to eq(TicTacToe::Core::Mark.new("X"))
     (1...9).each do |i|
-      expect(board.pos(i)).to eq(TicTacToe::Mark.new)
+      expect(board.pos(i)).to eq(TicTacToe::Core::Mark.new)
     end
   end
 

@@ -6,8 +6,8 @@ module TicTacToe
     class Game
       attr_reader :current_mark, :board, :players
 
-      X = TicTacToe::Mark.new("X")
-      O = TicTacToe::Mark.new("O")
+      X = TicTacToe::Core::Mark.new("X")
+      O = TicTacToe::Core::Mark.new("O")
 
       NEXT_PLAYER = {X => O,
                      O => X}
