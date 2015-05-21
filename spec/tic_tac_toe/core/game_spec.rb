@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe TicTacToe::Game do
+describe TicTacToe::Core::Game do
 
   let(:player) { mock_player }
   let(:board) { TicTacToe::Board.empty_board }
@@ -14,7 +14,7 @@ describe TicTacToe::Game do
   end
 
   def test_game
-    TicTacToe::Game.new_game(board).tap do |game|
+    TicTacToe::Core::Game.new_game(board).tap do |game|
       game.set_players(player, player)
     end
   end

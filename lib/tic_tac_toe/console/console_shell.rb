@@ -8,7 +8,7 @@ module TicTacToe
       attr_reader :game
 
       def self.new_shell(console)
-        game = TicTacToe::Game.new_game(TicTacToe::Board.empty_board)
+        game = TicTacToe::Core::Game.new_game(TicTacToe::Board.empty_board)
         player = TicTacToe::Human.new
         shell = self.new(console, game, player)
         player.set_shell(shell)
