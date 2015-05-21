@@ -1,5 +1,5 @@
 require 'tic_tac_toe/human'
-require 'tic_tac_toe/game'
+require 'tic_tac_toe/core/game'
 
 module TicTacToe
 
