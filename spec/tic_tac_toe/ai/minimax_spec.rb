@@ -6,8 +6,8 @@ describe TicTacToe::AI::Minimax do
 
   def new_ai
     TicTacToe::AI::Minimax.new.tap do |ai|
-      ai.set_marks(TicTacToe::Game::X,
-                   TicTacToe::Game::O)
+      ai.set_marks(TicTacToe::Core::Game::X,
+                   TicTacToe::Core::Game::O)
     end
   end
 

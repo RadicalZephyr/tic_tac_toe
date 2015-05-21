@@ -18,7 +18,7 @@ describe TicTacToe::Console::ConsoleShell do
   end
 
   def mock_game(board)
-    TicTacToe::Game.new_game(board).tap do |game|
+    TicTacToe::Core::Game.new_game(board).tap do |game|
       allow(game).to receive(:board).and_return(board)
       allow(game).to receive(:current_mark).and_call_original
       allow(game).to receive(:current_mark=).and_call_original

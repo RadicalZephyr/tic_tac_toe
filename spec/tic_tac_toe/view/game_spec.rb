@@ -14,7 +14,7 @@ describe TicTacToe::View::Game do
   end
 
   def test_game
-    TicTacToe::Game.new_game(TicTacToe::Board.empty_board).tap do |game|
+    TicTacToe::Core::Game.new_game(TicTacToe::Board.empty_board).tap do |game|
       game.set_players(player, player)
     end
   end
@@ -31,7 +31,7 @@ describe TicTacToe::View::Game do
 
   context 'with a finished game' do
     context 'with X winning' do
-      let(:game) { TicTacToe::Game.new(TicTacToe::Board.from(["X", " ", " ",
+      let(:game) { TicTacToe::Core::Game.new(TicTacToe::Board.from(["X", " ", " ",
                                                               "O", "X", "O",
                                                               " ", " ", "X"])) }
 
@@ -43,7 +43,7 @@ describe TicTacToe::View::Game do
     end
 
     context 'with a draw game' do
-      let(:game) { TicTacToe::Game.new(TicTacToe::Board.from(["X", "O", "X",
+      let(:game) { TicTacToe::Core::Game.new(TicTacToe::Board.from(["X", "O", "X",
                                                               "O", "X", "O",
                                                               "O", "X", "O"])) }
 

@@ -19,8 +19,8 @@ module TicTacToe
 
       def initialize(game)
         @game = game
-        @x_mark = TicTacToe::Game::X
-        @o_mark = TicTacToe::Game::O
+        @x_mark = TicTacToe::Core::Game::X
+        @o_mark = TicTacToe::Core::Game::O
       end
 
       def current_mark

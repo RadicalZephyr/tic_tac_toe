@@ -1,60 +1,64 @@
 require 'tic_tac_toe/core/mark'
 
 module TicTacToe
-  class Game
-    attr_reader :current_mark, :board, :players
+  module Core
 
-    X = TicTacToe::Mark.new("X")
-    O = TicTacToe::Mark.new("O")
+    class Game
+      attr_reader :current_mark, :board, :players
 
-    NEXT_PLAYER = {X => O,
-                   O => X}
+      X = TicTacToe::Mark.new("X")
+      O = TicTacToe::Mark.new("O")
 
-    def self.new_game(board)
-      game = TicTacToe::Game.new(board)
-      game.reset
-    end
+      NEXT_PLAYER = {X => O,
+                     O => X}
 
-    def initialize(board)
-      @board = board
-    end
+      def self.new_game(board)
+        game = TicTacToe::Core::Game.new(board)
+        game.reset
+      end
 
-    def reset
-      @current_mark = X
-      board.reset
-      return self
-    end
+      def initialize(board)
+        @board = board
+      end
 
-    def set_players(first_player, second_player)
-      @players = {X => first_player,
-                  O => second_player}
-      first_player.set_marks(X, O)
-      second_player.set_marks(O, X)
-    end
+      def reset
+        @current_mark = X
+        board.reset
+        return self
+      end
 
-    def next_turn
-      current_player = players[current_mark]
-      move(index: current_player.get_move(board))
-    end
+      def set_players(first_player, second_player)
+        @players = {X => first_player,
+                    O => second_player}
+        first_player.set_marks(X, O)
+        second_player.set_marks(O, X)
+      end
 
-    def finished?
-      TicTacToe::Rules.finished?(board)
-    end
+      def next_turn
+        current_player = players[current_mark]
+        move(index: current_player.get_move(board))
+      end
 
-    def who_won?
-      TicTacToe::Rules.who_won?(board)
-    end
+      def finished?
+        TicTacToe::Rules.finished?(board)
+      end
 
-    private
+      def who_won?
+        TicTacToe::Rules.who_won?(board)
+      end
 
-    def move(index:)
-      raise ArgumentError unless board.legal?(index)
-      board.move(current_mark, index)
-      swap_mark
-    end
+      private
 
-    def swap_mark
-      @current_mark = NEXT_PLAYER[current_mark]
+      def move(index:)
+        raise ArgumentError unless board.legal?(index)
+        board.move(current_mark, index)
+        swap_mark
+      end
+
+      def swap_mark
+        @current_mark = NEXT_PLAYER[current_mark]
+      end
+
     end
 
   end
