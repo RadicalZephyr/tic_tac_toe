@@ -12,8 +12,10 @@ module TicTacToe
       def self.new_shell
         router, player = TicTacToe::Web::Router.new, TicTacToe::Player::Human.new
         shell = RackShell.new(router, player)
+        player.set_shell(shell)
 
         router.add_route("/", :GET, TicTacToe::View::Home) { |_| nil }
+
         router.add_route("/new-game", :POST, TicTacToe::View::Game) do |env|
           req = Rack::Request.new(env)
           game = TicTacToe::Core::Game.new_game(TicTacToe::Core::Board.empty_board)
@@ -39,8 +41,6 @@ module TicTacToe
           shell.req= nil
           game
         end
-
-        player.set_shell(shell)
 
         return shell
       end
