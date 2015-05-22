@@ -44,13 +44,7 @@ module TicTacToe
           end
           shell.req= nil
 
-          if game && !game.finished?
-            TicTacToe::View::Game.render(game)
-          elsif game && game.finished?
-            TicTacToe::View::FinishedGame.render(game)
-          else
-            "No game was found for this session."
-          end
+          shell.render_game(game)
         end
 
         return shell
@@ -71,6 +65,16 @@ module TicTacToe
       def get_players(req)
         [get_player(req["player1"]),
          get_player(req["player2"])]
+      end
+
+      def render_game(game)
+        if game && !game.finished?
+          TicTacToe::View::Game.render(game)
+        elsif game && game.finished?
+          TicTacToe::View::FinishedGame.render(game)
+        else
+          "No game was found for this session."
+        end
       end
 
       private
