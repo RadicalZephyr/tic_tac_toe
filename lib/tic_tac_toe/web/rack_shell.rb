@@ -14,7 +14,9 @@ module TicTacToe
         shell = RackShell.new(router, player)
         player.set_shell(shell)
 
-        router.add_route("/", :GET, TicTacToe::View::Home) { |_| nil }
+        router.add_route("/", :GET, TicTacToe::View::Home) do |_|
+          TicTacToe::View::Home.render(nil)
+        end
 
         router.add_route("/new-game", :POST, TicTacToe::View::Game) do |env|
           req = Rack::Request.new(env)
@@ -22,7 +24,7 @@ module TicTacToe
           game.set_players(*shell.get_players(req))
           req.session[:game] = game
 
-          game
+          TicTacToe::View::Game.render(game)
         end
 
         router.add_route("/make-move", :POST, TicTacToe::View::Game) do |env|
@@ -39,7 +41,7 @@ module TicTacToe
             end
           end
           shell.req= nil
-          game
+          TicTacToe::View::Game.render(game)
         end
 
         return shell
