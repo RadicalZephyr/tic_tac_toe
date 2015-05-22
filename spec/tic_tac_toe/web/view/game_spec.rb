@@ -1,10 +1,10 @@
 require 'spec_helper'
 require 'tic_tac_toe/web/view/game'
 
-describe TicTacToe::View::Game do
+describe TicTacToe::Web::View::Game do
   let(:player) { mock_player }
   let(:game) { test_game }
-  let(:gv) { TicTacToe::View::Game.new(game) }
+  let(:gv) { TicTacToe::Web::View::Game.new(game) }
 
   def mock_player
     instance_double("TicTacToe::Player::Human").tap do |player|
@@ -31,14 +31,14 @@ describe TicTacToe::View::Game do
 
 end
 
-describe TicTacToe::View::FinishedGame do
+describe TicTacToe::Web::View::FinishedGame do
   context 'with X winning' do
     let(:game) { TicTacToe::Core::Game.new(TicTacToe::Core::Board.from(["X", " ", " ",
                                                                         "O", "X", "O",
                                                                         " ", " ", "X"])) }
 
     it 'displays the winning mark correctly' do
-      body = TicTacToe::View::FinishedGame.render(game)
+      body = TicTacToe::Web::View::FinishedGame.render(game)
       expect(body).not_to include("<form")
       expect(body).to include("Player X Wins!")
     end
@@ -50,7 +50,7 @@ describe TicTacToe::View::FinishedGame do
                                                                         "O", "X", "O"])) }
 
     it 'displays the draw message' do
-      body = TicTacToe::View::FinishedGame.render(game)
+      body = TicTacToe::Web::View::FinishedGame.render(game)
       expect(body).not_to include("<form")
       expect(body).not_to include("Wins!")
       expect(body).to include("It's a draw!")
