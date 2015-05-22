@@ -43,7 +43,14 @@ module TicTacToe
             end
           end
           shell.req= nil
-          TicTacToe::View::Game.render(game)
+
+          if game && !game.finished?
+            TicTacToe::View::Game.render(game)
+          elsif game && game.finished?
+            TicTacToe::View::FinishedGame.render(game)
+          else
+            "No game was found for this session."
+          end
         end
 
         return shell
