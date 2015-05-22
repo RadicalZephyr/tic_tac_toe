@@ -8,7 +8,7 @@ module TicTacToe
       attr_reader :game, :x_mark, :o_mark
 
       def self.render(game)
-        self.render(game)
+        self.new(game).render
       end
 
       def initialize(game)
@@ -43,7 +43,7 @@ module TicTacToe
       attr_reader :game, :winning_mark
 
       def self.render(game)
-        self.render(game)
+        self.new(game).render
       end
 
       def initialize(game)
