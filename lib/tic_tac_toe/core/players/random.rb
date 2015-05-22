@@ -1,19 +1,21 @@
 module TicTacToe
-  module Player
+  module Core
+    module Player
 
-    class Random
+      class Random
 
-      def initialize(random_source)
-        @random_source = random_source
+        def initialize(random_source)
+          @random_source = random_source
+        end
+
+        def get_move(board)
+          @random_source.rand(8)
+        end
+
+        def set_marks(_, _)
+        end
       end
 
-      def get_move(board)
-        @random_source.rand(8)
-      end
-
-      def set_marks(_, _)
-      end
     end
-
   end
 end
