@@ -1,7 +1,6 @@
 require 'json'
 
-require 'tic_tac_toe'
-require 'tic_tac_toe/views'
+require 'rack_tac_toe'
 
 module TicTacToe
   module Web
