@@ -8,9 +8,9 @@ module TicTacToe
         @routes = {}
       end
 
-      def add_route(path, method, view, &block)
+      def add_route(path, method, &block)
         routes[{:path => path,
-                :method => method.to_s}] = {:view => view, :block => block}
+                :method => method.to_s}] = {:block => block}
       end
 
       def match(env)
