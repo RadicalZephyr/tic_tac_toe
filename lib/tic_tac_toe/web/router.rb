@@ -17,7 +17,7 @@ module TicTacToe
         route = routes[{:path => env["PATH_INFO"],
                         :method => env["REQUEST_METHOD"]}]
         if route
-          [200, {}, [route[:view].render(route[:block].call(env))]]
+          [200, {}, [route[:block].call(env)]]
         else
           [404, {}, []]
         end
