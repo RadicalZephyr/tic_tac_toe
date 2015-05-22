@@ -14,7 +14,7 @@ describe TicTacToe::View::Game do
   end
 
   def test_game
-    TicTacToe::Core::Game.new_game(TicTacToe::Core::Board.empty_board).tap do |game|
+    TicTacToe::Core::Game.new_game.tap do |game|
       game.set_players(player, player)
     end
   end
@@ -29,31 +29,31 @@ describe TicTacToe::View::Game do
     expect(gv.current_mark).to eq("oh")
   end
 
-  context 'with a finished game' do
-    context 'with X winning' do
-      let(:game) { TicTacToe::Core::Game.new(TicTacToe::Core::Board.from(["X", " ", " ",
-                                                              "O", "X", "O",
-                                                              " ", " ", "X"])) }
+end
 
-      it 'displays the winning mark correctly' do
-        body = TicTacToe::View::Game.render(game)
-        expect(body).not_to include("<form")
-        expect(body).to include("Player X Wins!")
-      end
-    end
+describe TicTacToe::View::FinishedGame do
+  context 'with X winning' do
+    let(:game) { TicTacToe::Core::Game.new(TicTacToe::Core::Board.from(["X", " ", " ",
+                                                                        "O", "X", "O",
+                                                                        " ", " ", "X"])) }
 
-    context 'with a draw game' do
-      let(:game) { TicTacToe::Core::Game.new(TicTacToe::Core::Board.from(["X", "O", "X",
-                                                              "O", "X", "O",
-                                                              "O", "X", "O"])) }
-
-      it 'displays the draw message' do
-        body = TicTacToe::View::Game.render(game)
-        expect(body).not_to include("<form")
-        expect(body).not_to include("Wins!")
-        expect(body).to include("It's a draw!")
-      end
+    it 'displays the winning mark correctly' do
+      body = TicTacToe::View::FinishedGame.render(game)
+      expect(body).not_to include("<form")
+      expect(body).to include("Player X Wins!")
     end
   end
 
+  context 'with a draw game' do
+    let(:game) { TicTacToe::Core::Game.new(TicTacToe::Core::Board.from(["X", "O", "X",
+                                                                        "O", "X", "O",
+                                                                        "O", "X", "O"])) }
+
+    it 'displays the draw message' do
+      body = TicTacToe::View::FinishedGame.render(game)
+      expect(body).not_to include("<form")
+      expect(body).not_to include("Wins!")
+      expect(body).to include("It's a draw!")
+    end
+  end
 end

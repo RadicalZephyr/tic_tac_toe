@@ -1,4 +1,5 @@
 require 'tic_tac_toe/core/mark'
+require 'tic_tac_toe/core/board'
 
 module TicTacToe
   module Core
@@ -12,7 +13,8 @@ module TicTacToe
       NEXT_PLAYER = {X => O,
                      O => X}
 
-      def self.new_game(board)
+      def self.new_game()
+        board = TicTacToe::Core::Board.empty_board
         game = TicTacToe::Core::Game.new(board)
         game.reset
       end
