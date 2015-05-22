@@ -1,1 +1,8 @@
 # List of Stuff to Refactor
+
+- Think about adding functionality to the player to allow for
+processing multiple moves for one request. Special return value from
+get next move. Or have it be a lookup method on the player class that
+says "you need to block/go to the user" whatever that means.
+
+Is this something I can make useful for the console?
