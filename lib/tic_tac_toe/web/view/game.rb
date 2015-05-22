@@ -1,5 +1,5 @@
 require 'mustache'
-require 'tic_tac_toe/view/board'
+require 'tic_tac_toe/web/view/board'
 
 module TicTacToe
   module View
