@@ -10,7 +10,7 @@ module TicTacToe
 
       def self.new_shell
         router = TicTacToe::Web::Router.new
-        player = TicTacToe::Player::Human.new
+        player = TicTacToe::Core::Player::Human.new
         shell = RackShell.new(router, player)
         player.set_shell(shell)
 
@@ -81,9 +81,9 @@ module TicTacToe
         when "h", "human"
           return @player
         when "r", "random"
-          return TicTacToe::Player::Random.new(Random.new)
+          return TicTacToe::Core::Player::Random.new(Random.new)
         when "a", "ai"
-          return TicTacToe::Player::Minimax.new
+          return TicTacToe::Core::Player::Minimax.new
         end
       end
 

@@ -5,7 +5,7 @@ describe TicTacToe::Console::ConsoleShell do
   let(:console) { mock_console }
   let(:board) { TicTacToe::Core::Board.empty_board }
   let(:game) { mock_game }
-  let(:player) { TicTacToe::Player::Human.new }
+  let(:player) { TicTacToe::Core::Player::Human.new }
   let(:console_shell) { TicTacToe::Console::ConsoleShell.new(console, game, player) }
 
   def mock_console
