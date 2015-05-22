@@ -14,7 +14,8 @@ describe TicTacToe::Core::Game do
   end
 
   def test_game
-    TicTacToe::Core::Game.new_game(board).tap do |game|
+    TicTacToe::Core::Game.new(board).tap do |game|
+      game.reset
       game.set_players(player, player)
     end
   end
