@@ -10,7 +10,8 @@ module TicTacToe
       attr_accessor :req
 
       def self.new_shell
-        router, player = TicTacToe::Web::Router.new, TicTacToe::Player::Human.new
+        router = TicTacToe::Web::Router.new
+        player = TicTacToe::Player::Human.new
         shell = RackShell.new(router, player)
         player.set_shell(shell)
 
@@ -20,7 +21,8 @@ module TicTacToe
 
         router.add_route("/new-game", :POST) do |env|
           req = Rack::Request.new(env)
-          game = TicTacToe::Core::Game.new_game(TicTacToe::Core::Board.empty_board)
+          board = TicTacToe::Core::Board.empty_board
+          game = TicTacToe::Core::Game.new_game(board)
           game.set_players(*shell.get_players(req))
           req.session[:game] = game
 
