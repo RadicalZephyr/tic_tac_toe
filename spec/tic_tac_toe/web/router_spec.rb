@@ -1,8 +1,8 @@
-require 'spec_helper'
-require 'rack_tac_toe'
+require 'rack_spec_helper'
 
 describe TicTacToe::Web::Router do
   include Rack::Test::Methods
+
 
   let(:router) { TicTacToe::Web::Router.new }
 
@@ -15,9 +15,9 @@ describe TicTacToe::Web::Router do
   it 'can add specific routes' do
     view = double
     data = {:dummy => :data}
-    router.add_route("/", :GET, view) { |req| view.render(data) }
-    router.add_route("/", :POST, view) { |req| view.render(nil) }
-    router.add_route("/something-else", :GET, view) { |req| view.render(nil) }
+    router.add_route("/", :GET) { |req| view.render(data) }
+    router.add_route("/", :POST) { |req| view.render(nil) }
+    router.add_route("/something-else", :GET) { |req| view.render(nil) }
     expect(view).to receive(:render).with(data)
 
     get '/'
