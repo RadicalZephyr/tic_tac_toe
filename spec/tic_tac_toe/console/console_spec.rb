@@ -5,8 +5,7 @@ describe TicTacToe::Console::ConsoleShell do
   let(:console) { mock_console }
   let(:board) { TicTacToe::Core::Board.empty_board }
   let(:game) { mock_game }
-  let(:player) { TicTacToe::Core::Player::Human.new }
-  let(:console_shell) { TicTacToe::Console::ConsoleShell.new(console, game, player) }
+  let(:console_shell) { TicTacToe::Console::ConsoleShell.new(console, game) }
 
   def mock_console
     instance_double('IO').tap do |console|
@@ -22,7 +21,6 @@ describe TicTacToe::Console::ConsoleShell do
       allow(game).to receive(:board).and_return(board)
       allow(game).to receive(:current_mark).and_call_original
       allow(game).to receive(:current_mark=).and_call_original
-      game.set_players(player, player)
     end
   end
 

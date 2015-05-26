@@ -10,14 +10,12 @@ module TicTacToe
 
       def self.new_shell(console)
         game = TicTacToe::Core::Game.new_game
-        player = TicTacToe::Core::Player::Human.new
-        shell = self.new(console, game, player)
-        player.set_shell(shell)
+        shell = self.new(console, game)
         return shell
       end
 
-      def initialize(console, game, player)
-        @console, @game, @player = console, game, player
+      def initialize(console, game)
+        @console, @game = console, game
 
         @will_block = true
         @can_retry  = true
