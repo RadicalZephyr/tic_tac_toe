@@ -19,7 +19,7 @@ module TicTacToe
         end
 
         def get_move(_)
-          shell.get_move
+          shell.get_move(nil)
         end
 
         def set_marks(_, _)
