@@ -9,6 +9,7 @@ module TicTacToe
 
         def initialize
           @will_block = false
+          @can_retry = true
         end
 
         def get_move(board)

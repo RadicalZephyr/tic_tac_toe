@@ -11,6 +11,7 @@ module TicTacToe
 
         def initialize
           @will_block = true
+          @can_retry = true
         end
 
         def set_shell(shell)
