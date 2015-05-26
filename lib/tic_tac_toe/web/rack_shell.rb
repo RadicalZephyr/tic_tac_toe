@@ -32,7 +32,9 @@ module TicTacToe
           shell.current_move= req["move"]
           game = req.session[:game]
 
-          shell.do_game_turn(game)
+          if game
+            shell.do_game_turn(game)
+          end
 
           shell.render_game(game)
         end
@@ -62,14 +64,12 @@ module TicTacToe
       end
 
       def do_game_turn(game)
-        if game
-          moved = false
-          while not moved
-            begin
-              game.next_turn
-              moved = true
-            rescue ArgumentError
-            end
+        moved = false
+        while not moved
+          begin
+            game.next_turn
+            moved = true
+          rescue ArgumentError
           end
         end
       end
