@@ -49,17 +49,17 @@ describe TicTacToe::Console::ConsoleShell do
 
     def with(input:, expecting:)
       allow(console_shell).to receive(:prompt_move).and_return("#{input}\n")
-      expect(console_shell.get_move).to eq(expecting)
+      expect(console_shell.get_move(nil)).to eq(expecting)
     end
 
     def ignores(input:)
       allow(console_shell).to receive(:prompt_move).and_return("#{input}\n", "1\n")
-      expect(console_shell.get_move).to eq(1)
+      expect(console_shell.get_move(nil)).to eq(1)
     end
 
     it 'keeps reading until it gets a number' do
       allow(console_shell).to receive(:prompt_move).and_return("abcd\n", "def\n", "{1a\n", "1\n")
-      expect(console_shell.get_move).to eq(1)
+      expect(console_shell.get_move(nil)).to eq(1)
     end
 
     it 'should only return a number between 0 and 8' do

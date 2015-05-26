@@ -46,7 +46,7 @@ module TicTacToe
         @router, @player = router, player
       end
 
-      def get_move
+      def get_move(_)
         unless current_move.nil?
           move = current_move
           @current_move = nil

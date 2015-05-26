@@ -33,7 +33,7 @@ module TicTacToe
         game_loop
       end
 
-      def get_move
+      def get_move(_)
         got_input = false
         while not got_input
           str = prompt_move
