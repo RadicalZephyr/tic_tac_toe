@@ -47,9 +47,7 @@ module TicTacToe
             move(index: current_player.get_move(board))
             moved = true
           rescue IllegalMove => err
-            unless current_player.can_retry?
-              throw err
-            end
+            throw err unless current_player.can_retry?
           end
         end
       end
