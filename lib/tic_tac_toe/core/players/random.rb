@@ -10,6 +10,7 @@ module TicTacToe
         def initialize(random_source)
           @random_source = random_source
           @will_block = false
+          @can_retry = true
         end
 
         def get_move(board)
