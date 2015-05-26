@@ -9,6 +9,7 @@ module TicTacToe
 
     class Game
       attr_reader :current_mark, :board, :players
+      attr_accessor :illegal_move_handler
 
       X = TicTacToe::Core::Mark.new("X")
       O = TicTacToe::Core::Mark.new("O")
@@ -47,6 +48,7 @@ module TicTacToe
             move(index: current_player.get_move(board))
             moved = true
           rescue IllegalMove => err
+            illegal_move_handler.call if illegal_move_handler
             throw err unless current_player.can_retry?
           end
         end
