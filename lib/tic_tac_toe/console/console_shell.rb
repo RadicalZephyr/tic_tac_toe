@@ -1,5 +1,6 @@
 require 'tic_tac_toe/core/players/human'
 require 'tic_tac_toe/core/game'
+require 'tic_tac_toe/core/player'
 
 module TicTacToe
   module Console
@@ -17,7 +18,11 @@ module TicTacToe
 
       def initialize(console, game, player)
         @console, @game, @player = console, game, player
+
+        @will_block = true
+        @can_retry  = true
       end
+      include TicTacToe::Core::Player
 
       def main_loop
         show_welcome_message
@@ -32,6 +37,8 @@ module TicTacToe
         game.set_players(*choose_players)
         game_loop
       end
+
+      # The shell has to implement the Player ducktype
 
       def get_move(_)
         got_input = false
@@ -50,6 +57,9 @@ module TicTacToe
         end
 
         input
+      end
+
+      def set_marks(_, _)
       end
 
       def show_move_error_message
@@ -92,7 +102,7 @@ module TicTacToe
       end
 
       def get_human
-        @player
+        self
       end
 
       def get_player(mark)

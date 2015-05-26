@@ -1,6 +1,7 @@
 require 'json'
 
 require 'rack_tac_toe'
+require 'tic_tac_toe/core/player'
 
 module TicTacToe
   module Web
@@ -44,7 +45,11 @@ module TicTacToe
 
       def initialize(router, player)
         @router, @player = router, player
+
+        @will_block = true
+        @can_retry  = false
       end
+      include TicTacToe::Core::Player
 
       def get_move(_)
         unless current_move.nil?
@@ -52,6 +57,9 @@ module TicTacToe
           @current_move = nil
           Integer(move)
         end
+      end
+
+      def set_marks(_, _)
       end
 
       def call(env)
