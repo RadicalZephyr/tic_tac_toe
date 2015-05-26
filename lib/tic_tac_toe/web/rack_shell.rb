@@ -30,16 +30,9 @@ module TicTacToe
         router.add_route("/make-move", :POST) do |env|
           shell.req= Rack::Request.new(env)
           game = shell.req.session[:game]
-          if game
-            moved = false
-            while not moved
-              begin
-                game.next_turn
-                moved = true
-              rescue ArgumentError
-              end
-            end
-          end
+
+          shell.do_game_turn(game)
+
           shell.req= nil
 
           shell.render_game(game)
@@ -63,6 +56,19 @@ module TicTacToe
       def get_players(req)
         [get_player(req["player1"]),
          get_player(req["player2"])]
+      end
+
+      def do_game_turn(game)
+        if game
+          moved = false
+          while not moved
+            begin
+              game.next_turn
+              moved = true
+            rescue ArgumentError
+            end
+          end
+        end
       end
 
       def render_game(game)
