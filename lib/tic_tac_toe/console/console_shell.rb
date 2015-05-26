@@ -42,7 +42,7 @@ module TicTacToe
 
       def get_move(_)
         got_input = false
-        while not got_input
+        until got_input
           str = prompt_move
           begin
             input = Integer(str)
@@ -81,7 +81,7 @@ module TicTacToe
       private
 
       def game_loop
-        while not game.finished?
+        until game.finished?
           do_turn
         end
         display_winner(game.who_won?)
