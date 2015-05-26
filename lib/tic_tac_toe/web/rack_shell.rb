@@ -96,7 +96,7 @@ module TicTacToe
       def get_player(type)
         case type
         when "h", "human"
-          return @player
+          return self
         when "r", "random"
           return TicTacToe::Core::Player::Random.new(Random.new)
         when "a", "ai"
