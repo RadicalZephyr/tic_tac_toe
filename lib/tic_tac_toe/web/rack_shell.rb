@@ -31,9 +31,7 @@ module TicTacToe
           shell.current_move= req["move"]
           game = req.session[:game]
 
-          if game
-            shell.do_game_turn(game)
-          end
+          game.next_turn unless game.nil?
 
           shell.render_game(game)
         end
@@ -67,10 +65,6 @@ module TicTacToe
       def get_players(req)
         [get_player(req["player1"]),
          get_player(req["player2"])]
-      end
-
-      def do_game_turn(game)
-        game.next_turn
       end
 
       def render_game(game)
