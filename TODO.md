@@ -8,4 +8,6 @@ says "you need to block/go to the user" whatever that means.
 Is this something I can make useful for the console?
 
 - will_block? is a bad name. But it's unclear what a better one is
-  since I'm not actually using it yet.
+since I'm not actually using it yet.
+
+- make an exception for InvalidMove to throw/catch
