@@ -9,5 +9,3 @@ Is this something I can make useful for the console?
 
 - will_block? is a bad name. But it's unclear what a better one is
 since I'm not actually using it yet.
-
-- Setup an injectable "strategy" for the game to handle invalid moves
