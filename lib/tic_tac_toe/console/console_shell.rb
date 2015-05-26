@@ -105,7 +105,7 @@ module TicTacToe
         loop do
           case prompt_player(mark)
           when "h", "human"
-            return @player
+            return self
           when "r", "random"
             return TicTacToe::Core::Player::Random.new(Random.new)
           when "a", "ai"
