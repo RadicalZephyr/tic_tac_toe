@@ -4,6 +4,9 @@ require 'tic_tac_toe/core/board'
 module TicTacToe
   module Core
 
+    class IllegalMove < ArgumentError
+    end
+
     class Game
       attr_reader :current_mark, :board, :players
 
@@ -43,7 +46,7 @@ module TicTacToe
           begin
             move(index: current_player.get_move(board))
             moved = true
-          rescue ArgumentError => err
+          rescue IllegalMove => err
             unless current_player.can_retry?
               throw err
             end
@@ -62,7 +65,7 @@ module TicTacToe
       private
 
       def move(index:)
-        raise ArgumentError unless board.legal?(index)
+        raise IllegalMove unless board.legal?(index)
         board.move(current_mark, index)
         swap_mark
       end
