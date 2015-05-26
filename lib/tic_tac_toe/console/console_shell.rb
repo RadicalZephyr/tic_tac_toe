@@ -88,15 +88,7 @@ module TicTacToe
       def do_turn
         show_move_message
         show_board(game.board)
-        moved = false
-        while not moved
-          begin
-            game.next_turn
-            moved = true
-          rescue ArgumentError
-            show_illegal_move_message
-          end
-        end
+        game.next_turn
       end
 
       def get_player(mark)
