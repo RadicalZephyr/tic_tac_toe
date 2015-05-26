@@ -82,15 +82,11 @@ module TicTacToe
 
       def game_loop
         until game.finished?
-          do_turn
+          show_move_message
+          show_board(game.board)
+          game.next_turn
         end
         display_winner(game.who_won?)
-      end
-
-      def do_turn
-        show_move_message
-        show_board(game.board)
-        game.next_turn
       end
 
       def get_player(mark)
