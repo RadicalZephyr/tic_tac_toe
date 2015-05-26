@@ -38,7 +38,17 @@ module TicTacToe
 
       def next_turn
         current_player = players[current_mark]
-        move(index: current_player.get_move(board))
+        moved = false
+        while not moved
+          begin
+            move(index: current_player.get_move(board))
+            moved = true
+          rescue ArgumentError => err
+            unless current_player.can_retry?
+              throw err
+            end
+          end
+        end
       end
 
       def finished?
