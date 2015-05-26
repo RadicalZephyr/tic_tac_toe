@@ -11,7 +11,7 @@ require "tic_tac_toe/core/players/minimax"
 module TicTacToe
 
   def TicTacToe.run
-    shell = TicTacToe::ConsoleShell.new_shell(IO::console)
+    shell = TicTacToe::Console::ConsoleShell.new_shell(IO::console)
     shell.main_loop
   end
 end
