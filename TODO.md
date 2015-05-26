@@ -6,3 +6,6 @@ get next move. Or have it be a lookup method on the player class that
 says "you need to block/go to the user" whatever that means.
 
 Is this something I can make useful for the console?
+
+- will_block? is a bad name. But it's unclear what a better one is
+  since I'm not actually using it yet.
