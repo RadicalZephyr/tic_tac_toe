@@ -39,7 +39,7 @@ module TicTacToe
       def next_turn
         current_player = players[current_mark]
         moved = false
-        while not moved
+        until moved
           begin
             move(index: current_player.get_move(board))
             moved = true
