@@ -1,8 +1,15 @@
+require 'tic_tac_toe/core/player'
+
 module TicTacToe
   module Core
     module Player
 
       class Minimax
+        include TicTacToe::Core::Player
+
+        def initialize
+          @will_block = false
+        end
 
         def get_move(board)
           marks = {1 => @my_mark, -1 => @other_mark}
