@@ -11,3 +11,4 @@ Is this something I can make useful for the console?
 since I'm not actually using it yet.
 
 - make an exception for InvalidMove to throw/catch
+- Setup an injectable "strategy" for the game to handle invalid moves
