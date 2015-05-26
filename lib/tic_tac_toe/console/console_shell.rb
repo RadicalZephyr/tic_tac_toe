@@ -101,10 +101,6 @@ module TicTacToe
         end
       end
 
-      def get_human
-        self
-      end
-
       def get_player(mark)
         loop do
           case prompt_player(mark)
