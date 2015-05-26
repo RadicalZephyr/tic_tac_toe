@@ -11,9 +11,7 @@ module TicTacToe
 
       def self.new_shell
         router = TicTacToe::Web::Router.new
-        player = TicTacToe::Core::Player::Human.new
-        shell = RackShell.new(router, player)
-        player.set_shell(shell)
+        shell = RackShell.new(router)
 
         router.add_route("/", :GET) do |_|
           TicTacToe::Web::View::Home.render(nil)
@@ -43,8 +41,8 @@ module TicTacToe
         return shell
       end
 
-      def initialize(router, player)
-        @router, @player = router, player
+      def initialize(router)
+        @router = router
 
         @will_block = true
         @can_retry  = false
