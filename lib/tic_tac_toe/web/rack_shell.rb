@@ -70,14 +70,7 @@ module TicTacToe
       end
 
       def do_game_turn(game)
-        moved = false
-        while not moved
-          begin
-            game.next_turn
-            moved = true
-          rescue ArgumentError
-          end
-        end
+        game.next_turn
       end
 
       def render_game(game)
