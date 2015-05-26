@@ -17,6 +17,8 @@ module TicTacToe
       def initialize(console, game)
         @console, @game = console, game
 
+        @game.illegal_move_handler= Proc.new { || self.show_illegal_move_message }
+
         @will_block = true
         @can_retry  = true
       end
