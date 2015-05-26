@@ -1,9 +1,17 @@
+require 'tic_tac_toe/core/player'
+
 module TicTacToe
   module Core
     module Player
 
       class Human
+        include TicTacToe::Core::Player
+
         attr_reader :shell
+
+        def initialize
+          @will_block = true
+        end
 
         def set_shell(shell)
           @shell = shell
