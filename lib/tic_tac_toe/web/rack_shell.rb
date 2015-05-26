@@ -6,7 +6,7 @@ module TicTacToe
   module Web
 
     class RackShell
-      attr_accessor :req
+      attr_accessor :current_move
 
       def self.new_shell
         router = TicTacToe::Web::Router.new
@@ -28,12 +28,11 @@ module TicTacToe
         end
 
         router.add_route("/make-move", :POST) do |env|
-          shell.req= Rack::Request.new(env)
-          game = shell.req.session[:game]
+          req = Rack::Request.new(env)
+          shell.current_move= req["move"]
+          game = req.session[:game]
 
           shell.do_game_turn(game)
-
-          shell.req= nil
 
           shell.render_game(game)
         end
@@ -46,7 +45,7 @@ module TicTacToe
       end
 
       def get_move
-        Integer(req["move"]) unless @req.nil?
+        Integer(current_move) unless current_move.nil?
       end
 
       def call(env)
