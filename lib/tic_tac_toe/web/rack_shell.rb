@@ -45,7 +45,11 @@ module TicTacToe
       end
 
       def get_move
-        Integer(current_move) unless current_move.nil?
+        unless current_move.nil?
+          move = current_move
+          @current_move = nil
+          Integer(move)
+        end
       end
 
       def call(env)
