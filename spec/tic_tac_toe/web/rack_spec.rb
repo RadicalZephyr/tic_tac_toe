@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'rack_spec_helper'
+require 'json'
 
 describe TicTacToe::Web::RackShell do
   include Rack::Test::Methods
@@ -32,5 +33,18 @@ describe TicTacToe::Web::RackShell do
   it 'returns 404 for unknown routes' do
     get '/totally-wacky'
     expect(last_response).to be_not_found
+  end
+
+  context 'JSON API' do
+    it 'can return the current board state' do
+      post '/new-game', "player1=h&player2=h"
+      get '/api/board'
+      expect(last_response).to be_successful
+      board_hash = JSON.parse(last_response.body)
+      expect(board_hash).to include("current_player" => "X")
+      expect(board_hash).to include("board" => [" ", " ", " ",
+                                                " ", " ", " ",
+                                                " ", " ", " "])
+    end
   end
 end
