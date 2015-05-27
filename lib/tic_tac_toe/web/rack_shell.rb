@@ -21,6 +21,7 @@ module TicTacToe
           req = Rack::Request.new(env)
           game = TicTacToe::Core::Game.new_game
           game.set_players(*shell.get_players(req))
+          game.do_nonblocking_turns
           req.session[:game] = game
 
           TicTacToe::Web::Views::Game.render(game)
