@@ -65,9 +65,8 @@ module TicTacToe
       end
 
       def do_nonblocking_turns
-        loop do
+        until (finished? or current_player.will_block?)
           next_turn
-          break if finished? or current_player.will_block?
         end
       end
 
