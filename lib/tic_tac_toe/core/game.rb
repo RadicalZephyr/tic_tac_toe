@@ -54,6 +54,15 @@ module TicTacToe
         end
       end
 
+      def do_nonblocking_turns
+        current_player = players[current_mark]
+        loop do
+          next_turn
+          current_player = players[current_mark]
+          break if current_player.will_block?
+        end
+      end
+
       def finished?
         TicTacToe::Core::Rules.finished?(board)
       end
