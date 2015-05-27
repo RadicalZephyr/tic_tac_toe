@@ -36,6 +36,16 @@ module TicTacToe
           shell.render_game(game)
         end
 
+        router.add_route("/api/make-move", :POST) do |env|
+          req = Rack::Request.new(env)
+          shell.current_move= req["move"]
+          game = req.session[:game]
+
+          game.do_nonblocking_turns unless game.nil?
+
+          ""
+        end
+
         router.add_route("/api/board", :GET) do |env|
           req = Rack::Request.new(env)
           game = req.session[:game]
