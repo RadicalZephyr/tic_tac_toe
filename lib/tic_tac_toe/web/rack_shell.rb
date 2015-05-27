@@ -36,6 +36,10 @@ module TicTacToe
           shell.render_game(game)
         end
 
+        router.add_route("/api/board", :GET) do |env|
+          '{"current_player": "X", "board": [" ", " ", " ", " ", " ", " ", " ", " ", " "]}'
+        end
+
         return shell
       end
 
