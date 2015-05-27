@@ -63,6 +63,13 @@ describe TicTacToe::Web::RackShell do
       expect(board_hash["marks"]).to include("X")
     end
 
+    it 'plays a whole game when it is ai vs ai' do
+      post '/api/new-game', "player1=a&player2=a"
+      get '/api/board'
+      board_hash = JSON.parse(last_response.body)
+      expect(board_hash["marks"]).not_to include(" ")
+    end
+
     it 'does both human and computer moves in human vs ai' do
       post '/new-game', "player1=h&player2=a"
       post '/api/make-move', "move=1"
