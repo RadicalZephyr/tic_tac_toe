@@ -8,4 +8,7 @@ says "you need to block/go to the user" whatever that means.
 Is this something I can make useful for the console?
 
 - will_block? is a bad name. But it's unclear what a better one is
-since I'm not actually using it yet.
+since I'm not actually using it yet. Maybe it's not so bad. It is
+actually about whether the move will require blocking since on
+receiving a move request the Web human player object will not be
+required to block
