@@ -4,8 +4,7 @@ module TicTacToe
   module Core
     module Players
 
-      class Minimax
-        include TicTacToe::Core::Player
+      class Minimax < TicTacToe::Core::Player
 
         def initialize
           @will_block = false

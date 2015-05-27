@@ -5,7 +5,7 @@ require 'tic_tac_toe/core/player'
 module TicTacToe
   module Console
 
-    class ConsoleShell
+    class ConsoleShell < TicTacToe::Core::Player
       attr_reader :game
 
       def self.new_shell(console)
@@ -22,7 +22,6 @@ module TicTacToe
         @will_block = true
         @can_retry  = true
       end
-      include TicTacToe::Core::Player
 
       def main_loop
         show_welcome_message
@@ -84,7 +83,7 @@ module TicTacToe
         until game.finished?
           show_move_message
           show_board(game.board)
-          game.next_turn
+          game.do_nonblocking_turns
         end
         display_winner(game.who_won?)
       end

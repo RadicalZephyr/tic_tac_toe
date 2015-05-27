@@ -4,8 +4,7 @@ module TicTacToe
   module Core
     module Players
 
-      class Human
-        include TicTacToe::Core::Player
+      class Human < TicTacToe::Core::Player
 
         attr_reader :shell
 

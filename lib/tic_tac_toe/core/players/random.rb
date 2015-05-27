@@ -4,8 +4,7 @@ module TicTacToe
   module Core
     module Players
 
-      class Random
-        include TicTacToe::Core::Player
+      class Random < TicTacToe::Core::Player
 
         def initialize(random_source)
           @random_source = random_source
