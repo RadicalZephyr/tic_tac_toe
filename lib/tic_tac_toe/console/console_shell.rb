@@ -95,7 +95,7 @@ module TicTacToe
           when "h", "human"
             return self
           when "r", "random"
-            return TicTacToe::Core::Player::Random.new(Random.new)
+            return TicTacToe::Core::Player::Random.new(::Random.new)
           when "a", "ai"
             return TicTacToe::Core::Player::Minimax.new
           end
