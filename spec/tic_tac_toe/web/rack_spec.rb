@@ -47,6 +47,7 @@ describe TicTacToe::Web::RackShell do
                                                 " ", " ", " "])
       post '/api/make-move', "move=1"
       expect(last_response).to be_successful
+      expect(last_response.body).to be_empty
       get '/api/board'
       board_hash = JSON.parse(last_response.body)
       expect(board_hash).to include("current_mark" => "O",
