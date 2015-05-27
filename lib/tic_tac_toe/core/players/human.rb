@@ -2,7 +2,7 @@ require 'tic_tac_toe/core/player'
 
 module TicTacToe
   module Core
-    module Player
+    module Players
 
       class Human
         include TicTacToe::Core::Player

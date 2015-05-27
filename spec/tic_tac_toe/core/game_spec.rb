@@ -7,7 +7,7 @@ describe TicTacToe::Core::Game do
   let(:game) { test_game }
 
   def mock_player
-    instance_double("TicTacToe::Core::Player::Human").tap do |player|
+    instance_double("TicTacToe::Core::Players::Human").tap do |player|
       allow(player).to receive(:set_marks)
       allow(player).to receive(:get_move).and_return(0)
       allow(player).to receive(:can_retry?).and_return(false)
