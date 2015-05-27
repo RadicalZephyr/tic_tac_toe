@@ -15,7 +15,11 @@ module TicTacToe
     end
 
     class Game
-      attr_reader :current_mark, :board, :players
+      private
+      attr_reader :players
+
+      public
+      attr_reader :current_mark, :board
       attr_accessor :illegal_move_handler
 
       X = TicTacToe::Core::Mark.new("X")
