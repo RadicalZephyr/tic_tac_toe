@@ -31,7 +31,7 @@ module TicTacToe
           shell.current_move= req["move"]
           game = req.session[:game]
 
-          game.next_turn unless game.nil?
+          game.do_nonblocking_turns unless game.nil?
 
           shell.render_game(game)
         end
@@ -42,8 +42,11 @@ module TicTacToe
       def initialize(router)
         @router = router
 
-        @will_block = true
         @can_retry  = false
+      end
+
+      def will_block?
+        current_move.nil?
       end
 
       def get_move(_)
