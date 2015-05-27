@@ -10,6 +10,7 @@ describe TicTacToe::Core::Game do
     instance_double("TicTacToe::Core::Player::Human").tap do |player|
       allow(player).to receive(:set_marks)
       allow(player).to receive(:get_move).and_return(0)
+      allow(player).to receive(:can_retry?).and_return(false)
     end
   end
 
@@ -32,9 +33,14 @@ describe TicTacToe::Core::Game do
   end
 
   it "can play multiple moves, as long as they don't block" do
+    player2 = mock_player
+    game.set_players(player, player2)
     allow(player).to receive(:will_block?).and_return(false)
-    allow(player).to receive(:get_move).and_return(0,1,2,3,4,5,6,7,8)
+    allow(player2).to receive(:will_block?).and_return(false)
+    allow(player).to receive(:get_move).and_return(0,1,2)
+    allow(player2).to receive(:get_move).and_return(3,4)
     game.do_nonblocking_turns
     expect(game.finished?).to be_truthy
+    expect(game.who_won?).to eq(TicTacToe::Core::Game::X)
   end
 end
