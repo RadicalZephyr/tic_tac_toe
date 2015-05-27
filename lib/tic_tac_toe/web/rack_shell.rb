@@ -37,7 +37,11 @@ module TicTacToe
         end
 
         router.add_route("/api/board", :GET) do |env|
-          '{"current_player": "X", "board": [" ", " ", " ", " ", " ", " ", " ", " ", " "]}'
+          req = Rack::Request.new(env)
+          game = req.session[:game]
+
+          {:current_mark => game.current_mark.to_s,
+           :marks => game.board.map { |m| m.to_s }.to_a}.to_json
         end
 
         return shell
