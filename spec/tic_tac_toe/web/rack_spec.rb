@@ -37,7 +37,7 @@ describe TicTacToe::Web::RackShell do
 
   context 'JSON API' do
     it 'can return the current board state' do
-      post '/new-game', "player1=h&player2=h"
+      post '/api/new-game', "player1=h&player2=h"
       get '/api/board'
       expect(last_response).to be_successful
       board_hash = JSON.parse(last_response.body)
@@ -57,7 +57,7 @@ describe TicTacToe::Web::RackShell do
     end
 
     it 'makes an AI move immediately when the AI goes first' do
-      post '/new-game', "player1=a&player2=h"
+      post '/api/new-game', "player1=a&player2=h"
       get '/api/board'
       board_hash = JSON.parse(last_response.body)
       expect(board_hash["marks"]).to include("X")
