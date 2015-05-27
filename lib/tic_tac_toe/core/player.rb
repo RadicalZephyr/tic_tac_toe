@@ -1,7 +1,12 @@
 module TicTacToe
   module Core
 
-    module Player
+    class Player
+      def initialize
+        @will_block = true
+        @can_retry = false
+      end
+
       def will_block?
         @will_block
       end

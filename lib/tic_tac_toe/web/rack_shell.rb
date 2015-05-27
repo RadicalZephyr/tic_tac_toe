@@ -6,7 +6,7 @@ require 'tic_tac_toe/core/player'
 module TicTacToe
   module Web
 
-    class RackShell
+    class RackShell < TicTacToe::Core::Player
       attr_accessor :current_move
 
       def self.new_shell
@@ -45,7 +45,6 @@ module TicTacToe
         @will_block = true
         @can_retry  = false
       end
-      include TicTacToe::Core::Player
 
       def get_move(_)
         unless current_move.nil?
