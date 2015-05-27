@@ -55,5 +55,14 @@ describe TicTacToe::Web::RackShell do
                                                 " ", " ", " ",
                                                 " ", " ", " "])
     end
+
+    it 'does both human and computer moves in human vs ai' do
+      post '/new-game', "player1=h&player2=a"
+      post '/api/make-move', "move=1"
+      expect(last_response).to be_successful
+      get '/api/board'
+      board_hash = JSON.parse(last_response.body)
+      expect(board_hash["marks"]).to include("X", "O")
+    end
   end
 end
