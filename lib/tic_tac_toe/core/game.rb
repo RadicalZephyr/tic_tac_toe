@@ -48,7 +48,6 @@ module TicTacToe
       end
 
       def next_turn
-        current_player = players[current_mark]
         moved = false
         until moved
           begin
@@ -62,10 +61,8 @@ module TicTacToe
       end
 
       def do_nonblocking_turns
-        current_player = players[current_mark]
         loop do
           next_turn
-          current_player = players[current_mark]
           break if finished? or current_player.will_block?
         end
       end
@@ -79,6 +76,10 @@ module TicTacToe
       end
 
       private
+
+      def current_player
+        players[current_mark]
+      end
 
       def move(index:)
         raise IllegalMove.new(nil, index, board) unless board.legal?(index)
