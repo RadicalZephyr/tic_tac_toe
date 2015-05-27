@@ -66,7 +66,7 @@ module TicTacToe
         loop do
           next_turn
           current_player = players[current_mark]
-          break if current_player.will_block?
+          break if finished? or current_player.will_block?
         end
       end
 
