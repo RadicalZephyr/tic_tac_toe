@@ -5,6 +5,13 @@ module TicTacToe
   module Core
 
     class IllegalMove < ArgumentError
+      attr_reader :move, :board
+
+      def initialize(message=nil, move=nil, board=nil)
+        super(message)
+        @move = move
+        @board = board
+      end
     end
 
     class Game
@@ -49,7 +56,7 @@ module TicTacToe
             moved = true
           rescue IllegalMove => err
             illegal_move_handler.call if illegal_move_handler
-            throw err unless current_player.can_retry?
+            raise err unless current_player.can_retry?
           end
         end
       end
@@ -74,7 +81,7 @@ module TicTacToe
       private
 
       def move(index:)
-        raise IllegalMove unless board.legal?(index)
+        raise IllegalMove.new(nil, index, board) unless board.legal?(index)
         board.move(current_mark, index)
         swap_mark
       end
