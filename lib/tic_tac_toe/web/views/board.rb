@@ -2,7 +2,7 @@ require 'mustache'
 
 module TicTacToe
   module Web
-    module View
+    module Views
 
       class Board < Mustache
         attr_reader :board, :finished
