@@ -1,4 +1,3 @@
-require 'tic_tac_toe/core/players/human'
 require 'tic_tac_toe/core/game'
 require 'tic_tac_toe/core/player'
 
