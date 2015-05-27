@@ -24,7 +24,7 @@ module TicTacToe
           game.do_nonblocking_turns
           req.session[:game] = game
 
-          TicTacToe::Web::Views::Game.render(game)
+          shell.render_game(game)
         end
 
         router.add_route("/make-move", :POST) do |env|
