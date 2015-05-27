@@ -4,7 +4,7 @@ require 'tic_tac_toe/web/views/board'
 module TicTacToe
   module Web
 
-    module View
+    module Views
 
       class Game < Mustache
         attr_reader :game, :x_mark, :o_mark
@@ -37,7 +37,7 @@ module TicTacToe
         end
 
         def board
-          TicTacToe::Web::View::Board.render(game.board)
+          TicTacToe::Web::Views::Board.render(game.board)
         end
       end
 
@@ -57,7 +57,7 @@ module TicTacToe
         end
 
         def board
-          TicTacToe::Web::View::Board.render(game.board, true)
+          TicTacToe::Web::Views::Board.render(game.board, true)
         end
       end
 

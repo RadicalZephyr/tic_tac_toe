@@ -14,7 +14,7 @@ module TicTacToe
         shell = RackShell.new(router)
 
         router.add_route("/", :GET) do |_|
-          TicTacToe::Web::View::Home.render(nil)
+          TicTacToe::Web::Views::Home.render(nil)
         end
 
         router.add_route("/new-game", :POST) do |env|
@@ -23,7 +23,7 @@ module TicTacToe
           game.set_players(*shell.get_players(req))
           req.session[:game] = game
 
-          TicTacToe::Web::View::Game.render(game)
+          TicTacToe::Web::Views::Game.render(game)
         end
 
         router.add_route("/make-move", :POST) do |env|
@@ -68,9 +68,9 @@ module TicTacToe
 
       def render_game(game)
         if game && !game.finished?
-          TicTacToe::Web::View::Game.render(game)
+          TicTacToe::Web::Views::Game.render(game)
         elsif game && game.finished?
-          TicTacToe::Web::View::FinishedGame.render(game)
+          TicTacToe::Web::Views::FinishedGame.render(game)
         else
           "No game was found for this session."
         end
