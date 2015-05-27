@@ -72,6 +72,13 @@ td div {
   width: 175px;
 }
 
+div.X-marker input,
+div.X-marker label,
+div.O-marker input,
+div.O-marker label {
+  display: none !important;
+}
+
 td div input[type=radio]:not(old){
   margin  : 0;
   padding : 0;
