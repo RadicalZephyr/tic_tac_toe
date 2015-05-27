@@ -82,7 +82,7 @@ module TicTacToe
         until game.finished?
           show_move_message
           show_board(game.board)
-          game.do_nonblocking_turns
+          game.next_turn
         end
         display_winner(game.who_won?)
       end
