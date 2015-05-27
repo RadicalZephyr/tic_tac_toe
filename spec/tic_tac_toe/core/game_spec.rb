@@ -31,4 +31,10 @@ describe TicTacToe::Core::Game do
     expect { game.next_turn }.to raise_error
   end
 
+  it "can play multiple moves, as long as they don't block" do
+    allow(player).to receive(:will_block?).and_return(false)
+    allow(player).to receive(:get_move).and_return(0,1,2,3,4,5,6,7,8)
+    game.do_nonblocking_turns
+    expect(game.finished?).to be_truthy
+  end
 end
