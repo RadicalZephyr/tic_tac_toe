@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'tic_tac_toe/web/view/board'
+require 'tic_tac_toe/web/views/board'
 
 describe TicTacToe::Web::View::Board do
   let(:bv) { TicTacToe::Web::View::Board.new(TicTacToe::Core::Board.empty_board, false) }

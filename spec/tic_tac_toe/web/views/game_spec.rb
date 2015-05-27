@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'tic_tac_toe/web/view/game'
+require 'tic_tac_toe/web/views/game'
 
 describe TicTacToe::Web::View::Game do
   let(:player) { mock_player }
