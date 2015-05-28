@@ -12,4 +12,13 @@ describe("GridSquare", function() {
         gridSquare.enable();
         expect(opt.disabled).toBeFalsy();
     });
+
+    it("can be marked", function() {
+        var cl = {"add": function() {}};
+        var opt = {"parentElement": {"classList": cl}};
+        var gridSquare = new GridSquare(opt);
+        spyOn(cl, "add");
+        gridSquare.mark("X");
+        expect(cl.add).toHaveBeenCalledWith("X-marker");
+    });
 });

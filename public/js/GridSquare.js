@@ -9,3 +9,7 @@ GridSquare.prototype.enable = function() {
 GridSquare.prototype.disable = function() {
     this.optEl.disabled = true;
 };
+
+GridSquare.prototype.mark = function(mark) {
+    this.optEl.parentElement.classList.add(mark.toUpperCase()+"-marker");
+};
