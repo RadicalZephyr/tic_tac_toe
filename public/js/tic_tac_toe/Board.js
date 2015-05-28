@@ -28,7 +28,7 @@ Board.prototype.makeOnClick = function(option) {
             api.getBoard(function() {
                 var boardInfo = JSON.parse(this.responseText);
                 if (boardInfo.marks) {
-                    setNewBoard(boardInfo.marks);
+                    board.setNewBoard(boardInfo.marks);
                 }
                 board.enableOptions();
             });
