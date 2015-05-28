@@ -11,8 +11,16 @@ Board.prototype.prepareBoard = function() {
     });
 };
 
-Board.prototype.makeOnClick = function(option) {
+Board.prototype.sendMove = function(move) {
 
+};
+
+Board.prototype.makeOnClick = function(option) {
+    var move = option.value;
+    var board = this;
+    return function() {
+        board.sendMove(move);
+    };
 };
 
 Board.prototype.hideButton = function(btn) {
