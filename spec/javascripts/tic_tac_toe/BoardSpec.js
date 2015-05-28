@@ -5,7 +5,7 @@ describe("Board", function() {
     jasmine.Ajax.install();
 
     beforeEach(function() {
-        api = new API();
+        api = {};
         submitBtn = {};
         options = [{}];
     });
@@ -47,27 +47,4 @@ describe("Board", function() {
         expect(board.sendMove).toHaveBeenCalledWith(val, board.getBoard);
     });
 
-    it("can send AJAX move updates", function() {
-        var board = new Board(api, submitBtn, options);
-
-        var onSuccess = jasmine.createSpy("onSuccess");
-        board.sendMove("0", onSuccess);
-        var request = jasmine.Ajax.requests.mostRecent();
-        expect(request).not.toBeUndefined();
-        expect(request.url).toBe('api/make-move');
-        request.respondWith(TestResponses.sendMove.success);
-        expect(onSuccess).toHaveBeenCalled();
-    });
-
-    it("can retrieve a new board via AJAX", function() {
-        var board = new Board(api, submitBtn, options);
-
-        var onSuccess = jasmine.createSpy("onSuccess");
-        board.getBoard(onSuccess);
-        var request = jasmine.Ajax.requests.mostRecent();
-        expect(request).not.toBeUndefined();
-        expect(request.url).toBe('api/board');
-        request.respondWith(TestResponses.getBoard.success);
-        expect(onSuccess).toHaveBeenCalled();
-    });
 });
