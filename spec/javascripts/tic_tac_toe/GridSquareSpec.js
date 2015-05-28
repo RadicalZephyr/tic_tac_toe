@@ -26,6 +26,15 @@ describe("GridSquare", function() {
         expect(cl.add).toHaveBeenCalledWith("X-marker");
     });
 
+    it("can't be marked with a space", function() {
+        var cl = {"add": function() {}};
+        var opt = {"parentElement": {"classList": cl}};
+        var gridSquare = new GridSquare(opt);
+        spyOn(cl, "add");
+        gridSquare.mark(" ");
+        expect(cl.add).not.toHaveBeenCalled();
+    });
+
     it("can be setup with a click handler", function() {
         var onClick = function() {};
         gridSquare.addClickHandler(onClick);
