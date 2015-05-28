@@ -57,3 +57,10 @@ guard 'rack', :config => "bin/tic_tac_toe.ru" do
   watch('bin/tic_tac_toe.ru')
   watch(%r{^lib/.*})
 end
+
+guard :jasmine do
+  watch(%r{spec/javascripts/spec\.js$}) { 'spec/javascripts' }
+  watch(%r{spec/javascripts/.+Spec\.js$})
+  watch(%r{spec/javascripts/fixtures/.+$})
+  watch(%r{public/js/(.+?)\.js(?:\.\w+)*$}) { |m| "spec/javascripts/#{m[1]}Spec.js" }
+end
