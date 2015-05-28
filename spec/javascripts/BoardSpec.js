@@ -43,4 +43,8 @@ describe("Board", function() {
         callback.call();
         expect(board.sendMove).toHaveBeenCalledWith(val);
     });
+
+    it("can send AJAX move updates", function() {
+
+    });
 });
