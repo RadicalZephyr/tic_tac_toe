@@ -15,3 +15,15 @@ Board.prototype.hideButton = function(btn) {
 Board.prototype.setupOption = function(option) {
 
 };
+
+Board.prototype.disableOptions = function() {
+    this.options.forEach(function(opt) {
+        opt.disable();
+    });
+};
+
+Board.prototype.enableOptions = function() {
+    this.options.forEach(function(opt) {
+        opt.enable();
+    });
+};
