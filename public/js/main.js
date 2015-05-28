@@ -49,13 +49,13 @@ function makeOnClick(optEl) {
   };
 }
 
-var submitBtn = document.getElementById("submit-btn");
-submitBtn.classList.add("hidden");
+// var submitBtn = document.getElementById("submit-btn");
+// submitBtn.classList.add("hidden");
 
-var options = [];
+// var options = [];
 
-for (var i = 0; i < 9; i++) {
-  var opt = document.getElementById("move"+i);
-  options.push(opt);
-  opt.onclick = makeOnClick(opt);
-}
+// for (var i = 0; i < 9; i++) {
+//   var opt = document.getElementById("move"+i);
+//   options.push(opt);
+//   opt.onclick = makeOnClick(opt);
+// }
