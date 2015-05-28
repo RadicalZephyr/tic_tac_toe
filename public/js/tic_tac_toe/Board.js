@@ -23,7 +23,7 @@ Board.prototype.makeOnClick = function(option) {
     var move = option.value;
     var board = this;
     return function() {
-        board.sendMove(move);
+        board.sendMove(move, board.getBoard);
     };
 };
 
