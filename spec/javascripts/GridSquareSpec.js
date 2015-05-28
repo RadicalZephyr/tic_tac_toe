@@ -21,4 +21,12 @@ describe("GridSquare", function() {
         gridSquare.mark("X");
         expect(cl.add).toHaveBeenCalledWith("X-marker");
     });
+
+    it("can be setup with a click handler", function() {
+        var opt = {};
+        var gridSquare = new GridSquare(opt);
+        var onClick = function() {};
+        gridSquare.addClickHandler(onClick);
+        expect(opt.onclick).toEqual(onClick);
+    });
 });
