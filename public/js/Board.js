@@ -5,15 +5,18 @@ function Board(submitBtn, options) {
 
 Board.prototype.prepareBoard = function() {
     this.hideButton(this.submitBtn);
-    this.options.forEach(function(item) { this.setupOption(item); }, this);
+    var board = this;
+    this.options.forEach(function(option) {
+        option.addCallBack(board.makeOnClick(option));
+    });
+};
+
+Board.prototype.makeOnClick = function(option) {
+
 };
 
 Board.prototype.hideButton = function(btn) {
     btn.classList.add("hidden");
-};
-
-Board.prototype.setupOption = function(option) {
-
 };
 
 Board.prototype.disableOptions = function() {

@@ -2,13 +2,13 @@ describe("Board", function() {
     var submitBtn = {};
 
     it("can setup the board", function() {
-        var options = [{}];
+        var options = [{"addCallBack": function(callback) {}}];
         var board = new Board(submitBtn, options);
         spyOn(board, "hideButton");
-        spyOn(board, "setupOption");
+        spyOn(board, "makeOnClick");
         board.prepareBoard();
         expect(board.hideButton).toHaveBeenCalledWith(submitBtn);
-        expect(board.setupOption).toHaveBeenCalledWith(options[0]);
+        expect(board.makeOnClick).toHaveBeenCalledWith(options[0]);
     });
 
     it("can disable all the options", function() {
