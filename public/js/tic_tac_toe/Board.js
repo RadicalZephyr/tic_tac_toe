@@ -15,15 +15,9 @@ Board.prototype.setNewBoard = function(marks) {
 
 };
 
-Board.prototype.getBoard = function() {
+Board.prototype.getBoard = function(callback) {
     var oReq = new XMLHttpRequest();
-    var board = this;
-    oReq.onload = function() {
-        var boardInfo = JSON.parse(this.responseText);
-        if (boardInfo.marks !== null) {
-            board.setNewBoard(boardInfo.marks);
-        }
-    };
+    oReq.onload = callback;
     oReq.open("GET", "api/board", true);
     oReq.send();
 };
