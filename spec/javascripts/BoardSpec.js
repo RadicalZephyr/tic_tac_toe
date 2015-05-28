@@ -1,5 +1,11 @@
 describe("Board", function() {
-    var submitBtn = {};
+    var submitBtn;
+    var options;
+
+    beforeEach(function() {
+        submitBtn = {};
+        options = [{}];
+    });
 
     it("can setup the board", function() {
         var options = [{"addCallBack": function(callback) {}}];
