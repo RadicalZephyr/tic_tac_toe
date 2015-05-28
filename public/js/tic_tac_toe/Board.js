@@ -27,8 +27,18 @@ Board.prototype.sendMove = function(move, onSuccess) {
 Board.prototype.makeOnClick = function(option) {
     var move = option.value;
     var board = this;
+    var api = this.api;
     return function() {
-        board.sendMove(move, board.getBoard);
+        board.disableOptions();
+        api.sendMove(move, function() {
+            api.getBoard(function() {
+                var boardInfo = JSON.parse(this.responseText);
+                if (boardInfo.marks) {
+                    setNewBoard(boardInfo.marks);
+                }
+                board.enableOptions();
+            });
+        });
     };
 };
 
