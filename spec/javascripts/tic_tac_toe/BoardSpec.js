@@ -5,7 +5,9 @@ describe("Board", function() {
     jasmine.Ajax.install();
 
     beforeEach(function() {
-        api = {"sendMove": function() {}};
+        var result = {responseText: '{"current_mark": "X", "marks": [" ", " ", " ", " ", " ", " ", " ", " ", " "]}'};
+        api = {"sendMove": function(move, callback) { callback.call(); },
+               "getBoard": function(callback) { callback.call(result); }};
         submitBtn = {};
         options = [{}];
     });
@@ -40,13 +42,15 @@ describe("Board", function() {
 
     it("can create appropriate callback functions", function() {
         var board = new Board(api, submitBtn, options);
-        spyOn(api, "sendMove");
+        spyOn(api, "sendMove").and.callThrough();
+        spyOn(api, "getBoard").and.callThrough();
         spyOn(board, "disableOptions");
         spyOn(board, "enableOptions");
         var val = {};
         var callback = board.makeOnClick({"value": val});
         callback.call();
         expect(api.sendMove).toHaveBeenCalledWith(val, jasmine.any(Function));
+        expect(api.getBoard).toHaveBeenCalled();
     });
 
 });
