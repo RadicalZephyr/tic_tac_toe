@@ -11,7 +11,9 @@ GridSquare.prototype.disable = function() {
 };
 
 GridSquare.prototype.mark = function(mark) {
-    this.optEl.parentElement.classList.add(mark.toUpperCase()+"-marker");
+    if (mark !== " ") {
+        this.optEl.parentElement.classList.add(mark.toUpperCase()+"-marker");
+    }
 };
 
 GridSquare.prototype.addClickHandler = function(callback) {
