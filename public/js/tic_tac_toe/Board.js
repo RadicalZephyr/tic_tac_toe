@@ -1,4 +1,24 @@
-function Board(submitBtn, options) {
+function API() {
+
+}
+
+API.prototype.getBoard = function(callback) {
+    var oReq = new XMLHttpRequest();
+    oReq.onload = callback;
+    oReq.open("GET", "api/board", true);
+    oReq.send();
+};
+
+API.prototype.sendMove = function(move, callback) {
+    var oReq = new XMLHttpRequest();
+    oReq.onload = callback;
+    oReq.open("POST", "api/make-move", true);
+    oReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    oReq.send("move="+move);
+};
+
+function Board(api, submitBtn, options) {
+    this.api = api;
     this.submitBtn = submitBtn;
     this.options = options;
 }
@@ -16,18 +36,11 @@ Board.prototype.setNewBoard = function(marks) {
 };
 
 Board.prototype.getBoard = function(callback) {
-    var oReq = new XMLHttpRequest();
-    oReq.onload = callback;
-    oReq.open("GET", "api/board", true);
-    oReq.send();
+    this.api.getBoard(callback);
 };
 
 Board.prototype.sendMove = function(move, onSuccess) {
-    var oReq = new XMLHttpRequest();
-    oReq.onload = onSuccess;
-    oReq.open("POST", "api/make-move", true);
-    oReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    oReq.send("move="+move);
+    this.api.sendMove(move, onSuccess);
 };
 
 Board.prototype.makeOnClick = function(option) {
