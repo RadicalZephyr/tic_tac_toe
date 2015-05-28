@@ -18,14 +18,6 @@ Board.prototype.setNewBoard = function(marks) {
     }
 };
 
-Board.prototype.getBoard = function(callback) {
-    this.api.getBoard(callback);
-};
-
-Board.prototype.sendMove = function(move, onSuccess) {
-    this.api.sendMove(move, onSuccess);
-};
-
 Board.prototype.makeOnClick = function(option) {
     var move = option.value;
     var board = this;
