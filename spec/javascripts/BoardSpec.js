@@ -35,4 +35,12 @@ describe("Board", function() {
         expect(opt1.enable).toHaveBeenCalled();
     });
 
+    it("can create appropriate callback functions", function() {
+        var board = new Board(submitBtn, options);
+        spyOn(board, "sendMove");
+        var val = {};
+        var callback = board.makeOnClick({"value": val});
+        callback.call();
+        expect(board.sendMove).toHaveBeenCalledWith(val);
+    });
 });
