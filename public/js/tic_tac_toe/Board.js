@@ -1,3 +1,5 @@
+"use strict";
+
 function Board(api, submitBtn, options) {
     this.api = api;
     this.submitBtn = submitBtn;

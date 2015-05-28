@@ -1,3 +1,5 @@
+"use strict";
+
 var submitBtn = document.getElementById("submit-btn");
 
 var options = [];

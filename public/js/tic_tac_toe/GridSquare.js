@@ -1,3 +1,5 @@
+"use strict";
+
 function GridSquare(optEl) {
     this.optEl = optEl;
     this.value = optEl.value;
