@@ -41,7 +41,7 @@ describe("Board", function() {
         var val = {};
         var callback = board.makeOnClick({"value": val});
         callback.call();
-        expect(board.sendMove).toHaveBeenCalledWith(val);
+        expect(board.sendMove).toHaveBeenCalledWith(val, board.getBoard);
     });
 
     it("can send AJAX move updates", function() {
