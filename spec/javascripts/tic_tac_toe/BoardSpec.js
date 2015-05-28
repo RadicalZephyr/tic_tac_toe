@@ -1,16 +1,18 @@
 describe("Board", function() {
+    var api;
     var submitBtn;
     var options;
     jasmine.Ajax.install();
 
     beforeEach(function() {
+        api = new API();
         submitBtn = {};
         options = [{}];
     });
 
     it("can setup the board", function() {
         var options = [{"addCallBack": function(callback) {}}];
-        var board = new Board(submitBtn, options);
+        var board = new Board(api, submitBtn, options);
         spyOn(board, "hideButton");
         spyOn(board, "makeOnClick");
         board.prepareBoard();
@@ -21,7 +23,7 @@ describe("Board", function() {
     it("can disable all the options", function() {
         var opt1 = {"disable": function() {}};
         var options = [opt1];
-        var board = new Board(submitBtn, options);
+        var board = new Board(api, submitBtn, options);
         spyOn(opt1, "disable");
         board.disableOptions();
         expect(opt1.disable).toHaveBeenCalled();
@@ -30,14 +32,14 @@ describe("Board", function() {
     it("can enable all the options", function() {
         var opt1 = {"enable": function() {}};
         var options = [opt1];
-        var board = new Board(submitBtn, options);
+        var board = new Board(api, submitBtn, options);
         spyOn(opt1, "enable");
         board.enableOptions();
         expect(opt1.enable).toHaveBeenCalled();
     });
 
     it("can create appropriate callback functions", function() {
-        var board = new Board(submitBtn, options);
+        var board = new Board(api, submitBtn, options);
         spyOn(board, "sendMove");
         var val = {};
         var callback = board.makeOnClick({"value": val});
@@ -46,7 +48,7 @@ describe("Board", function() {
     });
 
     it("can send AJAX move updates", function() {
-        var board = new Board(submitBtn, options);
+        var board = new Board(api, submitBtn, options);
 
         var onSuccess = jasmine.createSpy("onSuccess");
         board.sendMove("0", onSuccess);
@@ -58,7 +60,7 @@ describe("Board", function() {
     });
 
     it("can retrieve a new board via AJAX", function() {
-        var board = new Board(submitBtn, options);
+        var board = new Board(api, submitBtn, options);
 
         var onSuccess = jasmine.createSpy("onSuccess");
         board.getBoard(onSuccess);
