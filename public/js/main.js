@@ -1,12 +1,3 @@
-var submitBtn = document.getElementById("submit-btn");
-submitBtn.classList.add("hidden");
-
-var options = [];
-
-for (var i = 0; i < 9; i++) {
-  options.push(document.getElementById("move"+i));
-}
-
 function disableOptions() {
   for (var i = 0; i < 9; i++) {
     options[i].disabled = true;
@@ -34,7 +25,37 @@ function getCurrentBoard() {
     if (boardInfo.marks !== null) {
       setNewBoard(boardInfo.marks);
     }
+    enableOptions();
   };
   oReq.open("GET", "api/board", true);
   oReq.send();
+}
+
+function sendMove(move) {
+  var oReq = new XMLHttpRequest();
+  oReq.onload = function() {
+    getCurrentBoard();
+  };
+  oReq.open("POST", "api/make-move", true);
+  oReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  oReq.send("move="+move);
+}
+
+function makeOnClick(optEl) {
+  var index = optEl.value;
+  return function() {
+    disableOptions();
+    sendMove(index);
+  };
+}
+
+var submitBtn = document.getElementById("submit-btn");
+submitBtn.classList.add("hidden");
+
+var options = [];
+
+for (var i = 0; i < 9; i++) {
+  var opt = document.getElementById("move"+i);
+  options.push(opt);
+  opt.onclick = makeOnClick(opt);
 }
