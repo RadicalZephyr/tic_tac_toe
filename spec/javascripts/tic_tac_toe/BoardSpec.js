@@ -1,6 +1,7 @@
 describe("Board", function() {
     var submitBtn;
     var options;
+    jasmine.Ajax.install();
 
     beforeEach(function() {
         submitBtn = {};
@@ -45,7 +46,6 @@ describe("Board", function() {
     });
 
     it("can send AJAX move updates", function() {
-        jasmine.Ajax.install();
         var board = new Board(submitBtn, options);
 
         var onSuccess = jasmine.createSpy("onSuccess");
@@ -55,5 +55,17 @@ describe("Board", function() {
         expect(request.url).toBe('api/make-move');
         request.respondWith(TestResponses.sendMove.success);
         expect(onSuccess).toHaveBeenCalled();
+    });
+
+    it("can retrieve a new board via AJAX", function() {
+        var board = new Board(submitBtn, options);
+
+        spyOn(board, "setNewBoard");
+        board.getBoard();
+        var request = jasmine.Ajax.requests.mostRecent();
+        expect(request).not.toBeUndefined();
+        expect(request.url).toBe('api/board');
+        request.respondWith(TestResponses.getBoard.success);
+        expect(board.setNewBoard).toHaveBeenCalled();
     });
 });

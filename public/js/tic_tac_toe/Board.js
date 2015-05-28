@@ -11,6 +11,23 @@ Board.prototype.prepareBoard = function() {
     });
 };
 
+Board.prototype.setNewBoard = function(marks) {
+
+};
+
+Board.prototype.getBoard = function() {
+    var oReq = new XMLHttpRequest();
+    var board = this;
+    oReq.onload = function() {
+        var boardInfo = JSON.parse(this.responseText);
+        if (boardInfo.marks !== null) {
+            board.setNewBoard(boardInfo.marks);
+        }
+    };
+    oReq.open("GET", "api/board", true);
+    oReq.send();
+};
+
 Board.prototype.sendMove = function(move, onSuccess) {
     var oReq = new XMLHttpRequest();
     oReq.onload = onSuccess;
