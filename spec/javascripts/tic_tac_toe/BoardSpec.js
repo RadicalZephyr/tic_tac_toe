@@ -11,7 +11,7 @@ describe("Board", function() {
     });
 
     it("can setup the board", function() {
-        var options = [{"addCallBack": function(callback) {}}];
+        var options = [{"addClickHandler": function(callback) {}}];
         var board = new Board(api, submitBtn, options);
         spyOn(board, "hideButton");
         spyOn(board, "makeOnClick");

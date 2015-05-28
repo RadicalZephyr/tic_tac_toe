@@ -8,7 +8,7 @@ Board.prototype.prepareBoard = function() {
     this.hideButton(this.submitBtn);
     var board = this;
     this.options.forEach(function(option) {
-        option.addCallBack(board.makeOnClick(option));
+        option.addClickHandler(board.makeOnClick(option));
     });
 };
 
