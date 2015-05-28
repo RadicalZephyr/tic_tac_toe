@@ -60,12 +60,12 @@ describe("Board", function() {
     it("can retrieve a new board via AJAX", function() {
         var board = new Board(submitBtn, options);
 
-        spyOn(board, "setNewBoard");
-        board.getBoard();
+        var onSuccess = jasmine.createSpy("onSuccess");
+        board.getBoard(onSuccess);
         var request = jasmine.Ajax.requests.mostRecent();
         expect(request).not.toBeUndefined();
         expect(request.url).toBe('api/board');
         request.respondWith(TestResponses.getBoard.success);
-        expect(board.setNewBoard).toHaveBeenCalled();
+        expect(onSuccess).toHaveBeenCalled();
     });
 });
