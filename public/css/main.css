@@ -132,3 +132,7 @@ td div input[type=radio]:not(old) + label{
 .O-marker::before {
   content: "O";
 }
+
+.hidden {
+  display: none !important;
+}
