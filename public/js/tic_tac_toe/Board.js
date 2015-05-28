@@ -11,8 +11,12 @@ Board.prototype.prepareBoard = function() {
     });
 };
 
-Board.prototype.sendMove = function(move) {
-
+Board.prototype.sendMove = function(move, onSuccess) {
+    var oReq = new XMLHttpRequest();
+    oReq.onload = onSuccess;
+    oReq.open("POST", "api/make-move", true);
+    oReq.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    oReq.send("move="+move);
 };
 
 Board.prototype.makeOnClick = function(option) {
