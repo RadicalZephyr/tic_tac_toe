@@ -1,7 +1,7 @@
 describe("Board", function() {
+    var submitBtn = {};
 
     it("can setup the board", function() {
-        var submitBtn = {};
         var options = [{}];
         var board = new Board(submitBtn, options);
         spyOn(board, "hideButton");
@@ -12,7 +12,6 @@ describe("Board", function() {
     });
 
     it("can disable all the options", function() {
-        var submitBtn = {};
         var opt1 = {"disable": function() {}};
         var options = [opt1];
         var board = new Board(submitBtn, options);
@@ -22,7 +21,6 @@ describe("Board", function() {
     });
 
     it("can enable all the options", function() {
-        var submitBtn = {};
         var opt1 = {"enable": function() {}};
         var options = [opt1];
         var board = new Board(submitBtn, options);
