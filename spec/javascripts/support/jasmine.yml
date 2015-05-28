@@ -13,6 +13,7 @@
 src_files:
   - public/js/**/*.js
   - spec/javascripts/lib/**/*.js
+  - "!public/js/main.js"
 
 # stylesheets
 #
