@@ -13,7 +13,9 @@ Board.prototype.prepareBoard = function() {
 };
 
 Board.prototype.setNewBoard = function(marks) {
-
+    for (var i = 0; i < marks.length && i < this.options.length; i++) {
+        this.options[i].mark(marks[i]);
+    }
 };
 
 Board.prototype.getBoard = function(callback) {
