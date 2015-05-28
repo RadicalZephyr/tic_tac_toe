@@ -1,5 +1,6 @@
 function GridSquare(optEl) {
     this.optEl = optEl;
+    this.value = optEl.value;
 }
 
 GridSquare.prototype.enable = function() {
