@@ -10,6 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["zefira@hey.com"]
 
   spec.summary       = %q{Ruby Tic Tac Toe, done tests first and with good OOD}
+  spec.description   = %q{Not much to see here. This is a ruby library built for running the internals of a Tic Tac Toe game.}
   spec.homepage      = "https://github.com/RadicalZephyr/tic_tac_toe"
   spec.license       = "MIT"
 
