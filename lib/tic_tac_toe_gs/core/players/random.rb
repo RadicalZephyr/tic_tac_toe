@@ -1,10 +1,10 @@
-require 'tic_tac_toe/core/player'
+require 'tic_tac_toe_gs/core/player'
 
-module TicTacToe
+module TicTacToeGS
   module Core
     module Players
 
-      class Random < TicTacToe::Core::Player
+      class Random < TicTacToeGS::Core::Player
 
         def initialize(random_source)
           @random_source = random_source

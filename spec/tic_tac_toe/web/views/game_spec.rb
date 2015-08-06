@@ -1,20 +1,20 @@
 require 'spec_helper'
-require 'tic_tac_toe/web/views/game'
+require 'tic_tac_toe_gs/web/views/game'
 
-describe TicTacToe::Web::Views::Game do
+describe TicTacToeGS::Web::Views::Game do
   let(:player) { mock_player }
   let(:game) { test_game }
-  let(:gv) { TicTacToe::Web::Views::Game.new(game) }
+  let(:gv) { TicTacToeGS::Web::Views::Game.new(game) }
 
   def mock_player
-    instance_double("TicTacToe::Core::Players::Human").tap do |player|
+    instance_double("TicTacToeGS::Core::Players::Human").tap do |player|
       allow(player).to receive(:set_marks)
       allow(player).to receive(:get_move).and_return(0)
     end
   end
 
   def test_game
-    TicTacToe::Core::Game.new_game.tap do |game|
+    TicTacToeGS::Core::Game.new_game.tap do |game|
       game.set_players(player, player)
     end
   end
@@ -31,26 +31,26 @@ describe TicTacToe::Web::Views::Game do
 
 end
 
-describe TicTacToe::Web::Views::FinishedGame do
+describe TicTacToeGS::Web::Views::FinishedGame do
   context 'with X winning' do
-    let(:game) { TicTacToe::Core::Game.new(TicTacToe::Core::Board.from(["X", " ", " ",
+    let(:game) { TicTacToeGS::Core::Game.new(TicTacToeGS::Core::Board.from(["X", " ", " ",
                                                                         "O", "X", "O",
                                                                         " ", " ", "X"])) }
 
     it 'displays the winning mark correctly' do
-      body = TicTacToe::Web::Views::FinishedGame.render(game)
+      body = TicTacToeGS::Web::Views::FinishedGame.render(game)
       expect(body).not_to include("<form")
       expect(body).to include("Player X Wins!")
     end
   end
 
   context 'with a draw game' do
-    let(:game) { TicTacToe::Core::Game.new(TicTacToe::Core::Board.from(["X", "O", "X",
+    let(:game) { TicTacToeGS::Core::Game.new(TicTacToeGS::Core::Board.from(["X", "O", "X",
                                                                         "O", "X", "O",
                                                                         "O", "X", "O"])) }
 
     it 'displays the draw message' do
-      body = TicTacToe::Web::Views::FinishedGame.render(game)
+      body = TicTacToeGS::Web::Views::FinishedGame.render(game)
       expect(body).not_to include("<form")
       expect(body).not_to include("Wins!")
       expect(body).to include("It's a draw!")

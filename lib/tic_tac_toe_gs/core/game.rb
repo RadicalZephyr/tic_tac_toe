@@ -1,7 +1,7 @@
-require 'tic_tac_toe/core/mark'
-require 'tic_tac_toe/core/board'
+require 'tic_tac_toe_gs/core/mark'
+require 'tic_tac_toe_gs/core/board'
 
-module TicTacToe
+module TicTacToeGS
   module Core
 
     class IllegalMove < ArgumentError
@@ -22,15 +22,15 @@ module TicTacToe
       attr_reader :current_mark, :board
       attr_accessor :illegal_move_handler
 
-      X = TicTacToe::Core::Mark.new("X")
-      O = TicTacToe::Core::Mark.new("O")
+      X = TicTacToeGS::Core::Mark.new("X")
+      O = TicTacToeGS::Core::Mark.new("O")
 
       NEXT_PLAYER = {X => O,
                      O => X}
 
       def self.new_game()
-        board = TicTacToe::Core::Board.empty_board
-        game = TicTacToe::Core::Game.new(board)
+        board = TicTacToeGS::Core::Board.empty_board
+        game = TicTacToeGS::Core::Game.new(board)
         game.reset
       end
 
@@ -71,11 +71,11 @@ module TicTacToe
       end
 
       def finished?
-        TicTacToe::Core::Rules.finished?(board)
+        TicTacToeGS::Core::Rules.finished?(board)
       end
 
       def who_won?
-        TicTacToe::Core::Rules.who_won?(board)
+        TicTacToeGS::Core::Rules.who_won?(board)
       end
 
       private

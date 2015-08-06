@@ -1,10 +1,10 @@
 require 'rack_spec_helper'
 
-describe TicTacToe::Web::Router do
+describe TicTacToeGS::Web::Router do
   include Rack::Test::Methods
 
 
-  let(:router) { TicTacToe::Web::Router.new }
+  let(:router) { TicTacToeGS::Web::Router.new }
 
   def app
     Proc.new do |env|

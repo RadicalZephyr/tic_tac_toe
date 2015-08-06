@@ -1,4 +1,4 @@
-module TicTacToe
+module TicTacToeGS
   module Core
     module Rules
 

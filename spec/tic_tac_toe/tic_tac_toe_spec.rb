@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe TicTacToe do
+describe TicTacToeGS do
 
   it 'has a version number' do
-    expect(TicTacToe::VERSION).not_to be nil
+    expect(TicTacToeGS::VERSION).not_to be nil
   end
 
 end

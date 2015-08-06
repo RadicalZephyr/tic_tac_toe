@@ -1,25 +1,25 @@
 require 'json'
 
 require 'rack_tac_toe'
-require 'tic_tac_toe/core/player'
+require 'tic_tac_toe_gs/core/player'
 
-module TicTacToe
+module TicTacToeGS
   module Web
 
-    class RackShell < TicTacToe::Core::Player
+    class RackShell < TicTacToeGS::Core::Player
       attr_accessor :current_move
 
       def self.new_shell
-        router = TicTacToe::Web::Router.new
+        router = TicTacToeGS::Web::Router.new
         shell = RackShell.new(router)
 
         router.add_route("/", :GET) do |_|
-          TicTacToe::Web::Views::Home.render(nil)
+          TicTacToeGS::Web::Views::Home.render(nil)
         end
 
         router.add_route("/new-game", :POST) do |env|
           req = Rack::Request.new(env)
-          game = TicTacToe::Core::Game.new_game
+          game = TicTacToeGS::Core::Game.new_game
           game.set_players(*shell.get_players(req))
           game.do_nonblocking_turns
           req.session[:game] = game
@@ -39,7 +39,7 @@ module TicTacToe
 
         router.add_route("/api/new-game", :POST) do |env|
           req = Rack::Request.new(env)
-          game = TicTacToe::Core::Game.new_game
+          game = TicTacToeGS::Core::Game.new_game
           game.set_players(*shell.get_players(req))
           game.do_nonblocking_turns
           req.session[:game] = game
@@ -100,9 +100,9 @@ module TicTacToe
 
       def render_game(game)
         if game && !game.finished?
-          TicTacToe::Web::Views::Game.render(game)
+          TicTacToeGS::Web::Views::Game.render(game)
         elsif game && game.finished?
-          TicTacToe::Web::Views::FinishedGame.render(game)
+          TicTacToeGS::Web::Views::FinishedGame.render(game)
         else
           "No game was found for this session."
         end
@@ -114,9 +114,9 @@ module TicTacToe
         when "h", "human"
           return self
         when "r", "random"
-          return TicTacToe::Core::Players::Random.new(Random.new)
+          return TicTacToeGS::Core::Players::Random.new(Random.new)
         when "a", "ai"
-          return TicTacToe::Core::Players::Minimax.new
+          return TicTacToeGS::Core::Players::Minimax.new
         end
       end
 
