@@ -1,8 +1,8 @@
 require 'spec_helper'
-require 'tic_tac_toe/web/views/board'
+require 'tic_tac_toe_gs/web/views/board'
 
-describe TicTacToe::Web::Views::Board do
-  let(:bv) { TicTacToe::Web::Views::Board.new(TicTacToe::Core::Board.empty_board, false) }
+describe TicTacToeGS::Web::Views::Board do
+  let(:bv) { TicTacToeGS::Web::Views::Board.new(TicTacToeGS::Core::Board.empty_board, false) }
 
   it 'Properly denotes row starts and ends' do
     starts = (0...9).map { |i| bv.is_row_start?(i) }
@@ -27,7 +27,7 @@ describe TicTacToe::Web::Views::Board do
   end
 
   it 'renders a finished board without radio buttons' do
-    boardview = TicTacToe::Web::Views::Board.new(TicTacToe::Core::Board.empty_board, true)
+    boardview = TicTacToeGS::Web::Views::Board.new(TicTacToeGS::Core::Board.empty_board, true)
     expect(boardview.render).not_to include("<input")
   end
 end

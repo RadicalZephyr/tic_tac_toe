@@ -1,6 +1,6 @@
 require 'mustache'
 
-module TicTacToe
+module TicTacToeGS
   module Web
     module Views
 

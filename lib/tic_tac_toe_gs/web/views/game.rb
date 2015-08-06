@@ -1,7 +1,7 @@
 require 'mustache'
-require 'tic_tac_toe/web/views/board'
+require 'tic_tac_toe_gs/web/views/board'
 
-module TicTacToe
+module TicTacToeGS
   module Web
 
     module Views
@@ -15,8 +15,8 @@ module TicTacToe
 
         def initialize(game)
           @game = game
-          @x_mark = TicTacToe::Core::Game::X
-          @o_mark = TicTacToe::Core::Game::O
+          @x_mark = TicTacToeGS::Core::Game::X
+          @o_mark = TicTacToeGS::Core::Game::O
         end
 
         def current_mark
@@ -37,7 +37,7 @@ module TicTacToe
         end
 
         def board
-          TicTacToe::Web::Views::Board.render(game.board)
+          TicTacToeGS::Web::Views::Board.render(game.board)
         end
       end
 
@@ -57,7 +57,7 @@ module TicTacToe
         end
 
         def board
-          TicTacToe::Web::Views::Board.render(game.board, true)
+          TicTacToeGS::Web::Views::Board.render(game.board, true)
         end
       end
 

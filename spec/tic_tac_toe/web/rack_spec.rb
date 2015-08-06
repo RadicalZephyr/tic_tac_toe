@@ -2,11 +2,11 @@ require 'spec_helper'
 require 'rack_spec_helper'
 require 'json'
 
-describe TicTacToe::Web::RackShell do
+describe TicTacToeGS::Web::RackShell do
   include Rack::Test::Methods
 
   def app
-    app = TicTacToe::Web::RackShell.new_shell
+    app = TicTacToeGS::Web::RackShell.new_shell
     Rack::Session::Pool.new(app, :expire_after => 18000)
   end
 
