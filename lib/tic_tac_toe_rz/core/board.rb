@@ -1,6 +1,6 @@
-require "tic_tac_toe_gs/core/mark"
+require "tic_tac_toe_rz/core/mark"
 
-module TicTacToeGS
+module TicTacToeRZ
   module Core
 
     class Board
@@ -20,11 +20,11 @@ module TicTacToeGS
       end
 
       def self.from(marks)
-        TicTacToeGS::Core::Board.new(marks.map { |m| TicTacToeGS::Core::BLANK.mark(m) }.to_a)
+        TicTacToeRZ::Core::Board.new(marks.map { |m| TicTacToeRZ::Core::BLANK.mark(m) }.to_a)
       end
 
       def self.empty_board
-        board = TicTacToeGS::Core::Board.new([])
+        board = TicTacToeRZ::Core::Board.new([])
         board.reset
       end
 
@@ -39,7 +39,7 @@ module TicTacToeGS
       end
 
       def reset
-        @marks = Array.new(9, TicTacToeGS::Core::Mark.new)
+        @marks = Array.new(9, TicTacToeRZ::Core::Mark.new)
         return self
       end
 
@@ -58,7 +58,7 @@ module TicTacToeGS
       end
 
       def speculative_move(mark, index)
-        board = TicTacToeGS::Core::Board.from(Array.new(@marks))
+        board = TicTacToeRZ::Core::Board.from(Array.new(@marks))
         board.move(mark, index)
         return board
       end

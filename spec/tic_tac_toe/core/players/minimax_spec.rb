@@ -1,33 +1,33 @@
 require 'spec_helper'
 require 'rspec/expectations'
 
-describe TicTacToeGS::Core::Players::Minimax do
+describe TicTacToeRZ::Core::Players::Minimax do
   let(:ai) { new_ai }
 
   def new_ai
-    TicTacToeGS::Core::Players::Minimax.new.tap do |ai|
-      ai.set_marks(TicTacToeGS::Core::Game::X,
-                   TicTacToeGS::Core::Game::O)
+    TicTacToeRZ::Core::Players::Minimax.new.tap do |ai|
+      ai.set_marks(TicTacToeRZ::Core::Game::X,
+                   TicTacToeRZ::Core::Game::O)
     end
   end
 
   describe 'wins when it has two in a row' do
     it 'on the left' do
-      board = TicTacToeGS::Core::Board.from([" ", "X", "X",
+      board = TicTacToeRZ::Core::Board.from([" ", "X", "X",
                                              " ", " ", " ",
                                              " ", " ", " "])
       expect(ai.get_move(board)).to eq(0)
     end
 
     it 'in the center' do
-      board = TicTacToeGS::Core::Board.from(["X", " ", "X",
+      board = TicTacToeRZ::Core::Board.from(["X", " ", "X",
                                              " ", " ", " ",
                                              " ", " ", " "])
       expect(ai.get_move(board)).to eq(1)
     end
 
     it 'on the right' do
-      board = TicTacToeGS::Core::Board.from(["X", "X", " ",
+      board = TicTacToeRZ::Core::Board.from(["X", "X", " ",
                                              " ", " ", " ",
                                              " ", " ", " "])
       expect(ai.get_move(board)).to eq(2)
@@ -37,21 +37,21 @@ describe TicTacToeGS::Core::Players::Minimax do
 
   describe 'blocks when the opponent would win' do
     it 'on the left' do
-      board = TicTacToeGS::Core::Board.from([" ", "O", "O",
+      board = TicTacToeRZ::Core::Board.from([" ", "O", "O",
                                              " ", "O", "X",
                                              "X", "X", "O"])
       expect(ai.get_move(board)).to eq(0)
     end
 
     it 'in the center' do
-      board = TicTacToeGS::Core::Board.from(["O", " ", "O",
+      board = TicTacToeRZ::Core::Board.from(["O", " ", "O",
                                              "O", " ", "X",
                                              "X", "O", "X"])
       expect(ai.get_move(board)).to eq(1)
     end
 
     it 'on the right' do
-      board = TicTacToeGS::Core::Board.from(["O", "O", " ",
+      board = TicTacToeRZ::Core::Board.from(["O", "O", " ",
                                              "O", "X", " ",
                                              "X", "X", "O"])
       expect(ai.get_move(board)).to eq(2)
@@ -60,42 +60,42 @@ describe TicTacToeGS::Core::Players::Minimax do
 
   describe 'creates forks' do
     it 'in the center' do
-      board = TicTacToeGS::Core::Board.from(["X", "X", "O",
+      board = TicTacToeRZ::Core::Board.from(["X", "X", "O",
                                              " ", " ", " ",
                                              " ", " ", " "])
       expect(ai.get_move(board)).to eq(4)
     end
 
     it 'on the side' do
-      board = TicTacToeGS::Core::Board.from(["X", " ", " ",
+      board = TicTacToeRZ::Core::Board.from(["X", " ", " ",
                                              " ", "X", " ",
                                              " ", " ", "O"])
       expect(ai.get_move(board)).to eq(1)
     end
 
     it 'in the corner' do
-      board = TicTacToeGS::Core::Board.from(["X", " ", " ",
+      board = TicTacToeRZ::Core::Board.from(["X", " ", " ",
                                              " ", "O", " ",
                                              " ", " ", "X"])
       expect(ai.get_move(board)).to eq(2)
     end
 
     it 'in the corner' do
-      board = TicTacToeGS::Core::Board.from(["X", " ", "O",
+      board = TicTacToeRZ::Core::Board.from(["X", " ", "O",
                                              " ", "O", " ",
                                              " ", " ", "X"])
       expect(ai.get_move(board)).to eq(6)
     end
 
     it 'in the center' do
-      board = TicTacToeGS::Core::Board.from(["X", "O", " ",
+      board = TicTacToeRZ::Core::Board.from(["X", "O", " ",
                                              "O", " ", " ",
                                              "X", " ", " "])
       expect(ai.get_move(board)).to eq(4)
     end
 
     it 'in the corner or on the side' do
-      board = TicTacToeGS::Core::Board.from(["X", "O", " ",
+      board = TicTacToeRZ::Core::Board.from(["X", "O", " ",
                                              " ", "X", " ",
                                              " ", " ", "O"])
       expect(ai.get_move(board)).to eq(3).or eq(6)
@@ -123,21 +123,21 @@ describe TicTacToeGS::Core::Players::Minimax do
     end
 
     it 'on the side' do
-      board = TicTacToeGS::Core::Board.from([" ", " ", "O",
+      board = TicTacToeRZ::Core::Board.from([" ", " ", "O",
                                              " ", "X", " ",
                                              "O", " ", " "])
       expect(ai.get_move(board)).to be_any_of(1, 3, 5, 7)
     end
 
     it 'in the center' do
-      board = TicTacToeGS::Core::Board.from(["O", "O", "X",
+      board = TicTacToeRZ::Core::Board.from(["O", "O", "X",
                                              " ", " ", " ",
                                              " ", " ", " "])
       expect(ai.get_move(board)).to be_any_of(4, 5)
     end
 
     it 'on either side' do
-      board = TicTacToeGS::Core::Board.from(["O", " ", " ",
+      board = TicTacToeRZ::Core::Board.from(["O", " ", " ",
                                              " ", "O", " ",
                                              " ", " ", "X"])
       expect(ai.get_move(board)).to be_any_of(2, 6)
@@ -146,21 +146,21 @@ describe TicTacToeGS::Core::Players::Minimax do
 
   describe 'plays second correctly' do
     it 'from a corner opening' do
-      board = TicTacToeGS::Core::Board.from(["O", " ", " ",
+      board = TicTacToeRZ::Core::Board.from(["O", " ", " ",
                                              " ", " ", " ",
                                              " ", " ", " "])
       expect(ai.get_move(board)).to eq(4)
     end
 
     it 'from a center opening' do
-      board = TicTacToeGS::Core::Board.from([" ", " ", " ",
+      board = TicTacToeRZ::Core::Board.from([" ", " ", " ",
                                              " ", "O", " ",
                                              " ", " ", " "])
       expect(ai.get_move(board)).to be_any_of(0, 2, 6, 8)
     end
 
     it 'from a side opening' do
-      board = TicTacToeGS::Core::Board.from([" ", "O", " ",
+      board = TicTacToeRZ::Core::Board.from([" ", "O", " ",
                                              " ", " ", " ",
                                              " ", " ", " "])
       expect(ai.get_move(board)).to be_any_of(4, 0, 2, 7)
@@ -169,7 +169,7 @@ describe TicTacToeGS::Core::Players::Minimax do
 
   describe 'negamax' do
     it 'scores an immediate loss as -100' do
-      board = TicTacToeGS::Core::Board.from(["O", "O", "O",
+      board = TicTacToeRZ::Core::Board.from(["O", "O", "O",
                                              " ", " ", " ",
                                              " ", " ", " "])
 
@@ -177,7 +177,7 @@ describe TicTacToeGS::Core::Players::Minimax do
     end
 
     it 'scores an immediate win as 100' do
-      board = TicTacToeGS::Core::Board.from(["X", "X", "X",
+      board = TicTacToeRZ::Core::Board.from(["X", "X", "X",
                                              " ", " ", " ",
                                              " ", " ", " "])
 

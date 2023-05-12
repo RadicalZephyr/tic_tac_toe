@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-describe TicTacToeGS::Core::Game do
+describe TicTacToeRZ::Core::Game do
 
   let(:player) { mock_player }
-  let(:board) { TicTacToeGS::Core::Board.empty_board }
+  let(:board) { TicTacToeRZ::Core::Board.empty_board }
   let(:game) { test_game }
 
   def mock_player
-    instance_double("TicTacToeGS::Core::Players::Human").tap do |player|
+    instance_double("TicTacToeRZ::Core::Players::Human").tap do |player|
       allow(player).to receive(:set_marks)
       allow(player).to receive(:get_move).and_return(0)
       allow(player).to receive(:can_retry?).and_return(false)
@@ -15,7 +15,7 @@ describe TicTacToeGS::Core::Game do
   end
 
   def test_game
-    TicTacToeGS::Core::Game.new(board).tap do |game|
+    TicTacToeRZ::Core::Game.new(board).tap do |game|
       game.reset
       game.set_players(player, player)
     end
@@ -41,6 +41,6 @@ describe TicTacToeGS::Core::Game do
     allow(player2).to receive(:get_move).and_return(3,4)
     game.do_nonblocking_turns
     expect(game.finished?).to be_truthy
-    expect(game.who_won?).to eq(TicTacToeGS::Core::Game::X)
+    expect(game.who_won?).to eq(TicTacToeRZ::Core::Game::X)
   end
 end

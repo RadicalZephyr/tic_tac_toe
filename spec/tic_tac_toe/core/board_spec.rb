@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-describe TicTacToeGS::Core::Board do
-  let(:board) { TicTacToeGS::Core::Board.empty_board }
+describe TicTacToeRZ::Core::Board do
+  let(:board) { TicTacToeRZ::Core::Board.empty_board }
 
   it 'initially has 9 empty positions' do
     (0...9).each do |i|
@@ -12,9 +12,9 @@ describe TicTacToeGS::Core::Board do
 
   it 'can make moves' do
     board.move("X", 0)
-    expect(board.pos(0)).to eq(TicTacToeGS::Core::Mark.new("X"))
+    expect(board.pos(0)).to eq(TicTacToeRZ::Core::Mark.new("X"))
     (1...9).each do |i|
-      expect(board.pos(i)).to eq(TicTacToeGS::Core::Mark.new)
+      expect(board.pos(i)).to eq(TicTacToeRZ::Core::Mark.new)
     end
   end
 
@@ -24,7 +24,7 @@ describe TicTacToeGS::Core::Board do
 
   describe 'when creating empty indices' do
     it 'can handle a full board' do
-      board = TicTacToeGS::Core::Board.from(["X", "O", "X",
+      board = TicTacToeRZ::Core::Board.from(["X", "O", "X",
                                      "X", "X", "O",
                                      "O", "X", "O"])
       expect(board.full?).to be_truthy
@@ -32,7 +32,7 @@ describe TicTacToeGS::Core::Board do
     end
 
     it 'can handle a mostly full board' do
-      board = TicTacToeGS::Core::Board.from(["X", " ", "X",
+      board = TicTacToeRZ::Core::Board.from(["X", " ", "X",
                                      "X", "X", "O",
                                      "O", " ", "O"])
       expect(board.full?).to be_falsey
@@ -40,7 +40,7 @@ describe TicTacToeGS::Core::Board do
     end
 
     it 'produces all indices for an empty board' do
-      board = TicTacToeGS::Core::Board.from([" ", " ", " ",
+      board = TicTacToeRZ::Core::Board.from([" ", " ", " ",
                                      " ", " ", " ",
                                      " ", " ", " "])
       expect(board.empty_spaces).to contain_exactly(*(0..8))

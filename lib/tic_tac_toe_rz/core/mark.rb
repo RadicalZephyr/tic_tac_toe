@@ -1,4 +1,4 @@
-module TicTacToeGS
+module TicTacToeRZ
   module Core
 
     class Mark
@@ -31,7 +31,7 @@ module TicTacToeGS
 
     end
 
-    BLANK = TicTacToeGS::Core::Mark.new
+    BLANK = TicTacToeRZ::Core::Mark.new
 
   end
 end

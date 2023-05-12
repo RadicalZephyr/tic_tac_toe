@@ -1,10 +1,10 @@
-require 'tic_tac_toe_gs/core/player'
+require 'tic_tac_toe_rz/core/player'
 
-module TicTacToeGS
+module TicTacToeRZ
   module Core
     module Players
 
-      class Minimax < TicTacToeGS::Core::Player
+      class Minimax < TicTacToeRZ::Core::Player
 
         def initialize
           @will_block = false
@@ -21,7 +21,7 @@ module TicTacToeGS
         end
 
         def negamax(marks, node, depth, alpha, beta, color)
-          if depth == 0 or TicTacToeGS::Core::Rules.finished?(node)
+          if depth == 0 or TicTacToeRZ::Core::Rules.finished?(node)
             score = score_node(node, marks[color])
             weight = [1, depth].max
             return [-1, color * score * weight]
@@ -45,12 +45,12 @@ module TicTacToeGS
         private
 
         def score_node(node, mark)
-          winner = TicTacToeGS::Core::Rules.who_won?(node)
+          winner = TicTacToeRZ::Core::Rules.who_won?(node)
           if winner == @my_mark
             10
           elsif winner == @other_mark
             -10
-          elsif TicTacToeGS::Core::Rules.draw?(node)
+          elsif TicTacToeRZ::Core::Rules.draw?(node)
             0
           else
             win_count = get_wins(node, @my_mark).uniq.count
@@ -68,7 +68,7 @@ module TicTacToeGS
         def get_wins_from_attacks(attacks, mark)
           get_indices_for(attacks) do |imarks|
             counts = count_marks(imarks.map { |imark| imark.mark })
-            counts[mark] == 2 && counts[TicTacToeGS::Core::BLANK] == 1
+            counts[mark] == 2 && counts[TicTacToeRZ::Core::BLANK] == 1
           end
         end
 
